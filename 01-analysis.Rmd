@@ -1,11 +1,11 @@
 # analysis {#analysis}
 
-```{r vis}
+## workload intensity
+
+```{r vis, echo=FALSE, message=FALSE, warning=FALSE}
 mdat <- wrangle_measures()
 
 mdat %>% 
-dplyr::group_by(category_workload, daily_workload, period, category) %>%
-    dplyr::count() %>%
     ggplot2::ggplot()+
     ggmosaic::geom_mosaic(
       aes(x = product(daily_workload),
@@ -15,7 +15,7 @@ dplyr::group_by(category_workload, daily_workload, period, category) %>%
 ggplot2::theme(axis.text.y = element_blank(),
       axis.ticks.y = element_blank(),
       axis.text.x = element_text(angle = 35, hjust = 1))+ 
-  facet_grid(period ~ category)
+  facet_grid(period ~ category, labeller = label_parsed) 
 
 
 

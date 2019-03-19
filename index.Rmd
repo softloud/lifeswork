@@ -12,10 +12,11 @@ description: "Ruminations on the inelegant art of failing forwards."
 
 # preamble
 
-```{r book packages}
+
+
+```{r book packages, echo=FALSE, warning=FALSE, message=FALSE}
 library(tidyverse)
 library(ggmosaic)
-# library(patchwork)
 library(dontpanic)
 library(lubridate)
 
@@ -27,7 +28,7 @@ My goal is to spend four hours a day on *work with intent*[^1].
 
 For a sanity, efficiency, and inspiration, I intend to balance my time between three categories: 
 
-- research, $\Phi$; 
+- research, $\varphi$; 
 - skills, $\theta$; and 
 - busywork, $\psi$.
 
@@ -35,14 +36,5 @@ For a sanity, efficiency, and inspiration, I intend to balance my time between t
 [^1]: This term is adopted from a piano teacher that I studied under, that I subsequently adapted into my own teaching. She encouraged me to *practice with intent*; that is, play what you intend to play. I found this to be particularly useful for discouraging my students, and myself, from the age-old pitfall of playing a piece of music until you make a mistake and stopping and playing that section over until you get it right. It's better to play *through* the piece, which empBowers you to adapt to mistakes you will inevitably play and, most importantly, not lose time. Oddly, it appeared to be a universal misconception, myself included, that without careful consideration, the attempt to *get the notes right* inevitably means the **rhythm is wrong**, and thus you get nothing right after all. Best, therefore, to play through the piece. I use my bullet journal to help me focus on work with intent; I've found the simplicity of only timing work when I've written down what I intend to do has been extraordinarily powerful in helping me complete daunting tasks.  
 
 
-## signifiers
 
-> todo: create a signifiers sheet
-
-```{r}
-measures %>% 
-  pluck("data", "signifiers") %>% 
-  select(-LaTeX) %>% 
-  knitr::kable()
-```
 

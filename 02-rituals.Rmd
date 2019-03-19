@@ -1,0 +1,110 @@
+# rituals {#rituals}
+
+## instantiate
+
+Start each [day](https://study.com/academy/lesson/german-days-of-the-week.html) by drawing up a [day view](#day-view).
+
+Begin the daily log, and add priority ($*$) [daily tasks](#daily-tasks).
+
+
+
+## day view {#day-view}
+
+tracker | position | description
+- | - | -
+poms | top left | track poms achieved
+goals | below poms | pom goals
+projects | top right| one project/category
+task cycles | below projects | $\varphi, \theta, \psi, \overline o$
+[order of events](#order-of-events) | below goals | live with intent
+
+
+## daily tasks {#daily-tasks}
+
+```{r echo=FALSE}
+measures %>% 
+  pluck("data", "daily_tasks") %>% 
+  mutate(context = paste0("$", context, "$"),
+         priority = paste0("$", priority, "$"),
+         category = paste0("$", category, "$")) %>%
+  arrange(priority, context, category) %>% 
+  knitr::kable()
+```
+
+
+## review {#review}
+
+### daily log
+
+Pare down to one active project per category and process daily log:
+
+- migrate to GitHub issues or [monthly log](#monthly-log)
+- add [signifiers](#signifiers) 
+- log projects in [day view](#day-view) tracker
+- add projects from [monthly log](#monthly-log) if all $*$ and $\sim$ have been completed
+
+### day view
+
+- count poms
+- log goals
+- assign task cycles
+- +2 events to [order of events](#order-of-events)
+
+### minibreak peeps
+
+- social media & slack
+
+## monthly log {#monthly-log}
+
+List of projects that will take longer than a day.
+
+## pom goals
+
+pom := 20 minutes
+
+```{r echo=FALSE}
+measures %>% pluck("data", "workload_key") %>% 
+  select(-phi_hrs, -theta_hrs, -psi_hrs, -exercise_hrs) %>% 
+  knitr::kable()
+
+```
+
+## order of events {#order-of-events}
+
+Day begins with [review](#review) $\overline o$.
+
+### workday
+
+Alternate events:
+
+- $\not n + 2$ poms
+- $\pi$
+
+Around other events such as meetings. 
+
+### wake up
+
+- wake up
+- [read]
+- dress
+- wash
+- [yoga]
+- [day view]{#day-view}
+- [yoga]
+
+### evening
+
+- bathtime + reading
+- bed
+
+
+## signifiers {#signifiers}
+
+> todo: create a signifiers sheet
+
+```{r  echo=FALSE}
+measures %>% 
+  pluck("data", "signifiers") %>% 
+  mutate(signifier = paste0("$", signifier, "$")) %>% 
+  knitr::kable()
+```
