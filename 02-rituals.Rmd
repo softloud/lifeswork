@@ -21,14 +21,26 @@ task cycles | below projects | $\varphi, \theta, \psi, \overline o$
 
 ## daily tasks {#daily-tasks}
 
-```{r echo=FALSE}
-measures %>% 
+```{r daily tasks all, echo=FALSE}
+daily_tasks <- measures %>% 
   pluck("data", "daily_tasks") %>% 
   mutate(context = paste0("$", context, "$"),
          priority = paste0("$", priority, "$"),
          category = paste0("$", category, "$")) %>%
-  arrange(priority, context, category) %>% 
+  arrange(priority, context, category) 
+
+daily_tasks %>% 
   knitr::kable()
+```
+
+### $\pi$
+
+```{r pi, echo=FALSE}
+daily_tasks %>% 
+  filter(category == "$\\pi$") %>% 
+  knitr::kable()
+
+
 ```
 
 

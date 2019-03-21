@@ -1,6 +1,6 @@
 # analysis {#analysis}
 
-## workload intensity
+## workload intensity goals achieved
 
 ```{r vis, echo=FALSE, message=FALSE, warning=FALSE}
 mdat <- wrangle_measures()
@@ -17,6 +17,33 @@ ggplot2::theme(axis.text.y = element_blank(),
       axis.text.x = element_text(angle = 35, hjust = 1))+ 
   facet_grid(period ~ category, labeller = label_parsed) 
 
+
+
+```
+
+
+## distribution of hrs spent per day per category
+
+```{r density periods, echo=FALSE}
+mdat %>% 
+    ggplot2::ggplot(aes(x = hrs))+
+    geom_density(colour = "darkgrey", fill = "darkgrey") +
+  facet_grid(category ~ period, scales = "free") 
+
+
+
+```
+
+## 
+
+```{r boxplots categories, echo=FALSE}
+mdat %>% 
+  ggplot(aes(x = category, y = hrs)) +
+  geom_boxplot() +
+  facet_grid(period ~ ., 
+             scales = "free",
+             labeller = label_parsed) +
+  coord_flip()
 
 
 ```
