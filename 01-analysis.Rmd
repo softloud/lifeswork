@@ -34,7 +34,6 @@ mdat %>%
 
 ```
 
-## 
 
 ```{r boxplots categories, echo=FALSE}
 mdat %>% 

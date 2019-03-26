@@ -1,7 +1,8 @@
 --- 
 title: "life's work"
+subtitle: "ruminations on the inelegant art of failing forwards"
 author: "Charles T. Gray"
-date: "`r Sys.Date()`"
+date: "_work in progress_ `r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -24,7 +25,7 @@ library(lubridate)
 
 What if one practices mathematical science like music?
 
-My goal is to spend four hours a day on *work with intent*[^1].
+My goal is to spend four hours a day on [work with intent](#work-with-intent).
 
 For a sanity, efficiency, and inspiration, I intend to balance my time between three categories: 
 
@@ -33,7 +34,7 @@ For a sanity, efficiency, and inspiration, I intend to balance my time between t
 - busywork, $\psi$.
 
 
-[^1]: This term is adopted from a piano teacher that I studied under, that I subsequently adapted into my own teaching. She encouraged me to *practice with intent*; that is, play what you intend to play. I found this to be particularly useful for discouraging my students, and myself, from the age-old pitfall of playing a piece of music until you make a mistake and stopping and playing that section over until you get it right. It's better to play *through* the piece, which empBowers you to adapt to mistakes you will inevitably play and, most importantly, not lose time. Oddly, it appeared to be a universal misconception, myself included, that without careful consideration, the attempt to *get the notes right* inevitably means the **rhythm is wrong**, and thus you get nothing right after all. Best, therefore, to play through the piece. I use my bullet journal to help me focus on work with intent; I've found the simplicity of only timing work when I've written down what I intend to do has been extraordinarily powerful in helping me complete daunting tasks.  
+
 
 
 

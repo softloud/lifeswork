@@ -44,7 +44,7 @@ daily_tasks %>%
 ```
 
 
-## review {#review}
+## **review** {#review}
 
 ### daily log
 
@@ -60,11 +60,24 @@ Pare down to one active project per category and process daily log:
 - count poms
 - log goals
 - assign task cycles
+    - exclude $\varnothing$ categories with no $*$ and $\sim$ projects where current goal has already been met in poms by category
+    - always finish with scheduling review $\overline o$
+    - consider including a [sparkjoy](https://en.wikipedia.org/wiki/Marie_Kondo) project 
 - +2 events to [order of events](#order-of-events)
 
 ### minibreak peeps
 
 - social media & slack
+
+## task cycle
+
+shorthand | description
+- | -
+$\forall *$ | complete all priority ($*$) tasks
+$\sim \geqslant 1$ | complete at least one anxiety ($\sim$) task
+$\varnothing \geqslant 0$ | complete any or none of the untagged tasks 
+$\cdot \geqslant 1$ | write down as many next actions as I can think of
+$\overline o$ | [review](#review)
 
 ## monthly log {#monthly-log}
 
