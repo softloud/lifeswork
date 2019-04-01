@@ -15,9 +15,25 @@ Keep what can be kept on paper, on paper. Keeps screens busy and helps me focus.
 ## work with intent {#work-with-intent}
 
  This term is adopted from a piano teacher that I studied under, that I subsequently adapted into my own teaching. She encouraged me to *practice with intent*; that is, play what you intend to play. I found this to be particularly useful for discouraging my students, and myself, from the age-old pitfall of playing a piece of music until you make a mistake and stopping and playing that section over until you get it right. It's better to play *through* the piece, which empowers you to adapt to mistakes you will inevitably play and, most importantly, not lose time. Oddly, it appeared to be a universal misconception, myself included, that without careful consideration, the attempt to *get the notes right* inevitably means the **rhythm is wrong**, and thus you get nothing right after all. Best, therefore, to play through the piece. I use my bullet journal to help me focus on work with intent; I've found the simplicity of only timing work when I've written down what I intend to do has been extraordinarily powerful in helping me complete daunting tasks.  
+
+## mindful time isn't wasted
+
+I often update my system. I see this as productive mindfulness; it is both meditative and the systems do help me work happier. 
+
+Something that really resonated with me about Cal Newport's _Deep Work_ was that my situation will change, and so, too, may what best facillitates flow. I will pick and choose elements from pomodoro, gtd, task switching, and so forth to achieve flow. Allowing this to be so flexible makes keeping track of my own system tricky at times. 
+
+todo: fix inconsistencies in audience across manuscript - should be to self
+
+I am slowly automating the process of updates, where the manual process is ideally kept to tweaking a set of easy to navigate [googlesheets](https://docs.google.com/spreadsheets/d/1hv7pkBGu8XQQOIBbBt1_1LvKGBR7zTdQYCzogrv3hz0/edit?usp=sharing) which are scraped using the fabulous `googlesheets::` and rendered with `bookdown::`. It's exciting that using git, I can examine past systems. 
+
+todo: refs
+
+This has a dual objective of providing a place to drop my thoughts, but also to test run `bookdown::`, as I will likely write my thesis in something this or `distill::`. Also, I think it'll level up my git-surfing skills. 
+
  
 ## $\sim$ beethoven piano sonata
 
 todo: 
 https://twitter.com/cantabile/status/1112145903203180544
+
 

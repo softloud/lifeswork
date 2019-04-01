@@ -40,22 +40,10 @@ This manuscript is a triptych of
 - [rituals](#rituals) rituals to facillitate flow in practicing mathematical science
 - [ruminations](#ruminations) a reminder to self about why I chose what I did 
 
-## perennial by versioning
+## version
 
 <div class="tenor-gif-embed" data-postid="12551466" data-share-method="host" data-width="100%" data-aspect-ratio="1.8043478260869565"><a href="https://tenor.com/view/captain-marvel-gif-12551466">Captain Marvel GIF</a> from <a href="https://tenor.com/search/captainmarvel-gifs">Captainmarvel GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
 operation | instantiated | last updated
 -|-|-
 phoenix | Tuesday 2 April 2019 | `r today() %>% dontpanic::title_date()`
-
-I often update my system. I see this as productive mindfulness; it is both meditative and the systems do help me work happier. 
-
-Something that really resonated with me about Cal Newport's _Deep Work_ was that your situation will change, and so, too, may what best facillitates flow. I will pick and choose elements from pomodoro, gtd, task switching, and so forth to achieve flow. Allowing this to be so flexible makes keeping track of my own system tricky at times. 
-
-todo: fix inconsistencies in audience - to self
-
-I am slowly automating the process of updates, where the manual process is ideally kept to tweaking a set of easy to navigate [googlesheets](https://docs.google.com/spreadsheets/d/1hv7pkBGu8XQQOIBbBt1_1LvKGBR7zTdQYCzogrv3hz0/edit?usp=sharing) which are scraped using the fabulous `googlesheets::` and rendered with `bookdown::`. It's exciting that using git, I can examine past systems. 
-
-todo: refs
-
-This has a dual objective of providing a place to drop my thoughts, but also to test run `bookdown::`, as I will likely write my thesis in something this or `distill::`. Also, I think it'll level up my git-surfing skills. 
