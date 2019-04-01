@@ -2,7 +2,7 @@
 title: "life's work"
 subtitle: "ruminations on the inelegant art of failing forwards"
 author: "Charles T. Gray"
-date: "_work in progress_ `r Sys.Date()`"
+date: "_perennial work in progress_ `r dontpanic::title_date(Sys.Date())`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -32,7 +32,7 @@ For a sanity, efficiency, and inspiration, I intend to balance my time between t
 - busywork, $\psi$; and
 - wellness, $\pi$
 
-## what is this?
+# what is this?
 
 This manuscript is a triptych of  
 
