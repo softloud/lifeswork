@@ -12,11 +12,11 @@ Begin the daily log, and add priority ($*$) [daily tasks](#daily-tasks).
 
 tracker | position | description
 - | - | -
-poms | top left | track poms achieved
-goals | below poms | pom goals
+goals | top left | pom goals
+poms | next to goals | track poms achieved
 projects | top right| one project/category
-task cycles | below projects | $\varphi, \theta, \psi, \overline o$
 [order of events](#order-of-events) | below goals | live with intent
+task cycles | below projects | $\varphi, \theta, \psi, \overline o$
 
 
 ## daily tasks {#daily-tasks}
@@ -48,9 +48,11 @@ daily_tasks %>%
 
 ### daily log
 
-Pare down to one active project per category and process daily log:
+This is the hard part.
 
-- migrate to GitHub issues or [monthly log](#monthly-log)
+Pare down to one active project per category and process daily log onto one page:
+
+- if this project will take more than a day: migrate to [monthly log](#monthly-log), a collection tagged in the monthly log, or to GitHub issues
 - add [signifiers](#signifiers) 
 - log projects in [day view](#day-view) tracker
 - add projects from [monthly log](#monthly-log) if all $*$ and $\sim$ have been completed
@@ -111,8 +113,7 @@ Around other events such as meetings.
 
 - wake up
 - [read]
-- dress
-- wash
+- wash & dress
 - [yoga]
 - [day view]{#day-view}
 - [yoga]
@@ -121,7 +122,6 @@ Around other events such as meetings.
 
 - bathtime + reading
 - bed
-
 
 ## signifiers {#signifiers}
 
@@ -132,4 +132,5 @@ measures %>%
   pluck("data", "signifiers") %>% 
   mutate(signifier = paste0("$", signifier, "$")) %>% 
   knitr::kable()
+
 ```

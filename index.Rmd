@@ -13,8 +13,6 @@ description: "Ruminations on the inelegant art of failing forwards."
 
 # preamble
 
-
-
 ```{r book packages, echo=FALSE, warning=FALSE, message=FALSE}
 library(tidyverse)
 library(ggmosaic)
@@ -30,9 +28,9 @@ My goal is to spend four hours a day on [work with intent](#work-with-intent).
 For a sanity, efficiency, and inspiration, I intend to balance my time between three categories: 
 
 - research, $\varphi$; 
-- skills, $\theta$; and 
-- busywork, $\psi$.
-
+- skills, $\theta$;  
+- busywork, $\psi$; and
+- wellness, $\pi$
 
 
 
