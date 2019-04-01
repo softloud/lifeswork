@@ -20,7 +20,6 @@ task cycles | below projects | $\varphi, \theta, \psi, \overline o$
 
 
 ## daily tasks {#daily-tasks}
-
 ```{r daily tasks all, echo=FALSE}
 daily_tasks <- measures %>% 
   pluck("data", "daily_tasks") %>% 
@@ -29,17 +28,45 @@ daily_tasks <- measures %>%
          category = paste0("$", category, "$")) %>%
   arrange(priority, context, category) 
 
-daily_tasks %>% 
-  knitr::kable()
 ```
 
+
+### $*$
+
+```{r priority tasks, echo=FALSE}
+daily_tasks %>% 
+  filter(priority == "$*$") %>% 
+  knitr::kable()
+
+```
+
+### $\sim$
+
+```{r anxiety tasks, echo=FALSE}
+daily_tasks %>% 
+  filter(priority == "$\\sim$") %>% 
+  knitr::kable()
+
+```
+
+### $\varnothing$
+
+```{r nullset tasks, echo=FALSE}
+daily_tasks %>% 
+  filter(priority == "$\\varnothing$",
+         category != "$\\pi$") %>% 
+  knitr::kable()
+
+```
+
+
 ### $\pi$
+
 
 ```{r pi, echo=FALSE}
 daily_tasks %>% 
   filter(category == "$\\pi$") %>% 
   knitr::kable()
-
 
 ```
 
@@ -56,6 +83,7 @@ Pare down to one active project per category and process daily log onto one page
 - add [signifiers](#signifiers) 
 - log projects in [day view](#day-view) tracker
 - add projects from [monthly log](#monthly-log) if all $*$ and $\sim$ have been completed
+- aim to progress at least one $*$ from the [monthly log](#monthly-log)
 
 ### day view
 
