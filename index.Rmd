@@ -1,7 +1,7 @@
 --- 
 title: "life's work"
 subtitle: "ruminations on the inelegant art of failing forwards"
-author: "Charles T. Gray"
+author: "[Charles T. Gray](http://cantabile.rbind.io/about.html)"
 date: "_perennial work in progress_ `r dontpanic::title_date(Sys.Date())`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -40,7 +40,7 @@ This manuscript is a triptych of
 - [rituals](#rituals) rituals to facillitate flow in practicing mathematical science
 - [ruminations](#ruminations) a reminder to self about why I chose what I did 
 
-## version
+## [version](#mindfulness)
 
 <div class="tenor-gif-embed" data-postid="12551466" data-share-method="host" data-width="100%" data-aspect-ratio="1.8043478260869565"><a href="https://tenor.com/view/captain-marvel-gif-12551466">Captain Marvel GIF</a> from <a href="https://tenor.com/search/captainmarvel-gifs">Captainmarvel GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 

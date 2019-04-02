@@ -7,7 +7,6 @@ Start each [day](https://study.com/academy/lesson/german-days-of-the-week.html) 
 Begin the daily log, and add priority ($*$) [daily tasks](#daily-tasks).
 
 
-
 ## day view {#day-view}
 
 tracker | position | description
@@ -87,13 +86,32 @@ Pare down to one active project per category and process daily log onto one page
 
 ### day view
 
+This is the sparkjoy bit.
+
 - count poms
 - log goals
 - assign task cycles
     - exclude $\varnothing$ categories with no $*$ and $\sim$ projects where current goal has already been met in poms by category
     - always finish with scheduling review $\overline o$
-    - consider including a [sparkjoy](https://en.wikipedia.org/wiki/Marie_Kondo) project 
-- +2 events to [order of events](#order-of-events)
+    - consider including a [sparkjoy](https://en.wikipedia.org/wiki/Marie_Kondo) project
+    
+### assess 
+
+Calculate number of poms I can realistically do, the floor of 
+$$
+14 - t - \frac 3 2 c
+$$
+where $t$ denotes the number of hours of travel, and $c$ the number of hours of _community_, where the lattter includes teaching, outreach, and research collaborations. That, is I aim to draw a distinction between self-directed time, and time where I have the benefit of external motivations.
+
+```{r}
+# output as of this update
+dontpanic::calculate_pom_goal(
+  travel_hrs = 0, # no travel today
+  community_hrs = 0 # no teaching, meetings today
+)
+```
+
+
 
 ### minibreak peeps
 
@@ -162,3 +180,13 @@ measures %>%
   knitr::kable()
 
 ```
+
+## playlists
+
+### for the good days
+
+<iframe src="https://open.spotify.com/embed/user/acgray101/playlist/3dAEbZZlfN3qoZKbJdwFBE" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+### for the not so good days
+
+<iframe src="https://open.spotify.com/embed/user/acgray101/playlist/5koDEJPBsLsLPDxBKKAh7F" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>

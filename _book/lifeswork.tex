@@ -31,6 +31,46 @@
 \urlstyle{same}  % don't use monospace font for urls
 \usepackage{natbib}
 \bibliographystyle{apalike}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
 \usepackage{graphicx,grffile}
 \makeatletter
@@ -81,7 +121,7 @@
     \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
   \subtitle{ruminations on the inelegant art of failing forwards}
-  \author{Charles T. Gray}
+  \author{\href{http://cantabile.rbind.io/about.html}{Charles T. Gray}}
     \preauthor{\centering\large\emph}
   \postauthor{\par}
       \predate{\centering\large\emph}
@@ -134,7 +174,7 @@ This manuscript is a triptych of
 \end{itemize}
 
 \hypertarget{version}{%
-\section{version}\label{version}}
+\section{\texorpdfstring{\protect\hyperlink{mindfulness}{version}}{version}}\label{version}}
 
 Captain Marvel GIF from Captainmarvel GIFs
 
@@ -286,6 +326,8 @@ Pare down to one active project per category and process daily log onto one page
 \hypertarget{day-view-1}{%
 \subsection{day view}\label{day-view-1}}
 
+This is the sparkjoy bit.
+
 \begin{itemize}
 \tightlist
 \item
@@ -304,9 +346,40 @@ Pare down to one active project per category and process daily log onto one page
   \item
     consider including a \href{https://en.wikipedia.org/wiki/Marie_Kondo}{sparkjoy} project
   \end{itemize}
-\item
-  +2 events to \protect\hyperlink{order-of-events}{order of events}
 \end{itemize}
+
+\hypertarget{assess}{%
+\subsection{assess}\label{assess}}
+
+Calculate number of poms I can realistically do, the floor of
+\[
+14 - t - \frac 3 2 c
+\]
+where \(t\) denotes the number of hours of travel, and \(c\) the number of hours of \emph{community}, where the lattter includes teaching, outreach, and research collaborations. That, is I aim to draw a distinction between self-directed time, and time where I have the benefit of external motivations.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# output as of this update}
+\NormalTok{dontpanic}\OperatorTok{::}\KeywordTok{calculate_pom_goal}\NormalTok{(}
+  \DataTypeTok{travel_hrs =} \DecValTok{0}\NormalTok{, }\CommentTok{# no travel today}
+  \DataTypeTok{community_hrs =} \DecValTok{0} \CommentTok{# no teaching, meetings today}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## aim to get 14 poms done today
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 3 x 6
+##   workload   phi theta   psi total aim_for
+##   <chr>    <int> <int> <int> <int> <lgl>  
+## 1 light        2     1     1     4 TRUE   
+## 2 moderate     4     2     2     8 TRUE   
+## 3 hardcore     6     4     4    14 TRUE
+\end{verbatim}
 
 \hypertarget{minibreak-peeps}{%
 \subsection{minibreak peeps}\label{minibreak-peeps}}
@@ -446,6 +519,15 @@ signifier & meaning & position\\
 \hline
 \end{tabular}
 
+\hypertarget{playlists}{%
+\section{playlists}\label{playlists}}
+
+\hypertarget{for-the-good-days}{%
+\subsection{for the good days}\label{for-the-good-days}}
+
+\hypertarget{for-the-not-so-good-days}{%
+\subsection{for the not so good days}\label{for-the-not-so-good-days}}
+
 \hypertarget{ruminations}{%
 \chapter{ruminations}\label{ruminations}}
 
@@ -462,15 +544,15 @@ If a project is logged in the \protect\hypertarget{daily-log}{}{daily-log} then 
 \hypertarget{lowtech}{%
 \section{lowtech}\label{lowtech}}
 
-Keep what can be kept on paper, on paper. Keeps screens busy and helps me focus.
+Keep what can be kept on paper, on paper. Keeps screens free of clutter and helps me focus.
 
 \hypertarget{work-with-intent}{%
 \section{work with intent}\label{work-with-intent}}
 
 This term is adopted from a piano teacher that I studied under, that I subsequently adapted into my own teaching. She encouraged me to \emph{practice with intent}; that is, play what you intend to play. I found this to be particularly useful for discouraging my students, and myself, from the age-old pitfall of playing a piece of music until you make a mistake and stopping and playing that section over until you get it right. It's better to play \emph{through} the piece, which empowers you to adapt to mistakes you will inevitably play and, most importantly, not lose time. Oddly, it appeared to be a universal misconception, myself included, that without careful consideration, the attempt to \emph{get the notes right} inevitably means the \textbf{rhythm is wrong}, and thus you get nothing right after all. Best, therefore, to play through the piece. I use my bullet journal to help me focus on work with intent; I've found the simplicity of only timing work when I've written down what I intend to do has been extraordinarily powerful in helping me complete daunting tasks.
 
-\hypertarget{documenting-the-system-is-mindful-time}{%
-\section{documenting the system is mindful time}\label{documenting-the-system-is-mindful-time}}
+\hypertarget{mindfulness}{%
+\section{documenting the system is mindful time}\label{mindfulness}}
 
 I often update my system. I see this as productive mindfulness; it is both meditative, I enjoy making something I find aesthetically pleasing, and functional, the systems do help me work happier.
 
