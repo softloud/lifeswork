@@ -47,3 +47,15 @@ This manuscript is a triptych of
 operation | instantiated | last updated
 -|-|-
 phoenix | Tuesday 2 April 2019 | `r today() %>% dontpanic::title_date()`
+
+## how was it made?
+
+`bookdown::` + `tidyverse::` + `googlesheets::` + `softloud/dontpanic::`
+
+todo: refs
+
+[check out the code](https://github.com/softloud/lifeswork)
+
+[feature requests](https://github.com/softloud/lifeswork/issues)
+
+
