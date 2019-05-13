@@ -2,12 +2,18 @@
 
 ## instantiate
 
+Ask albert to instantiate.
+
 Start each [day](https://study.com/academy/lesson/german-days-of-the-week.html) by drawing up a [day view](#day-view).
 
 Begin the daily log, and add priority ($*$) [daily tasks](#daily-tasks).
 
+[`review`](#review).
+
 
 ## day view {#day-view}
+
+todo: port in googlesheet instead of hardcoding this
 
 tracker | position | description
 - | - | -
@@ -17,18 +23,10 @@ projects | top right| one project/category
 [order of events](#order-of-events) | below goals | live with intent
 task cycles | below projects | $\varphi, \theta, \psi, \overline o$
 
+Add 
+
 
 ## daily tasks {#daily-tasks}
-```{r daily tasks all, echo=FALSE}
-daily_tasks <- measures %>% 
-  pluck("data", "daily_tasks") %>% 
-  mutate(context = paste0("$", context, "$"),
-         priority = paste0("$", priority, "$"),
-         category = paste0("$", category, "$")) %>%
-  arrange(priority, context, category) 
-
-```
-
 
 ### $*$
 
@@ -70,15 +68,39 @@ daily_tasks %>%
 ```
 
 
-## **review** {#review}
+## email
+
+### process
+
+ Check inbox once a day.
+ 
+ - archive [and label] emails that don't require actions
+ - if I know what I want to say, best to do it now
+ - if it's going to be lengthy or $\sim$, label as `needs action` 
+ 
+### needs action
+
+- start from the bottom, gmail doesn't sort descending
+- write a next action
+- migrate task to $\sim$ [todo: quaver] $+ \sim$
+- can stop after one pom on this each day
+
+## **`review`** {#review}
 
 ### daily log
 
 This is the hard part.
 
-Pare down to one active project per category and process daily log onto one page:
+Pare down to one active project per category and process daily list to end of log. 
 
-- if this project will take more than a day: migrate to [monthly log](#monthly-log), a collection tagged in the monthly log, or to GitHub issues
+Cross through actions above. 
+
+#### if this project will take more than a day
+
+- if ($*$) or ($\sim$), create project for next step and migrate to projects waiting to progress
+- else if associated with a repo, migrate to issues 
+- else migrate to [monthly log](#monthly-log)
+
 - add [signifiers](#signifiers) 
 - log projects in [day view](#day-view) tracker
 - add projects from [monthly log](#monthly-log) if all $*$ and $\sim$ have been completed
@@ -90,6 +112,7 @@ This is the sparkjoy bit.
 
 - count poms
 - log goals
+- top up projects from [projects waiting](#projects-waiting) to maximum three active projects, one per category
 - assign task cycles
     - exclude $\varnothing$ categories with no $*$ and $\sim$ projects where current goal has already been met in poms by category
     - always finish with scheduling review $\overline o$
@@ -97,18 +120,29 @@ This is the sparkjoy bit.
     
 ### assess 
 
+plan poms and $\pi$ to next goal
+
 Calculate number of poms I can realistically do, the floor of 
 $$
 14 - t - \frac 3 2 c
 $$
 where $t$ denotes the number of hours of travel, and $c$ the number of hours of _community_, where the lattter includes teaching, outreach, and research collaborations. That, is I aim to draw a distinction between self-directed time, and time where I have the benefit of external motivations.
 
-```{r}
+```{r }
+# todo: import tidyverse into dontpanic
+
+library(tidyverse)
+
 # output as of this update
+
+# todo: add dataset arg to fn
+
 dontpanic::calculate_pom_goal(
   travel_hrs = 0, # no travel today
   community_hrs = 0 # no teaching, meetings today
 )
+
+
 ```
 
 

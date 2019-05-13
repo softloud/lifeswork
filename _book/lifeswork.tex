@@ -31,46 +31,6 @@
 \urlstyle{same}  % don't use monospace font for urls
 \usepackage{natbib}
 \bibliographystyle{apalike}
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
 \usepackage{graphicx,grffile}
 \makeatletter
@@ -109,7 +69,7 @@
 \usepackage{titling}
 
 % Create subtitle command for use in maketitle
-\newcommand{\subtitle}[1]{
+\providecommand{\subtitle}[1]{
   \posttitle{
     \begin{center}\large#1\end{center}
     }
@@ -126,7 +86,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{\emph{perennial work in progress} Tuesday 2 April 2019}
+    \date{\emph{perennial work in progress} Monday 13 May 2019}
 
 \usepackage{booktabs}
 
@@ -144,7 +104,7 @@ What if one practices mathematical science like music?
 
 My goal is to spend four hours a day on \protect\hyperlink{work-with-intent}{work with intent}.
 
-For a sanity, efficiency, and inspiration, I intend to balance my time between categories:
+For sanity, efficiency, and inspiration, I intend to balance my time between categories:
 
 \begin{itemize}
 \tightlist
@@ -183,7 +143,7 @@ Captain Marvel GIF from Captainmarvel GIFs
 operation & instantiated & last updated\tabularnewline
 \midrule
 \endhead
-phoenix & Tuesday 2 April 2019 & Tuesday 2 April 2019\tabularnewline
+phoenix & Tuesday 2 April 2019 & Monday 13 May 2019\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -204,14 +164,8 @@ todo: refs
 \hypertarget{workload-intensity-goals-achieved}{%
 \section{workload intensity goals achieved}\label{workload-intensity-goals-achieved}}
 
-\includegraphics{lifeswork_files/figure-latex/vis-1.pdf}
-
 \hypertarget{distribution-of-hrs-spent-per-day-per-category}{%
 \section{distribution of hrs spent per day per category}\label{distribution-of-hrs-spent-per-day-per-category}}
-
-\includegraphics{lifeswork_files/figure-latex/density periods-1.pdf}
-
-\includegraphics{lifeswork_files/figure-latex/boxplots categories-1.pdf}
 
 \hypertarget{rituals}{%
 \chapter{rituals}\label{rituals}}
@@ -219,12 +173,18 @@ todo: refs
 \hypertarget{instantiate}{%
 \section{instantiate}\label{instantiate}}
 
+Ask albert to instantiate.
+
 Start each \href{https://study.com/academy/lesson/german-days-of-the-week.html}{day} by drawing up a \protect\hyperlink{day-view}{day view}.
 
 Begin the daily log, and add priority (\(*\)) \protect\hyperlink{daily-tasks}{daily tasks}.
 
+\protect\hyperlink{review}{\texttt{review}}.
+
 \hypertarget{day-view}{%
 \section{day view}\label{day-view}}
+
+todo: port in googlesheet instead of hardcoding this
 
 \begin{longtable}[]{@{}lll@{}}
 \toprule
@@ -239,91 +199,78 @@ task cycles & below projects & \(\varphi, \theta, \psi, \overline o\)\tabularnew
 \bottomrule
 \end{longtable}
 
+Add
+
 \hypertarget{daily-tasks}{%
 \section{daily tasks}\label{daily-tasks}}
 
 \hypertarget{section}{%
 \subsection{\texorpdfstring{\(*\)}{*}}\label{section}}
 
-\begin{tabular}{l|l|l|l|l|l}
-\hline
-priority & context & category & task & description & bump\\
-\hline
-\$*\$ & \$\textbackslash{}forall\$ & \$\textbackslash{}psi\$ & what is on fire? & What must be advanced today or very bad things will happen? What things will make me feel less anxious or possibly awesome if I advance them? & NA\\
-\hline
-\$*\$ & \$\textbackslash{}natural\$ & \$\textbackslash{}psi\$ & calendar & check day, week, month; note events of the day; upcoming deadlines & NA\\
-\hline
-\$*\$ & \$\textbackslash{}natural\$ & \$\textbackslash{}psi\$ & inboxes & email, 3c2 , handbag, unpack suitcase & NA\\
-\hline
-\$*\$ & \$\textbackslash{}sharp\$ & \$\textbackslash{}psi\$ & pill & take medication & NA\\
-\hline
-\end{tabular}
-
 \hypertarget{sim}{%
 \subsection{\texorpdfstring{\(\sim\)}{\textbackslash{}sim}}\label{sim}}
-
-\begin{tabular}{l|l|l|l|l|l}
-\hline
-priority & context & category & task & description & bump\\
-\hline
-\$\textbackslash{}sim\$ & \$\textbackslash{}forall\$ & \$\textbackslash{}psi\$ & monthly log & check list for anything that is on fire & NA\\
-\hline
-\$\textbackslash{}sim\$ & \$\textbackslash{}forall\$ & \$\textbackslash{}psi\$ & thread & NA & NA\\
-\hline
-\$\textbackslash{}sim\$ & \$\textbackslash{}natural\$ & \$\textbackslash{}psi\$ & needs action & finish pom & NA\\
-\hline
-\$\textbackslash{}sim\$ & \$\textbackslash{}natural\$ & \$\textbackslash{}psi\$ & ynab & finish pom & NA\\
-\hline
-\end{tabular}
 
 \hypertarget{varnothing}{%
 \subsection{\texorpdfstring{\(\varnothing\)}{\textbackslash{}varnothing}}\label{varnothing}}
 
-\begin{tabular}{l|l|l|l|l|l}
-\hline
-priority & context & category & task & description & bump\\
-\hline
-\$\textbackslash{}varnothing\$ & \$\textbackslash{}natural\$ & \$\textbackslash{}psi\$ & waiting & waiting emails & NA\\
-\hline
-\$\textbackslash{}varnothing\$ & \$\textbackslash{}natural\$ & \$\textbackslash{}theta\$ & export measures & download report into files, then email to myself, then download & NA\\
-\hline
-\end{tabular}
-
 \hypertarget{pi}{%
 \subsection{\texorpdfstring{\(\pi\)}{\textbackslash{}pi}}\label{pi}}
 
-\begin{tabular}{l|l|l|l|l|l}
-\hline
-priority & context & category & task & description & bump\\
-\hline
-\$\textbackslash{}varnothing\$ & \$\textbackslash{}natural\$ & \$\textbackslash{}pi\$ & write to dani & check in with dani on slack & NA\\
-\hline
-\$\textbackslash{}varnothing\$ & \$\textbackslash{}sharp\$ & \$\textbackslash{}pi\$ & wash brushes & wash brushes & NA\\
-\hline
-\$\textbackslash{}varnothing\$ & \$\textbackslash{}sharp\$ & \$\textbackslash{}pi\$ & kitchen & clean kitchen & NA\\
-\hline
-\$\textbackslash{}varnothing\$ & \$\textbackslash{}sharp\$ & \$\textbackslash{}pi\$ & laundry & put away one basket of laundry & NA\\
-\hline
-\$\textbackslash{}varnothing\$ & \$\textbackslash{}sharp\$ & \$\textbackslash{}pi\$ & floors & vacuum & NA\\
-\hline
-\$\textbackslash{}varnothing\$ & \$\textbackslash{}sharp\$ & \$\textbackslash{}pi\$ & water plants & NA & NA\\
-\hline
-\end{tabular}
+\hypertarget{email}{%
+\section{email}\label{email}}
+
+\hypertarget{process}{%
+\subsection{process}\label{process}}
+
+Check inbox once a day.
+
+\begin{itemize}
+\tightlist
+\item
+  archive {[}and label{]} emails that don't require actions
+\item
+  if I know what I want to say, best to do it now
+\item
+  if it's going to be lengthy or \(\sim\), label as \texttt{needs\ action}
+\end{itemize}
+
+\hypertarget{needs-action}{%
+\subsection{needs action}\label{needs-action}}
+
+\begin{itemize}
+\tightlist
+\item
+  start from the bottom, gmail doesn't sort descending
+\item
+  write a next action
+\item
+  migrate task to \(\sim\) {[}todo: quaver{]} \(+ \sim\)
+\item
+  can stop after one pom on this each day
+\end{itemize}
 
 \hypertarget{review}{%
-\section{\texorpdfstring{\textbf{review}}{review}}\label{review}}
+\section{\texorpdfstring{\textbf{\texttt{review}}}{review}}\label{review}}
 
 \hypertarget{daily-log}{%
 \subsection{daily log}\label{daily-log}}
 
 This is the hard part.
 
-Pare down to one active project per category and process daily log onto one page:
+Pare down to one active project per category and process daily list to end of log.
+
+Cross through actions above.
+
+\hypertarget{if-this-project-will-take-more-than-a-day}{%
+\subsubsection{if this project will take more than a day}\label{if-this-project-will-take-more-than-a-day}}
 
 \begin{itemize}
-\tightlist
 \item
-  if this project will take more than a day: migrate to \protect\hyperlink{monthly-log}{monthly log}, a collection tagged in the monthly log, or to GitHub issues
+  if (\(*\)) or (\(\sim\)), create project for next step and migrate to projects waiting to progress
+\item
+  else if associated with a repo, migrate to issues
+\item
+  else migrate to \protect\hyperlink{monthly-log}{monthly log}
 \item
   add \protect\hyperlink{signifiers}{signifiers}
 \item
@@ -346,6 +293,8 @@ This is the sparkjoy bit.
 \item
   log goals
 \item
+  top up projects from \protect\hyperlink{projects-waiting}{projects waiting} to maximum three active projects, one per category
+\item
   assign task cycles
 
   \begin{itemize}
@@ -362,35 +311,13 @@ This is the sparkjoy bit.
 \hypertarget{assess}{%
 \subsection{assess}\label{assess}}
 
+plan poms and \(\pi\) to next goal
+
 Calculate number of poms I can realistically do, the floor of
 \[
 14 - t - \frac 3 2 c
 \]
 where \(t\) denotes the number of hours of travel, and \(c\) the number of hours of \emph{community}, where the lattter includes teaching, outreach, and research collaborations. That, is I aim to draw a distinction between self-directed time, and time where I have the benefit of external motivations.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# output as of this update}
-\NormalTok{dontpanic}\OperatorTok{::}\KeywordTok{calculate_pom_goal}\NormalTok{(}
-  \DataTypeTok{travel_hrs =} \DecValTok{0}\NormalTok{, }\CommentTok{# no travel today}
-  \DataTypeTok{community_hrs =} \DecValTok{0} \CommentTok{# no teaching, meetings today}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-## aim to get 14 poms done today
-\end{verbatim}
-
-\begin{verbatim}
-## # A tibble: 3 x 6
-##   workload   phi theta   psi total aim_for
-##   <chr>    <int> <int> <int> <int> <lgl>  
-## 1 light        2     1     1     4 TRUE   
-## 2 moderate     4     2     2     8 TRUE   
-## 3 hardcore     6     4     4    14 TRUE
-\end{verbatim}
 
 \hypertarget{minibreak-peeps}{%
 \subsection{minibreak peeps}\label{minibreak-peeps}}
@@ -426,18 +353,6 @@ List of projects that will take longer than a day.
 \section{pom goals}\label{pom-goals}}
 
 pom := 20 minutes
-
-\begin{tabular}{l|r|r|r|r}
-\hline
-workload & phi & theta & psi & exercise\\
-\hline
-light & 2 & 1 & 1 & 1\\
-\hline
-moderate & 4 & 2 & 2 & 2\\
-\hline
-hardcore & 6 & 4 & 4 & 3\\
-\hline
-\end{tabular}
 
 \hypertarget{order-of-events}{%
 \section{order of events}\label{order-of-events}}
@@ -495,40 +410,6 @@ Around other events such as meetings.
 \begin{quote}
 todo: create a signifiers sheet
 \end{quote}
-
-\begin{tabular}{l|l|r}
-\hline
-signifier & meaning & position\\
-\hline
-\$\textbackslash{}eigthnote\$ & today & 4\\
-\hline
-\$*\$ & priority & 5\\
-\hline
-\$i, ii, \textbackslash{}dots\$ & project & 4\\
-\hline
-\$\textbackslash{}sim\$ & anxiety & 5\\
-\hline
-\$\textbackslash{}cdot\$ & task & 1\\
-\hline
-\$\textbackslash{}varphi\$ & research & 2\\
-\hline
-\$\textbackslash{}theta\$ & skills & 2\\
-\hline
-\$\textbackslash{}psi\$ & busywork & 2\\
-\hline
-\$NA\$ & project & 3\\
-\hline
-\$NA\$ & look into & 3\\
-\hline
-\$\textbackslash{}natural\$ & on computer & 2\\
-\hline
-\$o\$ & event & 1\\
-\hline
-\$\textbackslash{}overline o\$ & review & 1\\
-\hline
-\$NA\$ & more than a day & 2\\
-\hline
-\end{tabular}
 
 \hypertarget{playlists}{%
 \section{playlists}\label{playlists}}

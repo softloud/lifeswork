@@ -11,13 +11,25 @@ link-citations: yes
 description: "Ruminations on the inelegant art of failing forwards."
 ---
 
+
 # preamble
+
+
+
 
 ```{r book packages, echo=FALSE, warning=FALSE, message=FALSE}
 library(tidyverse)
 library(ggmosaic)
 library(dontpanic)
 library(lubridate)
+library(googlesheets)
+
+knitr::opts_chunk$set(
+  # use this option to update text if build is broken
+  eval = FALSE,
+  # todo: check that my options do override
+  echo = FALSE
+  )
 
 ```
 
@@ -25,7 +37,7 @@ What if one practices mathematical science like music?
 
 My goal is to spend four hours a day on [work with intent](#work-with-intent).
 
-For a sanity, efficiency, and inspiration, I intend to balance my time between categories: 
+For sanity, efficiency, and inspiration, I intend to balance my time between categories: 
 
 - research, $\varphi$; 
 - skills, $\theta$;  

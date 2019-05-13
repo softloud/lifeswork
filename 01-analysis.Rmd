@@ -1,11 +1,159 @@
 # analysis {#analysis}
 
+```{r get measures data, eval=FALSE} 
+
+# from this issue: https://github.com/jennybc/googlesheets/issues/320#issuecomment-372076823
+
+gs_read_all <- function(ss, delay = 4){ 
+  ws_names <- gs_ws_ls(ss)
+  
+  gs_read_delayed <- function(ss, ws){
+    result <- gs_read(ss, ws)
+    Sys.sleep(delay)
+    return(result) 
+  }
+
+  worksheets <- map(ws_names, ~ gs_read_delayed(ss, ws = .x)) %>% 
+    set_names(ws_names)
+  
+  return(worksheets)
+}
+
+measures_gs <- gs_title("measures")
+
+measures <- measures_gs %>% gs_read_all()
+
+write_rds(measures, "data/measures.rds")
+
+```
+
+```{r get timer data, eval=FALSE}
+timer_raw <- read_csv("~/Downloads/Details-20170101-20200228.csv")
+write_rds(timer_raw, "data/timer_raw.rds")
+```
+
+
+```{r wrangle timer data}
+timer_raw <- read_rds("data/timer_raw.rds")
+
+timer <-  timer_raw %>%
+      # tidy column names
+      dplyr::rename(
+        task = `Task name`,
+        description = `Task description`,
+        start = `Start time`,
+        finish = `End time`,
+        duration = Duration,
+        duration_hrs = `Duration in hours`,
+        note = Note,
+        category = Tag
+      ) %>%
+      dplyr::mutate(
+        # get date object, as I'll want to do things by day
+        start = lubridate::dmy_hm(start),
+        finish = lubridate::dmy_hm(finish),
+        date = lubridate::date(start)
+      )
+
+```
+
+
+```{r wrangle measures data, message=FALSE, warning=FALSE}
+measures <- read_rds("data/measures.rds")
+
+intensities <- c(
+  "nothing",
+  "sweet fuck all",
+  "eh, got some stuff done",
+  "pretty good effort",
+  "eaglescream"
+)
+
+goals <- measures %>% 
+  pluck("workload") %>%
+  select(workload, phi_hrs, theta_hrs, psi_hrs) %>%
+  gather(key = "category", value = "poms", phi_hrs, theta_hrs, psi_hrs) %>%
+  spread(key = "workload", value = "poms") %>%
+  mutate(category = str_sub(category, end = -5))
+
+daily_work <- timer %>%
+  mutate(duration_hrs = if_else(is.na(duration_hrs), 0, duration_hrs)) %>%
+  dplyr::filter(category == "phi" |
+                  category == "theta" | category == "psi") %>%
+  select(-note,-description) %>%
+  group_by(date, category) %>%
+  summarise(hrs = sum(duration_hrs)) %>%
+  left_join(goals) %>%
+  mutate(
+    category_workload = case_when(
+      hrs == 0 ~ intensities[[1]],
+      hrs < light ~ intensities[[2]],
+      hrs < moderate ~ intensities[[3]],
+      hrs < hardcore ~ intensities[[4]],
+      hrs > hardcore ~ intensities[[5]]
+   ) 
+  ) %>%
+  group_by(date) %>%
+  mutate(
+    daily_workload = case_when(
+      any(hrs == 0) ~ intensities[[1]],
+      any(hrs < light) ~ intensities[[2]],
+      any(hrs < moderate) ~ intensities[[3]],
+      any(hrs < hardcore) ~ intensities[[4]],
+      all(hrs > hardcore) ~ intensities[[5]]
+    )
+  )
+
+
+count_workload <- function(days = 10){
+
+  counts <- daily_work %>%
+    dplyr::ungroup() %>%
+    dplyr::filter(date > lubridate::today() - days) %>%
+    dplyr::group_by(category) %>%
+    dplyr::count(category_workload)
+
+  return(
+    counts
+  )
+}
+
+quinque <- count_workload(days = 5) %>%
+  mutate(period = "v")
+
+decade <-  count_workload(days = 10) %>%
+  mutate(period = "x")
+
+century <- count_workload(days = 100) %>%
+  mutate(period = "c")
+
+daily_measures <- suppressMessages({
+  count_workload(days = 1000) %>%
+  mutate(period = "m") %>%
+  bind_rows(quinque, decade, century) %>%
+  ungroup() %>%
+  mutate(
+    category = fct_relevel(category, "phi", "theta", "psi"),
+    period = fct_relevel(period, "v", "x", "c", "m")
+  ) %>%
+  full_join(daily_work) %>%
+  mutate(
+    daily_workload = fct_relevel(daily_workload, intensities),
+    category_workload = fct_relevel(category_workload, intensities))  
+})
+
+  
+
+
+
+```
+
+
 ## workload intensity goals achieved
 
 ```{r vis, echo=FALSE, message=FALSE, warning=FALSE}
-mdat <- wrangle_measures()
 
-mdat %>% 
+daily_measures %>% 
     ggplot2::ggplot()+
     ggmosaic::geom_mosaic(
       aes(x = product(daily_workload),
@@ -25,7 +173,7 @@ ggplot2::theme(axis.text.y = element_blank(),
 ## distribution of hrs spent per day per category
 
 ```{r density periods, echo=FALSE}
-mdat %>% 
+daily_measures %>% 
     ggplot2::ggplot(aes(x = hrs))+
     geom_density(colour = "darkgrey", fill = "darkgrey") +
   facet_grid(category ~ period, scales = "free") 
@@ -36,7 +184,7 @@ mdat %>%
 
 
 ```{r boxplots categories, echo=FALSE}
-mdat %>% 
+daily_measures %>% 
   ggplot(aes(x = category, y = hrs)) +
   geom_boxplot() +
   facet_grid(period ~ ., 
