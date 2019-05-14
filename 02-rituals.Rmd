@@ -23,7 +23,6 @@ projects | top right| one project/category
 [order of events](#order-of-events) | below goals | live with intent
 task cycles | below projects | $\varphi, \theta, \psi, \overline o$
 
-Add 
 
 
 ## daily tasks {#daily-tasks}
@@ -32,7 +31,7 @@ Add
 
 ```{r priority tasks, echo=FALSE}
 daily_tasks %>% 
-  filter(priority == "$*$") %>% 
+  filter(str_detect(.$priority, "\\*")) %>% 
   knitr::kable()
 
 ```
@@ -165,12 +164,18 @@ $\overline o$ | [review](#review)
 
 List of projects that will take longer than a day.
 
+Need to incorporate this into managing papers.
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Chatting to a colleague and told them about the 30:80 model of writing a manuscript that I find really useful - thought I&#39;d share it here to see if anyone else had something similar...? <a href="https://twitter.com/hashtag/writing?src=hash&amp;ref_src=twsrc%5Etfw">#writing</a> <a href="https://twitter.com/hashtag/academicwriting?src=hash&amp;ref_src=twsrc%5Etfw">#academicwriting</a> (1/7)</p>&mdash; Neal Haddaway (@nealhaddaway) <a href="https://twitter.com/nealhaddaway/status/1125265808194768896?ref_src=twsrc%5Etfw">May 6, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
 ## pom goals
 
 pom := 20 minutes
 
 ```{r echo=FALSE}
-measures %>% pluck("data", "workload_key") %>% 
+workload_key %>% 
   select(-phi_hrs, -theta_hrs, -psi_hrs, -exercise_hrs) %>% 
   knitr::kable()
 
@@ -208,8 +213,8 @@ Around other events such as meetings.
 > todo: create a signifiers sheet
 
 ```{r  echo=FALSE}
-measures %>% 
-  pluck("data", "signifiers") %>% 
+
+signifiers %>% 
   mutate(signifier = paste0("$", signifier, "$")) %>% 
   knitr::kable()
 

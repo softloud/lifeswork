@@ -26,7 +26,7 @@ library(googlesheets)
 
 knitr::opts_chunk$set(
   # use this option to update text if build is broken
-  eval = FALSE,
+  # eval = FALSE,
   # todo: check that my options do override
   echo = FALSE
   )
