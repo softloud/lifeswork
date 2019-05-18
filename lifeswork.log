@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2019.2.25)  14 MAY 2019 17:36
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2019.2.25)  18 MAY 2019 12:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -626,7 +626,8 @@ Package: titling 2009/09/04 v2.1d maketitle typesetting
 \thanksmarkwidth=\skip59
 \thanksmargin=\skip60
 \droptitle=\skip61
-) (./lifeswork.aux)
+)
+No file lifeswork.aux.
 \openout1 = `lifeswork.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 93.
@@ -699,49 +700,18 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 93.
 LaTeX Info: Redefining \pageref on input line 93.
 LaTeX Info: Redefining \nameref on input line 93.
-(./lifeswork.out) (./lifeswork.out)
 \@outlinefile=\write3
 \openout3 = `lifeswork.out'.
+
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
 
 [1
 
 
 ] [2
 
-] (./lifeswork.toc
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 3.
-(/home/charles/.TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
-File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 3.
-(/home/charles/.TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
-File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 3.
-(/home/charles/.TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
-File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 3.
-(/home/charles/.TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
-File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 3.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 3.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 3.
-LaTeX Font Info:    Try loading font information for U+msa on input line 3.
-(/home/charles/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 3.
-(/home/charles/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 19.
-)
+]
 \tf@toc=\write4
 \openout4 = `lifeswork.toc'.
 
@@ -749,7 +719,40 @@ LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
 
 ]
 Chapter 1.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 112.
 
+(/home/charles/.TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 112.
+
+(/home/charles/.TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 112
+.
+(/home/charles/.TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 112
+.
+(/home/charles/.TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 112.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 112.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 112.
+LaTeX Font Info:    Try loading font information for U+msa on input line 112.
+(/home/charles/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 112.
+(/home/charles/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 Underfull \hbox (badness 10000) in paragraph at lines 114--116
 
  []
@@ -758,6 +761,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 114--116
 
 ]
 Chapter 2.
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 2.1 on input line 148.
+
 [7] [8
 
 ]
@@ -791,70 +798,16 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ]
 Chapter 4.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 212.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 212.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 212.
-
-Overfull \hbox (171.39511pt too wide) in paragraph at lines 214--233
-[] 
- []
-
-
-Overfull \hbox (260.01508pt too wide) in paragraph at lines 237--250
-[] 
- []
-
-[13]
-Overfull \hbox (85.6751pt too wide) in paragraph at lines 254--263
-[] 
- []
-
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 323.
-[14]
-LaTeX Font Info:    Font shape `TU/lmtt/bx/sl' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 410.
-[15]
-
-Package natbib Warning: Citation `nealhaddaway' on page 16 undefined on input l
-ine 446.
-
-[16] [17] [18
-
-]
-Chapter 5.
-[19]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 608.
-(./lifeswork.bbl [20]
-
-Package natbib Warning: Empty `thebibliography' environment on input line 3.
-
-)
-
-Package natbib Warning: There were undefined citations.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 616.
-[21
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 616.
-(./lifeswork.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 616.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 616.
-Package rerunfilecheck Info: File `lifeswork.out' has not changed.
-(rerunfilecheck)             Checksum: 879C83306254CE3E4C261840C6CE2A96.
- ) 
+! Undefined control sequence.
+l.189 \(\quaver
+                \ \sim \ \varnothing\) 
 Here is how much of TeX's memory you used:
- 22615 strings out of 494921
- 421265 string characters out of 6177932
- 522920 words of memory out of 5000000
- 26318 multiletter control sequences out of 15000+600000
- 561150 words of font info for 79 fonts, out of 8000000 for 9000
+ 22503 strings out of 494921
+ 419682 string characters out of 6177932
+ 512333 words of memory out of 5000000
+ 26235 multiletter control sequences out of 15000+600000
+ 545057 words of font info for 54 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 45i,6n,68p,1123b,446s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 45i,5n,68p,806b,446s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on lifeswork.pdf (21 pages).
+Output written on lifeswork.pdf (12 pages).

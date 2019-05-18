@@ -23,6 +23,7 @@ library(ggmosaic)
 library(dontpanic)
 library(lubridate)
 library(googlesheets)
+library(kableExtra)
 
 knitr::opts_chunk$set(
   # use this option to update text if build is broken
@@ -30,6 +31,8 @@ knitr::opts_chunk$set(
   # todo: check that my options do override
   echo = FALSE
   )
+
+conflicted::conflict_prefer("filter", winner = "dplyr")
 
 ```
 

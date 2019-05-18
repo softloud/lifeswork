@@ -4,11 +4,34 @@
 
 Ask albert to instantiate.
 
-Start each [day](https://study.com/academy/lesson/german-days-of-the-week.html) by drawing up a [day view](#day-view).
+Start each [day](https://study.com/academy/lesson/german-days-of-the-week.html) by drawing up a [day view](#day-view). Add goals' headings $\varphi, \theta, \psi, \pi$ and specify $\pi$ wellness goals, but not the others. 
 
-Begin the daily log, and add priority ($*$) [daily tasks](#daily-tasks).
+Add 
 
-[`review`](#review).
+> $\quaver  \ \sim  \ \varnothing$
+
+and
+
+> calculate poms
+
+to $\fermata$ waiting in day view, waiting on $*\quaver$ priority daily tasks. 
+
+Begin the daily log. Add priority 
+
+> $*+\quaver\cdot$ [daily tasks](#daily-tasks) 
+
+and  
+
+> $*+\pi\cdot$ [housework](#housework) $\sharp$ tasks. 
+
+Add 
+
+> $\sharp \pi \cdot$ coffee
+
+to daily log. You deserve it. 
+
+Add [$\overline o$](#review) and $\pi$ to the order of events.
+
 
 
 ## day view {#day-view}
@@ -35,6 +58,19 @@ daily_tasks %>%
   knitr::kable()
 
 ```
+
+### $* \sharp${#housework}
+
+```{r housework, echo=FALSE}
+daily_tasks %>% 
+  filter(str_detect(.$category, "pi"),
+         str_detect(.$context, "sharp"),
+         str_detect(.$priority, "\\*")) %>% 
+  kable()
+
+
+```
+
 
 ### $\sim$
 
@@ -84,7 +120,7 @@ daily_tasks %>%
 - migrate task to $\sim$ [todo: quaver] $+ \sim$
 - can stop after one pom on this each day
 
-## **`review`** {#review}
+## **$\overline o$ `review`** {#review}
 
 ### daily log
 
