@@ -4,7 +4,10 @@ subtitle: "ruminations on the inelegant art of failing forwards"
 author: "[Charles T. Gray](http://cantabile.rbind.io/about.html)"
 date: "_perennial work in progress_ `r dontpanic::title_date(Sys.Date())`"
 site: bookdown::bookdown_site
+always_allow_html: yes
 documentclass: book
+code_folding: show
+includes: preamble.tex
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
@@ -29,16 +32,23 @@ knitr::opts_chunk$set(
   # use this option to update text if build is broken
   # eval = FALSE,
   # todo: check that my options do override
-  echo = FALSE
+  # echo = FALSE
   )
 
 conflicted::conflict_prefer("filter", winner = "dplyr")
 
 ```
 
+```{r set up nomenclature}
+
+# html entity (decimal) 
+# https://www.fileformat.info/info/unicode/char/266a/index.htm
+
+```
+
 What if one practices mathematical science like music?
 
-My goal is to spend four hours a day on [work with intent](#work-with-intent).
+My goal is to spend four hours a day on [work with intent](#work-with-intent). I wish to live a life with intent; as I have seen how much unhappiness it can bring to live without. 
 
 For sanity, efficiency, and inspiration, I intend to balance my time between categories: 
 

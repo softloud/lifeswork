@@ -1,111 +1,148 @@
 # rituals {#rituals}
 
+```{r packages, message=FALSE}
+# packages used in this chapter
+library(dontpanic)
+library(tidyverse)
+library(googlesheets)
+
+```
+
+```{r import data, message=FALSE}
+# scrape googlesheet
+measures <- gs_key(measures_gs_key)
+
+# should extract the ws read for just
+# wrangling
+daily_tasks <- get_daily_tasks()
+workload_key <- get_workload_key()
+
+# better to pipe gs read into a wrangling function
+
+signifiers <- measures %>% gs_read("signifiers")
+day_view <- measures %>% gs_read("day_view")
+
+```
+
+
 ## instantiate
 
 Ask albert to instantiate.
 
-Start each [day](https://study.com/academy/lesson/german-days-of-the-week.html) by drawing up a [day view](#day-view). Add goals' headings $\varphi, \theta, \psi, \pi$ and specify $\pi$ wellness goals, but not the others. 
+`r quaver()` top of today's [daily log](#daily-log) and [day view](#dayview:day-view).
 
-Add 
+Date with 
 
-> $\quaver  \ \sim  \ \varnothing$
+```{r translate date, message=FALSE}
+today_date()
 
-and
+```
 
-> calculate poms
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="und" dir="ltr"><a href="https://t.co/wrCNDIcdLt">pic.twitter.com/wrCNDIcdLt</a></p>&mdash; Charles T. Gray (@cantabile) <a href="https://twitter.com/cantabile/status/1132475140967550976?ref_src=twsrc%5Etfw">May 26, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-to $\fermata$ waiting in day view, waiting on $*\quaver$ priority daily tasks. 
+Draw up  [day view](#dayview:day-view). 
 
-Begin the daily log. Add priority 
+In `r quaver()` daily log, add priority daily tasks $*$ `r quaver()`  $+ \psi$, with $*$ `r quaver()` added to [projects](#dayview:day-view).
 
-> $*+\quaver\cdot$ [daily tasks](#daily-tasks) 
+In `r fermata()` [waiting](#dayview:day-view), schedule other [daily tasks](#daily-tasks) `r quaver()` $\sim \varnothing$. 
 
-and  
+Add > $*+\pi\cdot$ [housework](#housework) $\sharp$ tasks and $\sharp \pi \cdot$ coffee to `r quaver()` daily log. You deserve it. 
 
-> $*+\pi\cdot$ [housework](#housework) $\sharp$ tasks. 
-
-Add 
-
-> $\sharp \pi \cdot$ coffee
-
-to daily log. You deserve it. 
-
-Add [$\overline o$](#review) and $\pi$ to the order of events.
+Add [$\overline o$](#review) and $\pi$ to the [order of events](#dayview:order-of-events).
 
 
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="und" dir="ltr"><a href="https://t.co/yEKIgDcBGE">pic.twitter.com/yEKIgDcBGE</a></p>&mdash; Charles T. Gray (@cantabile) <a href="https://twitter.com/cantabile/status/1132482396127780864?ref_src=twsrc%5Etfw">May 26, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-## day view {#day-view}
 
-todo: port in googlesheet instead of hardcoding this
+## day view {#dayview:day-view}
 
-tracker | position | description
-- | - | -
-goals | top left | pom goals
-poms | next to goals | track poms achieved
-projects | top right| one project/category
-[order of events](#order-of-events) | below goals | live with intent
-task cycles | below projects | $\varphi, \theta, \psi, \overline o$
+```{r dayview table}
+day_view %>% 
+  # create links
+  mutate(tracker = paste0("[", tracker, "](",ref,")")) %>% 
+  select(-ref) %>% 
+  lifeswork_table()
 
+```
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="und" dir="ltr"><a href="https://t.co/yEKIgDcBGE">pic.twitter.com/yEKIgDcBGE</a></p>&mdash; Charles T. Gray (@cantabile) <a href="https://twitter.com/cantabile/status/1132482396127780864?ref_src=twsrc%5Etfw">May 26, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 ## daily tasks {#daily-tasks}
+
+```{r}
+
+wrangle_tasks <- function(tasks){
+  tasks %>% 
+  mutate(priority = map_chr(priority, knittify_latex),
+         context = map_chr(context, knittify_latex),
+         category = map_chr(category, knittify_latex)) %>% 
+  lifeswork_table()
+}
+
+```
+
+
 
 ### $*$
 
 ```{r priority tasks, echo=FALSE}
 daily_tasks %>% 
-  filter(str_detect(.$priority, "\\*")) %>% 
-  knitr::kable()
+  dplyr::filter(priority == "star") %>% 
+  wrangle_tasks()
+
 
 ```
 
 ### $* \sharp${#housework}
 
-```{r housework, echo=FALSE}
+```{r housework}
+
 daily_tasks %>% 
   filter(str_detect(.$category, "pi"),
          str_detect(.$context, "sharp"),
-         str_detect(.$priority, "\\*")) %>% 
-  kable()
-
+         str_detect(.$priority, "star")) %>% 
+  wrangle_tasks()
 
 ```
 
 
 ### $\sim$
 
-```{r anxiety tasks, echo=FALSE}
+```{r anxiety tasks}
 daily_tasks %>% 
-  filter(priority == "$\\sim$") %>% 
-  knitr::kable()
+  filter(priority == "sim") %>% 
+  wrangle_tasks()
 
 ```
 
 ### $\varnothing$
 
-```{r nullset tasks, echo=FALSE}
+```{r nullset tasks}
 daily_tasks %>% 
-  filter(priority == "$\\varnothing$",
-         category != "$\\pi$") %>% 
-  knitr::kable()
-
+  filter(priority == "varnothing",
+         category != "pi") %>% 
+  wrangle_tasks()
 ```
 
 
 ### $\pi$
 
 
-```{r pi, echo=FALSE}
+```{r pi}
 daily_tasks %>% 
-  filter(category == "$\\pi$") %>% 
-  knitr::kable()
+  filter(category == "pi") %>%
+  wrangle_tasks()
 
 ```
 
 
 ## email
 
-### process
+### process inbox
 
  Check inbox once a day.
  
@@ -120,9 +157,9 @@ daily_tasks %>%
 - migrate task to $\sim$ [todo: quaver] $+ \sim$
 - can stop after one pom on this each day
 
-## **$\overline o$ `review`** {#review}
+## **`review`** {#review}
 
-### daily log
+### daily log {#dayview:daily-log}
 
 This is the hard part.
 
@@ -152,7 +189,8 @@ This is the sparkjoy bit.
     - exclude $\varnothing$ categories with no $*$ and $\sim$ projects where current goal has already been met in poms by category
     - always finish with scheduling review $\overline o$
     - consider including a [sparkjoy](https://en.wikipedia.org/wiki/Marie_Kondo) project
-    
+- calculate remaining poms
+
 ### assess 
 
 plan poms and $\pi$ to next goal
@@ -163,7 +201,7 @@ $$
 $$
 where $t$ denotes the number of hours of travel, and $c$ the number of hours of _community_, where the lattter includes teaching, outreach, and research collaborations. That, is I aim to draw a distinction between self-directed time, and time where I have the benefit of external motivations.
 
-```{r }
+```{r calculate pom goals}
 # todo: import tidyverse into dontpanic
 
 library(tidyverse)
@@ -206,18 +244,33 @@ Need to incorporate this into managing papers.
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
-## pom goals
+## pom goals {#dayview:goals}
 
 pom := 20 minutes
 
-```{r echo=FALSE}
+```{r pom goals table, echo=FALSE, eval=FALSE}
 workload_key %>% 
   select(-phi_hrs, -theta_hrs, -psi_hrs, -exercise_hrs) %>% 
-  knitr::kable()
+  lifeswork_table()
 
 ```
 
-## order of events {#order-of-events}
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="und" dir="ltr"><a href="https://t.co/MGRLiYviCX">pic.twitter.com/MGRLiYviCX</a></p>&mdash; Charles T. Gray (@cantabile) <a href="https://twitter.com/cantabile/status/1132502062397214720?ref_src=twsrc%5Etfw">May 26, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+## pom tracker {#dayview:pom-tracker}
+
+## projects {#dayview:projects}
+
+## task cycles {#dayview:task-cycles}
+
+## `r quavers()` progressed {#dayview:progressed}
+
+## waiting {#dayview:waiting}
+
+
+## order of events {#dayview:order-of-events}
 
 Day begins with [review](#review) $\overline o$.
 
