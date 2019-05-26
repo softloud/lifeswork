@@ -1,6 +1,6 @@
 # rituals {#rituals}
 
-```{r packages, message=FALSE}
+```{r rituals packages, message=FALSE}
 # packages used in this chapter
 library(dontpanic)
 library(tidyverse)
@@ -9,7 +9,7 @@ library(googlesheets)
 ```
 
 ```{r import data, message=FALSE}
-# scrape googlesheet
+# register sheet
 measures <- gs_key(measures_gs_key)
 
 # should extract the ws read for just
@@ -34,7 +34,7 @@ Ask albert to instantiate.
 Date with 
 
 ```{r translate date, message=FALSE}
-today_date()
+today_date() %>% cat()
 
 ```
 
@@ -103,8 +103,7 @@ daily_tasks %>%
 
 daily_tasks %>% 
   filter(str_detect(.$category, "pi"),
-         str_detect(.$context, "sharp"),
-         str_detect(.$priority, "star")) %>% 
+         str_detect(.$context, "sharp")) %>% 
   wrangle_tasks()
 
 ```

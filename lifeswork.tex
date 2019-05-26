@@ -142,13 +142,6 @@
 \hypertarget{preamble}{%
 \chapter{preamble}\label{preamble}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# html entity (decimal) }
-\CommentTok{# https://www.fileformat.info/info/unicode/char/266a/index.htm}
-\end{Highlighting}
-\end{Shaded}
-
 What if one practices mathematical science like music?
 
 My goal is to spend four hours a day on \protect\hyperlink{work-with-intent}{work with intent}. I wish to live a life with intent; as I have seen how much unhappiness it can bring to live without.
@@ -210,15 +203,45 @@ todo: refs
 \hypertarget{analysis}{%
 \chapter{analysis}\label{analysis}}
 
+\hypertarget{wrangling}{%
+\section{wrangling}\label{wrangling}}
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# from this issue: https://github.com/jennybc/googlesheets/issues/320#issuecomment-372076823}
+\CommentTok{# packages used in this chapter}
+
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\KeywordTok{library}\NormalTok{(googlesheets) }
+\KeywordTok{library}\NormalTok{(usethis)}
+\KeywordTok{library}\NormalTok{(dontpanic)}
+\KeywordTok{library}\NormalTok{(lubridate)}
+\KeywordTok{library}\NormalTok{(ggmosaic)}
+
+\CommentTok{# register sheet}
+\NormalTok{measures <-}\StringTok{ }\KeywordTok{gs_key}\NormalTok{(measures_gs_key)}
+
+\CommentTok{# import workload key}
+\NormalTok{workload_key <-}\StringTok{ }\NormalTok{measures }\OperatorTok{%>%}\StringTok{ }\KeywordTok{gs_read}\NormalTok{(}\DataTypeTok{ws =} \StringTok{"workload_key"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{timer_raw <-}\StringTok{ }\KeywordTok{read_rds}\NormalTok{(}\StringTok{"data/timer_raw.rds"}\NormalTok{)}
+\CommentTok{# import data}
+
+\ExtensionTok{atracker_data} \OperatorTok{<}\NormalTok{- read_csv(timetracker_path)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{write_csv}\NormalTok{(atracker_data, }\StringTok{"data/atracker_data.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{timer_raw <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/atracker_data.csv"}\NormalTok{)}
 
 \NormalTok{timer <-}\StringTok{  }\NormalTok{timer_raw }\OperatorTok{%>%}
 \StringTok{      }\CommentTok{# tidy column names}
@@ -237,14 +260,13 @@ todo: refs
         \DataTypeTok{start =}\NormalTok{ lubridate}\OperatorTok{::}\KeywordTok{dmy_hm}\NormalTok{(start),}
         \DataTypeTok{finish =}\NormalTok{ lubridate}\OperatorTok{::}\KeywordTok{dmy_hm}\NormalTok{(finish),}
         \DataTypeTok{date =}\NormalTok{ lubridate}\OperatorTok{::}\KeywordTok{date}\NormalTok{(start)}
-\NormalTok{      )}
+\NormalTok{      ) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{filter}\NormalTok{(category }\OperatorTok{!=}\StringTok{ "pi"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{measures <-}\StringTok{ }\KeywordTok{read_rds}\NormalTok{(}\StringTok{"data/measures.rds"}\NormalTok{)}
-
 \NormalTok{intensities <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}
   \StringTok{"nothing"}\NormalTok{,}
   \StringTok{"sweet fuck all"}\NormalTok{,}
@@ -253,12 +275,6 @@ todo: refs
   \StringTok{"eaglescream"}
 \NormalTok{)}
 
-\NormalTok{goals <-}\StringTok{ }\NormalTok{measures }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{pluck}\NormalTok{(}\StringTok{"workload"}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{select}\NormalTok{(workload, phi_hrs, theta_hrs, psi_hrs) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{gather}\NormalTok{(}\DataTypeTok{key =} \StringTok{"category"}\NormalTok{, }\DataTypeTok{value =} \StringTok{"poms"}\NormalTok{, phi_hrs, theta_hrs, psi_hrs) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{spread}\NormalTok{(}\DataTypeTok{key =} \StringTok{"workload"}\NormalTok{, }\DataTypeTok{value =} \StringTok{"poms"}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{category =} \KeywordTok{str_sub}\NormalTok{(category, }\DataTypeTok{end =} \DecValTok{-5}\NormalTok{))}
 
 \NormalTok{daily_work <-}\StringTok{ }\NormalTok{timer }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{duration_hrs =} \KeywordTok{if_else}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(duration_hrs), }\DecValTok{0}\NormalTok{, duration_hrs)) }\OperatorTok{%>%}
@@ -266,79 +282,132 @@ todo: refs
 \StringTok{                  }\NormalTok{category }\OperatorTok{==}\StringTok{ "theta"} \OperatorTok{|}\StringTok{ }\NormalTok{category }\OperatorTok{==}\StringTok{ "psi"}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{note,}\OperatorTok{-}\NormalTok{description) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(date, category) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{hrs =} \KeywordTok{sum}\NormalTok{(duration_hrs)) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{left_join}\NormalTok{(goals) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}
-    \DataTypeTok{category_workload =} \KeywordTok{case_when}\NormalTok{(}
-\NormalTok{      hrs }\OperatorTok{==}\StringTok{ }\DecValTok{0} \OperatorTok{~}\StringTok{ }\NormalTok{intensities[[}\DecValTok{1}\NormalTok{]],}
-\NormalTok{      hrs }\OperatorTok{<}\StringTok{ }\NormalTok{light }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[[}\DecValTok{2}\NormalTok{]],}
-\NormalTok{      hrs }\OperatorTok{<}\StringTok{ }\NormalTok{moderate }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[[}\DecValTok{3}\NormalTok{]],}
-\NormalTok{      hrs }\OperatorTok{<}\StringTok{ }\NormalTok{hardcore }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[[}\DecValTok{4}\NormalTok{]],}
-\NormalTok{      hrs }\OperatorTok{>}\StringTok{ }\NormalTok{hardcore }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[[}\DecValTok{5}\NormalTok{]]}
-\NormalTok{   ) }
-\NormalTok{  ) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(date) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}
-    \DataTypeTok{daily_workload =} \KeywordTok{case_when}\NormalTok{(}
-      \KeywordTok{any}\NormalTok{(hrs }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{) }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[[}\DecValTok{1}\NormalTok{]],}
-      \KeywordTok{any}\NormalTok{(hrs }\OperatorTok{<}\StringTok{ }\NormalTok{light) }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[[}\DecValTok{2}\NormalTok{]],}
-      \KeywordTok{any}\NormalTok{(hrs }\OperatorTok{<}\StringTok{ }\NormalTok{moderate) }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[[}\DecValTok{3}\NormalTok{]],}
-      \KeywordTok{any}\NormalTok{(hrs }\OperatorTok{<}\StringTok{ }\NormalTok{hardcore) }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[[}\DecValTok{4}\NormalTok{]],}
-      \KeywordTok{all}\NormalTok{(hrs }\OperatorTok{>}\StringTok{ }\NormalTok{hardcore) }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[[}\DecValTok{5}\NormalTok{]]}
-\NormalTok{    )}
-\NormalTok{  )}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{hrs =} \KeywordTok{sum}\NormalTok{(duration_hrs)) }
+  
 
+\NormalTok{workload <-}\StringTok{ }\NormalTok{workload_key }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{gather}\NormalTok{(}\DataTypeTok{key =}\NormalTok{ category, }\DataTypeTok{value =}\NormalTok{ poms_goal, }\OperatorTok{-}\NormalTok{workload) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{goal =}\NormalTok{ (poms_goal }\OperatorTok{*}\StringTok{ }\DecValTok{20}\NormalTok{) }\OperatorTok{/}\StringTok{ }\DecValTok{60}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{poms_goal) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{spread}\NormalTok{(}\DataTypeTok{key =}\NormalTok{ workload, }\DataTypeTok{value =}\NormalTok{ goal)}
 
-\NormalTok{count_workload <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(}\DataTypeTok{days =} \DecValTok{10}\NormalTok{)\{}
+\NormalTok{intensity <-}\StringTok{ }\KeywordTok{full_join}\NormalTok{(daily_work, workload, }\DataTypeTok{by =} \StringTok{"category"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{category_intensity =} \KeywordTok{case_when}\NormalTok{(}
+\NormalTok{    hrs }\OperatorTok{==}\StringTok{ }\DecValTok{0} \OperatorTok{~}\StringTok{ }\NormalTok{intensities[}\DecValTok{1}\NormalTok{],}
+\NormalTok{    hrs }\OperatorTok{<}\StringTok{ }\NormalTok{light }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[}\DecValTok{2}\NormalTok{],}
+\NormalTok{    hrs }\OperatorTok{<}\StringTok{ }\NormalTok{moderate }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[}\DecValTok{3}\NormalTok{],}
+\NormalTok{    hrs }\OperatorTok{<}\StringTok{ }\NormalTok{hardcore }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[}\DecValTok{4}\NormalTok{],}
+\NormalTok{    hrs }\OperatorTok{>}\StringTok{ }\NormalTok{hardcore }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[}\DecValTok{5}\NormalTok{]}
+\NormalTok{  )) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{group_by}\NormalTok{(date) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{daily_intensity =} \KeywordTok{case_when}\NormalTok{(}
+    \KeywordTok{all}\NormalTok{(hrs }\OperatorTok{>}\StringTok{ }\NormalTok{hardcore) }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[}\DecValTok{5}\NormalTok{],}
+    \KeywordTok{all}\NormalTok{(hrs }\OperatorTok{>}\StringTok{ }\NormalTok{moderate) }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[}\DecValTok{4}\NormalTok{],}
+    \KeywordTok{all}\NormalTok{(hrs }\OperatorTok{>}\StringTok{ }\NormalTok{light) }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[}\DecValTok{3}\NormalTok{],}
+    \KeywordTok{any}\NormalTok{(hrs }\OperatorTok{<}\StringTok{ }\NormalTok{light) }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[}\DecValTok{2}\NormalTok{],}
+    \KeywordTok{all}\NormalTok{(hrs }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{) }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[}\DecValTok{1}\NormalTok{]}
+\NormalTok{  ))}
+\end{Highlighting}
+\end{Shaded}
 
-\NormalTok{  counts <-}\StringTok{ }\NormalTok{daily_work }\OperatorTok{%>%}
-\StringTok{    }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{ungroup}\NormalTok{() }\OperatorTok{%>%}
-\StringTok{    }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{filter}\NormalTok{(date }\OperatorTok{>}\StringTok{ }\NormalTok{lubridate}\OperatorTok{::}\KeywordTok{today}\NormalTok{() }\OperatorTok{-}\StringTok{ }\NormalTok{days) }\OperatorTok{%>%}
-\StringTok{    }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{group_by}\NormalTok{(category) }\OperatorTok{%>%}
-\StringTok{    }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{count}\NormalTok{(category_workload)}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{count_workload <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(}\DataTypeTok{days =} \DecValTok{10}\NormalTok{, era)\{}
 
-  \KeywordTok{return}\NormalTok{(}
-\NormalTok{    counts}
-\NormalTok{  )}
+\NormalTok{  intensity }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{filter}\NormalTok{(date }\OperatorTok{>}\StringTok{ }\KeywordTok{today}\NormalTok{() }\OperatorTok{-}\StringTok{ }\NormalTok{days) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{ungroup}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{count}\NormalTok{(category, category_intensity, daily_intensity) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{era =}\NormalTok{ days)}
 \NormalTok{\}}
 
-\NormalTok{quinque <-}\StringTok{ }\KeywordTok{count_workload}\NormalTok{(}\DataTypeTok{days =} \DecValTok{5}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{period =} \StringTok{"v"}\NormalTok{)}
+\NormalTok{quinque <-}\StringTok{ }\KeywordTok{count_workload}\NormalTok{(}\DataTypeTok{days =} \DecValTok{5}\NormalTok{) }
 
-\NormalTok{decade <-}\StringTok{  }\KeywordTok{count_workload}\NormalTok{(}\DataTypeTok{days =} \DecValTok{10}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{period =} \StringTok{"x"}\NormalTok{)}
+\NormalTok{decade <-}\StringTok{  }\KeywordTok{count_workload}\NormalTok{(}\DataTypeTok{days =} \DecValTok{10}\NormalTok{) }
 
-\NormalTok{century <-}\StringTok{ }\KeywordTok{count_workload}\NormalTok{(}\DataTypeTok{days =} \DecValTok{100}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{period =} \StringTok{"c"}\NormalTok{)}
+\NormalTok{century <-}\StringTok{ }\KeywordTok{count_workload}\NormalTok{(}\DataTypeTok{days =} \DecValTok{100}\NormalTok{)}
 
-\NormalTok{daily_measures <-}\StringTok{ }\KeywordTok{suppressMessages}\NormalTok{(\{}
-  \KeywordTok{count_workload}\NormalTok{(}\DataTypeTok{days =} \DecValTok{1000}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{period =} \StringTok{"m"}\NormalTok{) }\OperatorTok{%>%}
+\NormalTok{mosaic_data <-}\StringTok{ }\KeywordTok{count_workload}\NormalTok{(}\DataTypeTok{days =} \DecValTok{1000}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{bind_rows}\NormalTok{(quinque, decade, century) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{ungroup}\NormalTok{() }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}
     \DataTypeTok{category =} \KeywordTok{fct_relevel}\NormalTok{(category, }\StringTok{"phi"}\NormalTok{, }\StringTok{"theta"}\NormalTok{, }\StringTok{"psi"}\NormalTok{),}
-    \DataTypeTok{period =} \KeywordTok{fct_relevel}\NormalTok{(period, }\StringTok{"v"}\NormalTok{, }\StringTok{"x"}\NormalTok{, }\StringTok{"c"}\NormalTok{, }\StringTok{"m"}\NormalTok{)}
+    \DataTypeTok{category_intensity =} \KeywordTok{fct_relevel}\NormalTok{(category_intensity, intensities),}
+    \DataTypeTok{daily_intensity =} \KeywordTok{fct_relevel}\NormalTok{(daily_intensity, intensities),}
+    \DataTypeTok{era_plot =} \KeywordTok{case_when}\NormalTok{(}
+\NormalTok{      era }\OperatorTok{==}\StringTok{ }\DecValTok{5} \OperatorTok{~}\StringTok{ "v"}\NormalTok{, }\CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{5\}",}
+\NormalTok{      era }\OperatorTok{==}\StringTok{ }\DecValTok{10} \OperatorTok{~}\StringTok{ "x"}\NormalTok{,  }\CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{10\}",}
+\NormalTok{      era }\OperatorTok{==}\StringTok{ }\DecValTok{100} \OperatorTok{~}\StringTok{ "c"}\NormalTok{, }\CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{100\}",}
+\NormalTok{      era }\OperatorTok{==}\StringTok{ }\DecValTok{1000} \OperatorTok{~}\StringTok{ "m"} \CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{1000\}"}
+\NormalTok{    )}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{category_boxplot <-}\StringTok{ }\NormalTok{intensity }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{era =} \DecValTok{1000}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{bind_rows}\NormalTok{(}
+\NormalTok{    intensity }\OperatorTok{%>%}
+\StringTok{      }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{filter}\NormalTok{(date }\OperatorTok{>}\StringTok{ }\KeywordTok{today}\NormalTok{() }\OperatorTok{-}\StringTok{ }\DecValTok{5}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{      }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{era =} \DecValTok{5}\NormalTok{),}
+\NormalTok{    intensity }\OperatorTok{%>%}\StringTok{ }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{filter}\NormalTok{(date }\OperatorTok{>}\StringTok{ }\KeywordTok{today}\NormalTok{() }\OperatorTok{-}\StringTok{ }\DecValTok{10}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{      }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{era =} \DecValTok{10}\NormalTok{),}
+\NormalTok{    intensity }\OperatorTok{%>%}\StringTok{ }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{filter}\NormalTok{(date }\OperatorTok{>}\StringTok{ }\KeywordTok{today}\NormalTok{() }\OperatorTok{-}\StringTok{ }\DecValTok{100}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{      }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{era =} \DecValTok{100}\NormalTok{)}
 \NormalTok{  ) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{full_join}\NormalTok{(daily_work) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}
-    \DataTypeTok{daily_workload =} \KeywordTok{fct_relevel}\NormalTok{(daily_workload, intensities),}
-    \DataTypeTok{category_workload =} \KeywordTok{fct_relevel}\NormalTok{(category_workload, intensities))  }
-\NormalTok{\})}
+    \DataTypeTok{era_plot =} \KeywordTok{case_when}\NormalTok{(era }\OperatorTok{==}\StringTok{ }\DecValTok{5} \OperatorTok{~}\StringTok{ "v"}\NormalTok{, }\CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{5\}",}
+\NormalTok{                         era }\OperatorTok{==}\StringTok{ }\DecValTok{10} \OperatorTok{~}\StringTok{ "x"}\NormalTok{,  }\CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{10\}",}
+\NormalTok{                         era }\OperatorTok{==}\StringTok{ }\DecValTok{100} \OperatorTok{~}\StringTok{ "c"}\NormalTok{, }\CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{100\}",}
+\NormalTok{                         era }\OperatorTok{==}\StringTok{ }\DecValTok{1000} \OperatorTok{~}\StringTok{ "m"}\NormalTok{),}
+                         \DataTypeTok{era_plot =} \KeywordTok{fct_relevel}\NormalTok{(era_plot, }\StringTok{"v"}\NormalTok{, }\StringTok{"x"}\NormalTok{, }\StringTok{"c"}\NormalTok{, }\StringTok{"m"}\NormalTok{),}
+                         \DataTypeTok{category =} \KeywordTok{fct_relevel}\NormalTok{(category, }\StringTok{"phi"}\NormalTok{, }\StringTok{"theta"}\NormalTok{, }\StringTok{"psi"}\NormalTok{)}
+\NormalTok{    ) }\OperatorTok{%>%}
+\StringTok{      }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ category, }\DataTypeTok{y =}\NormalTok{ hrs)) }\OperatorTok{+}
+\StringTok{      }\KeywordTok{geom_boxplot}\NormalTok{() }\OperatorTok{+}
+\StringTok{      }\KeywordTok{geom_hline}\NormalTok{(}
+        \DataTypeTok{yintercept =} \DecValTok{4} \OperatorTok{/}\StringTok{ }\DecValTok{3}\NormalTok{,}
+        \DataTypeTok{linetype =} \StringTok{"dotted"}\NormalTok{,}
+        \DataTypeTok{alpha =} \FloatTok{0.7}\NormalTok{,}
+        \DataTypeTok{colour =} \StringTok{"darkgrey"}\NormalTok{,}
+        \DataTypeTok{size =} \FloatTok{1.5}
+\NormalTok{      ) }\OperatorTok{+}
+\StringTok{      }\KeywordTok{facet_grid}\NormalTok{(era_plot }\OperatorTok{~}\StringTok{ }\NormalTok{.,}
+                 \DataTypeTok{scales =} \StringTok{"free"}\NormalTok{,}
+                 \DataTypeTok{labeller =}\NormalTok{ label_parsed) }\OperatorTok{+}
+\StringTok{      }\KeywordTok{coord_flip}\NormalTok{() }\OperatorTok{+}
+\StringTok{      }\KeywordTok{labs}\NormalTok{(}
+        \DataTypeTok{title =} \KeywordTok{str_wrap}\NormalTok{(}\StringTok{"distribution of work done over different periods of time"}\NormalTok{),}
+        \DataTypeTok{x =} \StringTok{"hours of work completed"}\NormalTok{,}
+        \DataTypeTok{y =} \StringTok{"category of work"}\NormalTok{,}
+        \DataTypeTok{caption =} \StringTok{"dotted vertical line indicates daily goal for that category"}
+\NormalTok{      )}
 \end{Highlighting}
 \end{Shaded}
 
 \hypertarget{workload-intensity-goals-achieved}{%
 \section{workload intensity goals achieved}\label{workload-intensity-goals-achieved}}
 
-\includegraphics{lifeswork_files/figure-latex/vis-1.pdf}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{intensity_mosaic}
+\end{Highlighting}
+\end{Shaded}
 
-\hypertarget{distribution-of-hrs-spent-per-day-per-category}{%
-\section{distribution of hrs spent per day per category}\label{distribution-of-hrs-spent-per-day-per-category}}
+\includegraphics{lifeswork_files/figure-latex/intensity mosaic-1.pdf}
 
-\includegraphics{lifeswork_files/figure-latex/density periods-1.pdf}
+\hypertarget{distribution-of-work}{%
+\section{distribution of work}\label{distribution-of-work}}
 
-\includegraphics{lifeswork_files/figure-latex/boxplots categories-1.pdf}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{category_boxplot}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{lifeswork_files/figure-latex/category boxplot-1.pdf}
 
 \hypertarget{rituals}{%
 \chapter{rituals}\label{rituals}}
@@ -354,19 +423,18 @@ todo: refs
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# scrape googlesheet}
-
-\CommentTok{# register sheet by key}
-\NormalTok{measures <-}\StringTok{ }\KeywordTok{gs_key}\NormalTok{(}\StringTok{"1hv7pkBGu8XQQOIBbBt1_1LvKGBR7zTdQYCzogrv3hz0"}\NormalTok{)}
-
+\CommentTok{# register sheet}
+\NormalTok{measures <-}\StringTok{ }\KeywordTok{gs_key}\NormalTok{(measures_gs_key)}
 
 \CommentTok{# should extract the ws read for just}
 \CommentTok{# wrangling}
 \NormalTok{daily_tasks <-}\StringTok{ }\KeywordTok{get_daily_tasks}\NormalTok{()}
 \NormalTok{workload_key <-}\StringTok{ }\KeywordTok{get_workload_key}\NormalTok{()}
-\NormalTok{signifiers <-}\StringTok{ }\KeywordTok{get_signifiers}\NormalTok{()}
 
 \CommentTok{# better to pipe gs read into a wrangling function}
+
+\NormalTok{signifiers <-}\StringTok{ }\NormalTok{measures }\OperatorTok{%>%}\StringTok{ }\KeywordTok{gs_read}\NormalTok{(}\StringTok{"signifiers"}\NormalTok{)}
+\NormalTok{day_view <-}\StringTok{ }\NormalTok{measures }\OperatorTok{%>%}\StringTok{ }\KeywordTok{gs_read}\NormalTok{(}\StringTok{"day_view"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -375,80 +443,117 @@ todo: refs
 
 Ask albert to instantiate.
 
-♪ top of today's \protect\hyperlink{daily-log}{daily log} and day view.
-
-pic.twitter.com/wrCNDIcdLt
-
---- Charles T. Gray (\citet{cantabile}) May 26, 2019
+♪ top of today's \protect\hyperlink{daily-log}{daily log} and \protect\hyperlink{dayview:day-view}{day view}.
 
 Date with
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{today_date}\NormalTok{()}
+\KeywordTok{today_date}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }\KeywordTok{cat}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "la date d'aujourd'hui est dimanche, vingt-six, mai"
+## la date d'aujourd'hui est dimanche, vingt-six mai
 \end{verbatim}
 
-Draw up \protect\hyperlink{day-view}{day view}.
+pic.twitter.com/wrCNDIcdLt
 
-\begin{quote}
-\(\quaver \ \sim \ \varnothing\)
-\end{quote}
+--- Charles T. Gray (\citet{cantabile}) May 26, 2019
 
-and
+Draw up \protect\hyperlink{dayview:day-view}{day view}.
 
-\begin{quote}
-calculate poms
-\end{quote}
+In ♪ daily log, add priority daily tasks \(*\) ♪ \(+ \psi\), with \(*\) ♪ added to \protect\hyperlink{dayview:day-view}{projects}.
 
-to \(\fermata\) waiting in day view, waiting on \(*\quaver\) priority daily tasks.
+In 𝄐 \protect\hyperlink{dayview:day-view}{waiting}, schedule other \protect\hyperlink{daily-tasks}{daily tasks} ♪ \(\sim \varnothing\).
 
-Begin the daily log. Add priority
+Add \textgreater{} \(*+\pi\cdot\) \protect\hyperlink{housework}{housework} \(\sharp\) tasks and \(\sharp \pi \cdot\) coffee to ♪ daily log. You deserve it.
 
-\begin{quote}
-\(*\quaver+\psi\cdot\) \protect\hyperlink{daily-tasks}{daily tasks}
-\end{quote}
+Add \protect\hyperlink{review}{\(\overline o\)} and \(\pi\) to the \protect\hyperlink{dayview:order-of-events}{order of events}.
 
-and
+pic.twitter.com/yEKIgDcBGE
 
-\begin{quote}
-\(*+\pi\cdot\) \protect\hyperlink{housework}{housework} \(\sharp\) tasks.
-\end{quote}
+--- Charles T. Gray (\citet{cantabile}) May 26, 2019
 
-Add
+\hypertarget{dayview:day-view}{%
+\section{day view}\label{dayview:day-view}}
 
-\begin{quote}
-\(\sharp \pi \cdot\) coffee
-\end{quote}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{day_view }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\CommentTok{# create links}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{tracker =} \KeywordTok{paste0}\NormalTok{(}\StringTok{"["}\NormalTok{, tracker, }\StringTok{"]("}\NormalTok{,ref,}\StringTok{")"}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{ref) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{lifeswork_table}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
 
-to daily log. You deserve it.
+tracker
 
-Add \protect\hyperlink{review}{\(\overline o\)} and \(\pi\) to the order of events.
+position
 
-\hypertarget{day-view}{%
-\section{day view}\label{day-view}}
+description
 
-todo: port in googlesheet instead of hardcoding this
+\href{dayview:goals}{goals}
 
-\begin{longtable}[]{@{}lll@{}}
-\toprule
-tracker & position & description\tabularnewline
-\midrule
-\endhead
-goals & top left & pom goals\tabularnewline
-poms & next to goals & track poms achieved\tabularnewline
-projects & top right & one project/category\tabularnewline
-\protect\hyperlink{order-of-events}{order of events} & below goals & live with intent\tabularnewline
-task cycles & below projects & \(\varphi, \theta, \psi, \overline o\)\tabularnewline
-\bottomrule
-\end{longtable}
+top left
+
+pom goals
+
+\href{dayview:order-of-events}{order of events}
+
+below goals
+
+top row plans alternation of \(\cdot\) and \(pi\); now incorporates events
+
+\href{dayview:pom-tracker}{pom tracker}
+
+between goals and projects
+
+count how many poms have been achieved per category
+
+\href{dayview:projects}{projects}
+
+top right
+
+active projects: one per category
+
+\href{dayview:task-cycles}{task cycles}
+
+below order of events
+
+plan upcoming task cyles
+
+\href{dayview:progressed}{projects progressed}
+
+below pom tracker
+
+monthly log projects progressed today
+
+\href{dayview:waiting}{waiting}
+
+below projects progressed
+
+for paring down to three active projects
+
+pic.twitter.com/yEKIgDcBGE
+
+--- Charles T. Gray (\citet{cantabile}) May 26, 2019
 
 \hypertarget{daily-tasks}{%
 \section{daily tasks}\label{daily-tasks}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wrangle_tasks <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(tasks)\{}
+\NormalTok{  tasks }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{priority =} \KeywordTok{map_chr}\NormalTok{(priority, knittify_latex),}
+         \DataTypeTok{context =} \KeywordTok{map_chr}\NormalTok{(context, knittify_latex),}
+         \DataTypeTok{category =} \KeywordTok{map_chr}\NormalTok{(category, knittify_latex)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{lifeswork_table}\NormalTok{()}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{section}{%
 \subsection{\texorpdfstring{\(*\)}{*}}\label{section}}
@@ -463,91 +568,91 @@ task
 
 description
 
-\(\*\)
+\(\star\)
 
-\(\\natural\)
+\(\natural\)
 
-\(\\psi\)
+\(\psi\)
 
 calendar
 
 check day, week, month; note events of the day; upcoming deadlines
 
-\(\*\)
+\(\star\)
 
-\(\\forall\)
+\(\forall\)
 
-\(\\psi\)
+\(\psi\)
 
 what is on fire?
 
 task or project must be due today and someone else will get stuffed around if I don't do it
 
-\(\*\)
+\(\star\)
 
-\(\\natural\)
+\(\natural\)
 
-\(\\psi\)
+\(\psi\)
 
 email inbox
 
 label as needs-action, waiting, archive
 
-\(\*\)
+\(\star\)
 
-\(\\natural\)
+\(\natural\)
 
-\(\\psi\)
+\(\psi\)
 
 3c\^{}2 inbox
 
 NA
 
-\(\*\)
+\(\star\)
 
-\(\\sharp\)
+\(\sharp\)
 
-\(\\pi\)
+\(\pi\)
 
 unpack suitcase
 
 NA
 
-\(\*\)
+\(\star\)
 
-\(\\sharp\)
+\(\sharp\)
 
-\(\\psi\)
+\(\psi\)
 
 pill
 
 take medication
 
-\(\*\)
+\(\star\)
 
-\(\\sharp\)
+\(\sharp\)
 
-\(\\pi\)
+\(\pi\)
 
 kitchen
 
 clean kitchen
 
-\(\*\)
+\(\star\)
 
-\(\\sharp\)
+\(\sharp\)
 
-\(\\pi\)
+\(\pi\)
 
 laundry
 
 put away one basket of laundry
 
-\(\*\)
+\(\star\)
 
-\(\\sharp\)
+\(\sharp\)
 
-\(\\pi\)
+\(\pi\)
 
 floors
 
@@ -556,6 +661,15 @@ vacuum or sweep living area
 \hypertarget{housework}{%
 \subsection{\texorpdfstring{\(* \sharp\)}{* \textbackslash{}sharp}}\label{housework}}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{daily_tasks }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\KeywordTok{str_detect}\NormalTok{(.}\OperatorTok{$}\NormalTok{category, }\StringTok{"pi"}\NormalTok{),}
+         \KeywordTok{str_detect}\NormalTok{(.}\OperatorTok{$}\NormalTok{context, }\StringTok{"sharp"}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{wrangle_tasks}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
 priority
 
 context
@@ -566,53 +680,97 @@ task
 
 description
 
-\begin{itemize}
-\item
-  \sharp 
+\(\varnothing\)
 
-  \pi 
+\(\sharp\)
 
-  unpack suitcase
+\(\pi\)
 
-  NA
+handbag
 
-  \begin{itemize}
-  \item
-    \sharp 
+NA
 
-    \pi 
+\(\star\)
 
-    kitchen
+\(\sharp\)
 
-    clean kitchen
+\(\pi\)
 
-    \begin{itemize}
-    \item
-      \sharp 
+unpack suitcase
 
-      \pi 
+NA
 
-      laundry
+\(\varnothing\)
 
-      put away one basket of laundry
+\(\sharp\)
 
-      \begin{itemize}
-      \item
-        \sharp 
+\(\pi\)
 
-        \pi 
+wash brushes
 
-        floors
+wash brushes
 
-        vacuum or sweep living area
-      \end{itemize}
-    \end{itemize}
-  \end{itemize}
-\end{itemize}
+\(\star\)
+
+\(\sharp\)
+
+\(\pi\)
+
+kitchen
+
+clean kitchen
+
+\(\star\)
+
+\(\sharp\)
+
+\(\pi\)
+
+laundry
+
+put away one basket of laundry
+
+\(\star\)
+
+\(\sharp\)
+
+\(\pi\)
+
+floors
+
+vacuum or sweep living area
+
+\(\varnothing\)
+
+\(\sharp\)
+
+\(\pi\)
+
+water plants
+
+NA
+
+\(\varnothing\)
+
+\(\sharp\)
+
+\(\pi\)
+
+vacuum
+
+the other areas
 
 \hypertarget{sim}{%
 \subsection{\texorpdfstring{\(\sim\)}{\textbackslash{}sim}}\label{sim}}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{daily_tasks }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(priority }\OperatorTok{==}\StringTok{ "sim"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{wrangle_tasks}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
 priority
 
 context
@@ -622,10 +780,59 @@ category
 task
 
 description
+
+\(\sim\)
+
+\(\natural\)
+
+\(\psi\)
+
+needs action
+
+finish pom
+
+\(\sim\)
+
+\(\forall\)
+
+\(\psi\)
+
+monthly log
+
+each project should either have an associated collection, or a git hub repo or issue, location tagged in monthly log
+
+\(\sim\)
+
+\(\natural\)
+
+\(\psi\)
+
+ynab
+
+finish pom
+
+\(\sim\)
+
+\(\forall\)
+
+\(\psi\)
+
+thread
+
+NA
 
 \hypertarget{varnothing}{%
 \subsection{\texorpdfstring{\(\varnothing\)}{\textbackslash{}varnothing}}\label{varnothing}}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{daily_tasks }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(priority }\OperatorTok{==}\StringTok{ "varnothing"}\NormalTok{,}
+\NormalTok{         category }\OperatorTok{!=}\StringTok{ "pi"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{wrangle_tasks}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
 priority
 
 context
@@ -635,10 +842,38 @@ category
 task
 
 description
+
+\(\varnothing\)
+
+\(\natural\)
+
+\(\theta\)
+
+export measures
+
+download report into files, then email to myself, then download
+
+\(\varnothing\)
+
+\(\natural\)
+
+\(\psi\)
+
+waiting
+
+waiting emails
 
 \hypertarget{pi}{%
 \subsection{\texorpdfstring{\(\pi\)}{\textbackslash{}pi}}\label{pi}}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{daily_tasks }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(category }\OperatorTok{==}\StringTok{ "pi"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{wrangle_tasks}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
 priority
 
 context
@@ -649,11 +884,101 @@ task
 
 description
 
+\(\varnothing\)
+
+\(\sharp\)
+
+\(\pi\)
+
+handbag
+
+NA
+
+\(\star\)
+
+\(\sharp\)
+
+\(\pi\)
+
+unpack suitcase
+
+NA
+
+\(\varnothing\)
+
+\(\natural\)
+
+\(\pi\)
+
+write to dani
+
+check in with dani on slack
+
+\(\varnothing\)
+
+\(\sharp\)
+
+\(\pi\)
+
+wash brushes
+
+wash brushes
+
+\(\star\)
+
+\(\sharp\)
+
+\(\pi\)
+
+kitchen
+
+clean kitchen
+
+\(\star\)
+
+\(\sharp\)
+
+\(\pi\)
+
+laundry
+
+put away one basket of laundry
+
+\(\star\)
+
+\(\sharp\)
+
+\(\pi\)
+
+floors
+
+vacuum or sweep living area
+
+\(\varnothing\)
+
+\(\sharp\)
+
+\(\pi\)
+
+water plants
+
+NA
+
+\(\varnothing\)
+
+\(\sharp\)
+
+\(\pi\)
+
+vacuum
+
+the other areas
+
 \hypertarget{email}{%
 \section{email}\label{email}}
 
-\hypertarget{process}{%
-\subsection{process}\label{process}}
+\hypertarget{process-inbox}{%
+\subsection{process inbox}\label{process-inbox}}
 
 Check inbox once a day.
 
@@ -685,8 +1010,8 @@ Check inbox once a day.
 \hypertarget{review}{%
 \section{\texorpdfstring{\textbf{\texttt{review}}}{review}}\label{review}}
 
-\hypertarget{daily-log}{%
-\subsection{daily log}\label{daily-log}}
+\hypertarget{dayview:daily-log}{%
+\subsection{daily log}\label{dayview:daily-log}}
 
 This is the hard part.
 
@@ -714,8 +1039,8 @@ Cross through actions above.
   aim to progress at least one \(*\) from the \protect\hyperlink{monthly-log}{monthly log}
 \end{itemize}
 
-\hypertarget{day-view-1}{%
-\subsection{day view}\label{day-view-1}}
+\hypertarget{day-view}{%
+\subsection{day view}\label{day-view}}
 
 This is the sparkjoy bit.
 
@@ -827,13 +1152,32 @@ Chatting to a colleague and told them about the 30:80 model of writing a manuscr
 
 --- Neal Haddaway (\citet{nealhaddaway}) May 6, 2019
 
-\hypertarget{pom-goals}{%
-\section{pom goals}\label{pom-goals}}
+\hypertarget{dayview:goals}{%
+\section{pom goals}\label{dayview:goals}}
 
 pom := 20 minutes
 
-\hypertarget{order-of-events}{%
-\section{order of events}\label{order-of-events}}
+pic.twitter.com/MGRLiYviCX
+
+--- Charles T. Gray (\citet{cantabile}) May 26, 2019
+
+\hypertarget{dayview:pom-tracker}{%
+\section{pom tracker}\label{dayview:pom-tracker}}
+
+\hypertarget{dayview:projects}{%
+\section{projects}\label{dayview:projects}}
+
+\hypertarget{dayview:task-cycles}{%
+\section{task cycles}\label{dayview:task-cycles}}
+
+\hypertarget{dayview:progressed}{%
+\section{♫ progressed}\label{dayview:progressed}}
+
+\hypertarget{dayview:waiting}{%
+\section{waiting}\label{dayview:waiting}}
+
+\hypertarget{dayview:order-of-events}{%
+\section{order of events}\label{dayview:order-of-events}}
 
 Day begins with \protect\hyperlink{review}{review} \(\overline o\).
 
@@ -901,7 +1245,7 @@ today
 
 4
 
-\(*\)
+\(star\)
 
 priority
 
@@ -913,7 +1257,7 @@ project
 
 4
 
-\(\sim\)
+\(sim\)
 
 anxiety
 
@@ -937,7 +1281,7 @@ skills
 
 2
 
-\(\psi\)
+\(psi\)
 
 busywork
 

@@ -1,19 +1,40 @@
 # analysis {#analysis}
 
-```{r get measures data, eval=FALSE} 
+## wrangling
 
-# from this issue: https://github.com/jennybc/googlesheets/issues/320#issuecomment-372076823
+```{r analysis packages, message=FALSE}
+# packages used in this chapter
 
+library(tidyverse)
+library(googlesheets) 
+library(usethis)
+library(dontpanic)
+library(lubridate)
+library(ggmosaic)
+library(latex2exp)
+
+# register sheet
+measures <- gs_key(measures_gs_key)
+
+# import workload key
+workload_key <- measures %>% gs_read(ws = "workload_key")
 
 ```
 
-```{r get timer data, eval=FALSE}
+
+```{bash get atracker_data, eval = FALSE}
+# import data
+
+atracker_data <- read_csv(timetracker_path)
+```
+
+```{r write tracker data, eval=FALSE}
+write_csv(atracker_data, "data/atracker_data.csv")
 
 ```
 
-
-```{r wrangle timer data}
-timer_raw <- read_rds("data/timer_raw.rds")
+```{r wrangle timer data, message=FALSE}
+timer_raw <- read_csv("data/atracker_data.csv")
 
 timer <-  timer_raw %>%
       # tidy column names
@@ -32,13 +53,13 @@ timer <-  timer_raw %>%
         start = lubridate::dmy_hm(start),
         finish = lubridate::dmy_hm(finish),
         date = lubridate::date(start)
-      )
+      ) %>% 
+  dplyr::filter(!str_detect(category, "pi"))
 
 ```
 
 
 ```{r wrangle measures data, message=FALSE, warning=FALSE}
-measures <- read_rds("data/measures.rds")
 
 intensities <- c(
   "nothing",
@@ -48,12 +69,6 @@ intensities <- c(
   "eaglescream"
 )
 
-goals <- measures %>% 
-  pluck("workload") %>%
-  select(workload, phi_hrs, theta_hrs, psi_hrs) %>%
-  gather(key = "category", value = "poms", phi_hrs, theta_hrs, psi_hrs) %>%
-  spread(key = "workload", value = "poms") %>%
-  mutate(category = str_sub(category, end = -5))
 
 daily_work <- timer %>%
   mutate(duration_hrs = if_else(is.na(duration_hrs), 0, duration_hrs)) %>%
@@ -61,116 +76,158 @@ daily_work <- timer %>%
                   category == "theta" | category == "psi") %>%
   select(-note,-description) %>%
   group_by(date, category) %>%
-  summarise(hrs = sum(duration_hrs)) %>%
-  left_join(goals) %>%
-  mutate(
-    category_workload = case_when(
-      hrs == 0 ~ intensities[[1]],
-      hrs < light ~ intensities[[2]],
-      hrs < moderate ~ intensities[[3]],
-      hrs < hardcore ~ intensities[[4]],
-      hrs > hardcore ~ intensities[[5]]
-   ) 
-  ) %>%
-  group_by(date) %>%
-  mutate(
-    daily_workload = case_when(
-      any(hrs == 0) ~ intensities[[1]],
-      any(hrs < light) ~ intensities[[2]],
-      any(hrs < moderate) ~ intensities[[3]],
-      any(hrs < hardcore) ~ intensities[[4]],
-      all(hrs > hardcore) ~ intensities[[5]]
-    )
-  )
+  summarise(hrs = sum(duration_hrs)) 
+  
+
+workload <- workload_key %>% 
+  gather(key = category, value = poms_goal, -workload) %>% 
+  mutate(goal = (poms_goal * 20) / 60) %>% 
+  select(-poms_goal) %>% 
+  spread(key = workload, value = goal)
+
+intensity <- full_join(daily_work, workload, by = "category") %>% 
+  mutate(category_intensity = case_when(
+    hrs == 0 ~ intensities[1],
+    hrs < light ~ intensities[2],
+    hrs < moderate ~ intensities[3],
+    hrs < hardcore ~ intensities[4],
+    hrs > hardcore ~ intensities[5]
+  )) %>% 
+    group_by(date) %>% 
+  mutate(daily_intensity = case_when(
+    all(hrs > hardcore) ~ intensities[5],
+    all(hrs > moderate) ~ intensities[4],
+    all(hrs > light) ~ intensities[3],
+    any(hrs < light) ~ intensities[2],
+    all(hrs == 0) ~ intensities[1]
+  ))
 
 
-count_workload <- function(days = 10){
 
-  counts <- daily_work %>%
-    dplyr::ungroup() %>%
-    dplyr::filter(date > lubridate::today() - days) %>%
-    dplyr::group_by(category) %>%
-    dplyr::count(category_workload)
 
-  return(
-    counts
-  )
+
+
+```
+
+```{r mosaic data}
+count_workload <- function(days = 10, era) {
+  intensity %>%
+    dplyr::filter(date > today() - days) %>%
+    ungroup() %>%
+    count(category, category_intensity, daily_intensity) %>%
+    mutate(era = days)
 }
 
-quinque <- count_workload(days = 5) %>%
-  mutate(period = "v")
+quinque <- count_workload(days = 5)
 
-decade <-  count_workload(days = 10) %>%
-  mutate(period = "x")
+decade <-  count_workload(days = 10)
 
-century <- count_workload(days = 100) %>%
-  mutate(period = "c")
+century <- count_workload(days = 100)
 
-daily_measures <- suppressMessages({
-  count_workload(days = 1000) %>%
-  mutate(period = "m") %>%
+mosaic_data <- count_workload(days = 1000) %>%
   bind_rows(quinque, decade, century) %>%
   ungroup() %>%
   mutate(
     category = fct_relevel(category, "phi", "theta", "psi"),
-    period = fct_relevel(period, "v", "x", "c", "m")
-  ) %>%
-  full_join(daily_work) %>%
-  mutate(
-    daily_workload = fct_relevel(daily_workload, intensities),
-    category_workload = fct_relevel(category_workload, intensities))  
-})
+    category_intensity = fct_relevel(category_intensity, intensities),
+    daily_intensity = fct_relevel(daily_intensity, intensities),
+    era_plot = case_when(
+      era == 5 ~ "quinque",
+      # "\\romannumeral{5}",
+      era == 10 ~ "decade",
+      # "\\romannumeral{10}",
+      era == 100 ~ "century",
+      # "\\romannumeral{100}",
+      era == 1000 ~ "millenium" # "\\romannumeral{1000}"
+    ),
+    era_plot = fct_relevel(era_plot, "quinque", "decade", "century", "millenium"),
+    category = fct_relevel(category, "phi", "theta", "psi")
+  )
+
 
   
-
-
-
 ```
 
 
-## workload intensity goals achieved
+```{r mosaic vis, echo=FALSE, message=FALSE, warning=FALSE}
 
-```{r vis, echo=FALSE, message=FALSE, warning=FALSE}
-
-daily_measures %>% 
+intensity_mosaic <- mosaic_data %>% 
     ggplot2::ggplot()+
     ggmosaic::geom_mosaic(
-      aes(x = product(daily_workload),
-          fill = category_workload,
+      aes(x = product(daily_intensity),
+          fill = category_intensity,
           weight = n)) +
     scale_fill_grey(start = 0.8, end = 0.2) +
 ggplot2::theme(axis.text.y = element_blank(),
       axis.ticks.y = element_blank(),
-      axis.text.x = element_text(angle = 35, hjust = 1))+ 
-  facet_grid(period ~ category, labeller = label_parsed) 
-
-
-
-```
-
-
-## distribution of hrs spent per day per category
-
-```{r density periods, echo=FALSE}
-daily_measures %>% 
-    ggplot2::ggplot(aes(x = hrs))+
-    geom_density(colour = "darkgrey", fill = "darkgrey") +
-  facet_grid(category ~ period, scales = "free") 
-
+      axis.text.x = element_text(angle = 35, hjust = 1)) + 
+  facet_grid(era_plot ~ category, labeller = label_parsed) +
+  labs(
+    title = str_wrap("intensity achieved for each category"),
+    x = "intensity achieved across all categories for the day",
+    y = "intensity achieved for this individual category that day",
+    caption = TeX("Eras: quinque, decade, century, millinium, number of days' data analysed.\n $\\phi, \\theta, \\psi$ := research, skills, and busywork")
+  )
 
 
 ```
 
 
-```{r boxplots categories, echo=FALSE}
-daily_measures %>% 
-  ggplot(aes(x = category, y = hrs)) +
-  geom_boxplot() +
-  facet_grid(period ~ ., 
-             scales = "free",
-             labeller = label_parsed) +
-  coord_flip()
+```{r boxplots categories, warning=FALSE}
+category_boxplot <- intensity %>%
+  mutate(era = 1000) %>%
+  bind_rows(
+    intensity %>%
+      dplyr::filter(date > today() - 5) %>%
+      mutate(era = 5),
+    intensity %>% dplyr::filter(date > today() - 10) %>%
+      mutate(era = 10),
+    intensity %>% dplyr::filter(date > today() - 100) %>%
+      mutate(era = 100)
+  ) %>%
+  mutate(
+    era_plot = case_when(era == 5 ~ "quinque", # "\\romannumeral{5}",
+                         era == 10 ~ "decade",  # "\\romannumeral{10}",
+                         era == 100 ~ "century", # "\\romannumeral{100}",
+                         era == 1000 ~ "millenium"),
+                         era_plot = fct_relevel(era_plot, "quinque", "decade", "century", "millenium"),
+                         category = fct_relevel(category, "phi", "theta", "psi")
+    ) %>%
+      ggplot(aes(x = category, y = hrs)) +
+      geom_boxplot() +
+      geom_hline(
+        yintercept = 4 / 3,
+        linetype = "dotted",
+        alpha = 0.7,
+        colour = "darkgrey",
+        size = 1.5
+      ) +
+      facet_grid(era_plot ~ .,
+                 scales = "free") +
+      coord_flip() +
+      labs(
+        title = str_wrap("distribution of work done over different periods of time"),
+        x = "hours of work completed",
+        y = "category of work",
+        caption = "dotted vertical line indicates daily goal for that category"
+      )
+  
 
+
+```
+
+## intensity achieved
+
+```{r intensity mosaic, warning=FALSE, message=FALSE}
+intensity_mosaic
+
+```
+
+
+## distribution of work
+
+```{r category boxplot, warning=FALSE, message=FALSE}
+category_boxplot
 
 ```
 

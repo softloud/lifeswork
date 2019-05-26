@@ -29,6 +29,8 @@ library(googlesheets)
 library(kableExtra)
 
 knitr::opts_chunk$set(
+  message=FALSE,
+  warning=FALSE
   # use this option to update text if build is broken
   # eval = FALSE,
   # todo: check that my options do override
@@ -36,13 +38,6 @@ knitr::opts_chunk$set(
   )
 
 conflicted::conflict_prefer("filter", winner = "dplyr")
-
-```
-
-```{r set up nomenclature}
-
-# html entity (decimal) 
-# https://www.fileformat.info/info/unicode/char/266a/index.htm
 
 ```
 
