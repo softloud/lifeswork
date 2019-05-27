@@ -2,6 +2,8 @@
 
 ## wrangling
 
+[skip the code]()
+
 ```{r analysis packages, message=FALSE}
 # packages used in this chapter
 
@@ -54,7 +56,7 @@ timer <-  timer_raw %>%
         finish = lubridate::dmy_hm(finish),
         date = lubridate::date(start)
       ) %>% 
-  dplyr::filter(!str_detect(category, "pi"))
+  dplyr::filter(category != "pi")
 
 ```
 
@@ -100,7 +102,7 @@ intensity <- full_join(daily_work, workload, by = "category") %>%
     all(hrs > light) ~ intensities[3],
     any(hrs < light) ~ intensities[2],
     all(hrs == 0) ~ intensities[1]
-  ))
+  )) %>% dplyr::filter(category != "pi")
 
 
 
@@ -190,10 +192,10 @@ category_boxplot <- intensity %>%
                          era == 10 ~ "decade",  # "\\romannumeral{10}",
                          era == 100 ~ "century", # "\\romannumeral{100}",
                          era == 1000 ~ "millenium"),
-                         era_plot = fct_relevel(era_plot, "quinque", "decade", "century", "millenium"),
+    era_plot = era_plot %>% as_factor(),                         era_plot = fct_relevel(era_plot, "quinque", "decade", "century", "millenium"),
                          category = fct_relevel(category, "phi", "theta", "psi")
     ) %>%
-      ggplot(aes(x = category, y = hrs)) +
+      ggplot(aes(x = era_plot, y = hrs)) +
       geom_boxplot() +
       geom_hline(
         yintercept = 4 / 3,
@@ -202,8 +204,8 @@ category_boxplot <- intensity %>%
         colour = "darkgrey",
         size = 1.5
       ) +
-      facet_grid(era_plot ~ .,
-                 scales = "free") +
+      facet_grid(category ~ .,
+                 scales = "free", labeller = label_parsed) +
       coord_flip() +
       labs(
         title = str_wrap("distribution of work done over different periods of time"),
@@ -216,7 +218,7 @@ category_boxplot <- intensity %>%
 
 ```
 
-## intensity achieved
+## intensity achieved {#vis}
 
 ```{r intensity mosaic, warning=FALSE, message=FALSE}
 intensity_mosaic

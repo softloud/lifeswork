@@ -247,7 +247,7 @@ timer &lt;-<span class="st">  </span>timer_raw <span class="op">%&gt;%</span>
         <span class="dt">finish =</span> lubridate<span class="op">::</span><span class="kw">dmy_hm</span>(finish),
         <span class="dt">date =</span> lubridate<span class="op">::</span><span class="kw">date</span>(start)
       ) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">str_detect</span>(category, <span class="st">&quot;pi&quot;</span>))</code></pre>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">filter</span>(category <span class="op">!=</span><span class="st"> &quot;pi&quot;</span>)</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">intensities &lt;-<span class="st"> </span><span class="kw">c</span>(
   <span class="st">&quot;nothing&quot;</span>,
   <span class="st">&quot;sweet fuck all&quot;</span>,
@@ -287,7 +287,7 @@ intensity &lt;-<span class="st"> </span><span class="kw">full_join</span>(daily_
     <span class="kw">all</span>(hrs <span class="op">&gt;</span><span class="st"> </span>light) <span class="op">~</span><span class="st"> </span>intensities[<span class="dv">3</span>],
     <span class="kw">any</span>(hrs <span class="op">&lt;</span><span class="st"> </span>light) <span class="op">~</span><span class="st"> </span>intensities[<span class="dv">2</span>],
     <span class="kw">all</span>(hrs <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="op">~</span><span class="st"> </span>intensities[<span class="dv">1</span>]
-  ))</code></pre>
+  )) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(category <span class="op">!=</span><span class="st"> &quot;pi&quot;</span>)</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">count_workload &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">days =</span> <span class="dv">10</span>, era) {
   intensity <span class="op">%&gt;%</span>
 <span class="st">    </span>dplyr<span class="op">::</span><span class="kw">filter</span>(date <span class="op">&gt;</span><span class="st"> </span><span class="kw">today</span>() <span class="op">-</span><span class="st"> </span>days) <span class="op">%&gt;%</span>
@@ -340,10 +340,10 @@ mosaic_data &lt;-<span class="st"> </span><span class="kw">count_workload</span>
                          era <span class="op">==</span><span class="st"> </span><span class="dv">10</span> <span class="op">~</span><span class="st"> &quot;decade&quot;</span>,  <span class="co"># &quot;\\romannumeral{10}&quot;,</span>
                          era <span class="op">==</span><span class="st"> </span><span class="dv">100</span> <span class="op">~</span><span class="st"> &quot;century&quot;</span>, <span class="co"># &quot;\\romannumeral{100}&quot;,</span>
                          era <span class="op">==</span><span class="st"> </span><span class="dv">1000</span> <span class="op">~</span><span class="st"> &quot;millenium&quot;</span>),
-                         <span class="dt">era_plot =</span> <span class="kw">fct_relevel</span>(era_plot, <span class="st">&quot;quinque&quot;</span>, <span class="st">&quot;decade&quot;</span>, <span class="st">&quot;century&quot;</span>, <span class="st">&quot;millenium&quot;</span>),
+    <span class="dt">era_plot =</span> era_plot <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as_factor</span>(),                         <span class="dt">era_plot =</span> <span class="kw">fct_relevel</span>(era_plot, <span class="st">&quot;quinque&quot;</span>, <span class="st">&quot;decade&quot;</span>, <span class="st">&quot;century&quot;</span>, <span class="st">&quot;millenium&quot;</span>),
                          <span class="dt">category =</span> <span class="kw">fct_relevel</span>(category, <span class="st">&quot;phi&quot;</span>, <span class="st">&quot;theta&quot;</span>, <span class="st">&quot;psi&quot;</span>)
     ) <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> category, <span class="dt">y =</span> hrs)) <span class="op">+</span>
+<span class="st">      </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> era_plot, <span class="dt">y =</span> hrs)) <span class="op">+</span>
 <span class="st">      </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
 <span class="st">      </span><span class="kw">geom_hline</span>(
         <span class="dt">yintercept =</span> <span class="dv">4</span> <span class="op">/</span><span class="st"> </span><span class="dv">3</span>,
@@ -352,8 +352,8 @@ mosaic_data &lt;-<span class="st"> </span><span class="kw">count_workload</span>
         <span class="dt">colour =</span> <span class="st">&quot;darkgrey&quot;</span>,
         <span class="dt">size =</span> <span class="fl">1.5</span>
       ) <span class="op">+</span>
-<span class="st">      </span><span class="kw">facet_grid</span>(era_plot <span class="op">~</span><span class="st"> </span>.,
-                 <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="op">+</span>
+<span class="st">      </span><span class="kw">facet_grid</span>(category <span class="op">~</span><span class="st"> </span>.,
+                 <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>, <span class="dt">labeller =</span> label_parsed) <span class="op">+</span>
 <span class="st">      </span><span class="kw">coord_flip</span>() <span class="op">+</span>
 <span class="st">      </span><span class="kw">labs</span>(
         <span class="dt">title =</span> <span class="kw">str_wrap</span>(<span class="st">&quot;distribution of work done over different periods of time&quot;</span>),

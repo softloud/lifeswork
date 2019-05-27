@@ -38,8 +38,11 @@ today_date() %>% cat()
 
 ```
 
-<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="und" dir="ltr"><a href="https://t.co/wrCNDIcdLt">pic.twitter.com/wrCNDIcdLt</a></p>&mdash; Charles T. Gray (@cantabile) <a href="https://twitter.com/cantabile/status/1132475140967550976?ref_src=twsrc%5Etfw">May 26, 2019</a></blockquote>
+and replace tabs for `r quaver()` daily log and `r quavers()` monthly log. 
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">Daily log and monthly log <a href="https://t.co/Wdtix2rZHJ">pic.twitter.com/Wdtix2rZHJ</a></p>&mdash; Charles T. Gray (@cantabile) <a href="https://twitter.com/cantabile/status/1132814593389207555?ref_src=twsrc%5Etfw">May 27, 2019</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 
 Draw up  [day view](#dayview:day-view). 
 
@@ -47,21 +50,18 @@ In `r quaver()` daily log, add priority daily tasks $*$ `r quaver()`  $+ \psi$, 
 
 In `r fermata()` [waiting](#dayview:day-view), schedule other [daily tasks](#daily-tasks) `r quaver()` $\sim \varnothing$. 
 
-Add > $*+\pi\cdot$ [housework](#housework) $\sharp$ tasks and $\sharp \pi \cdot$ coffee to `r quaver()` daily log. You deserve it. 
+Add $\sharp \pi \cdot$ coffee to `r quaver()` daily log. You deserve it. 
+
+Add $\star$ priority [daily tasks](#daily-tasks). 
 
 Add [$\overline o$](#review) and $\pi$ to the [order of events](#dayview:order-of-events).
 
-
-<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="und" dir="ltr"><a href="https://t.co/yEKIgDcBGE">pic.twitter.com/yEKIgDcBGE</a></p>&mdash; Charles T. Gray (@cantabile) <a href="https://twitter.com/cantabile/status/1132482396127780864?ref_src=twsrc%5Etfw">May 26, 2019</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-## day view {#dayview:day-view}
+## `r quaver()` day view {#dayview:day-view}
 
 ```{r dayview table}
 day_view %>% 
   # create links
-  mutate(tracker = paste0("[", tracker, "](",ref,")")) %>% 
+  mutate(tracker = paste0("[", tracker, "](#",ref,")")) %>% 
   select(-ref) %>% 
   lifeswork_table()
 
@@ -71,9 +71,12 @@ day_view %>%
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
-## daily tasks {#daily-tasks}
+## `r quaver()` daily tasks {#daily-tasks}
 
-```{r}
+```{r wrangle tasks}
+
+# wrangling tasks for output
+# mighth port wrangle functions over to dontpanic at some point
 
 wrangle_tasks <- function(tasks){
   tasks %>% 
@@ -89,6 +92,10 @@ wrangle_tasks <- function(tasks){
 
 ### $*$
 
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">Priority daily tasks <a href="https://t.co/dFfNMEK0Hx">pic.twitter.com/dFfNMEK0Hx</a></p>&mdash; Charles T. Gray (@cantabile) <a href="https://twitter.com/cantabile/status/1132817367539445761?ref_src=twsrc%5Etfw">May 27, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 ```{r priority tasks, echo=FALSE}
 daily_tasks %>% 
   dplyr::filter(priority == "star") %>% 
@@ -96,6 +103,8 @@ daily_tasks %>%
 
 
 ```
+
+
 
 ### $* \sharp${#housework}
 
@@ -158,7 +167,7 @@ daily_tasks %>%
 
 ## **`review`** {#review}
 
-### daily log {#dayview:daily-log}
+### `r quaver()` daily log {#dayview:daily-log}
 
 This is the hard part.
 
@@ -177,7 +186,7 @@ Cross through actions above.
 - add projects from [monthly log](#monthly-log) if all $*$ and $\sim$ have been completed
 - aim to progress at least one $*$ from the [monthly log](#monthly-log)
 
-### day view
+### `r quaver()` day view
 
 This is the sparkjoy bit.
 
@@ -225,6 +234,10 @@ dontpanic::calculate_pom_goal(
 
 ## task cycle
 
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">Task cycle <a href="https://t.co/HuBwLgXP3x">pic.twitter.com/HuBwLgXP3x</a></p>&mdash; Charles T. Gray (@cantabile) <a href="https://twitter.com/cantabile/status/1132818454191325184?ref_src=twsrc%5Etfw">May 27, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
 shorthand | description
 - | -
 $\forall *$ | complete all priority ($*$) tasks
@@ -233,7 +246,7 @@ $\varnothing \geqslant 0$ | complete any or none of the untagged tasks
 $\cdot \geqslant 1$ | write down as many next actions as I can think of
 $\overline o$ | [review](#review)
 
-## monthly log {#monthly-log}
+## `r quavers()` monthly log {#monthly-log}
 
 List of projects that will take longer than a day.
 
@@ -266,7 +279,7 @@ workload_key %>%
 
 ## `r quavers()` progressed {#dayview:progressed}
 
-## waiting {#dayview:waiting}
+## `r fermata()` waiting {#dayview:waiting}
 
 
 ## order of events {#dayview:order-of-events}
