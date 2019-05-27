@@ -67,7 +67,8 @@ day_view %>%
 
 ```
 
-<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="und" dir="ltr"><a href="https://t.co/yEKIgDcBGE">pic.twitter.com/yEKIgDcBGE</a></p>&mdash; Charles T. Gray (@cantabile) <a href="https://twitter.com/cantabile/status/1132482396127780864?ref_src=twsrc%5Etfw">May 26, 2019</a></blockquote>
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">Day view <a href="https://t.co/JL1BMvzO5C">pic.twitter.com/JL1BMvzO5C</a></p>&mdash; Charles T. Gray (@cantabile) <a href="https://twitter.com/cantabile/status/1133129034013872128?ref_src=twsrc%5Etfw">May 27, 2019</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
@@ -248,7 +249,11 @@ $\overline o$ | [review](#review)
 
 ## `r quavers()` monthly log {#monthly-log}
 
-List of projects that will take longer than a day.
+Projects that will take `r quavers()` longer than a day. 
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">Monthly log <a href="https://t.co/4ynoMzcLnI">pic.twitter.com/4ynoMzcLnI</a></p>&mdash; Charles T. Gray (@cantabile) <a href="https://twitter.com/cantabile/status/1133129102624378880?ref_src=twsrc%5Etfw">May 27, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 
 Need to incorporate this into managing papers.
 
