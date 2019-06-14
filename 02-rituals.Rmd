@@ -31,14 +31,13 @@ Ask albert to instantiate.
 
 `r quaver()` top of today's [daily log](#daily-log) and [day view](#dayview:day-view).
 
-Date with 
+Ask R what today is in French. R is your friend.
 
 ```{r translate date, message=FALSE}
 today_date() %>% cat()
 
 ```
 
-and replace tabs for `r quaver()` daily log and `r quavers()` monthly log. 
 
 <blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">Daily log and monthly log <a href="https://t.co/Wdtix2rZHJ">pic.twitter.com/Wdtix2rZHJ</a></p>&mdash; Charles T. Gray (@cantabile) <a href="https://twitter.com/cantabile/status/1132814593389207555?ref_src=twsrc%5Etfw">May 27, 2019</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -90,9 +89,7 @@ wrangle_tasks <- function(tasks){
 ```
 
 
-
 ### $*$
-
 
 <blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">Priority daily tasks <a href="https://t.co/dFfNMEK0Hx">pic.twitter.com/dFfNMEK0Hx</a></p>&mdash; Charles T. Gray (@cantabile) <a href="https://twitter.com/cantabile/status/1132817367539445761?ref_src=twsrc%5Etfw">May 27, 2019</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -104,7 +101,6 @@ daily_tasks %>%
 
 
 ```
-
 
 
 ### $* \sharp${#housework}
@@ -226,7 +222,6 @@ dontpanic::calculate_pom_goal(
 
 
 ```
-
 
 
 ### minibreak peeps

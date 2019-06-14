@@ -126,7 +126,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{\emph{perennial work in progress} Sunday 26 May 2019}
+    \date{\emph{perennial work in progress} Thursday 6 June 2019}
 
 \usepackage{booktabs}
 \usepackage{lilyglyphs}
@@ -160,6 +160,10 @@ For sanity, efficiency, and inspiration, I intend to balance my time between cat
   wellness, \(\pi\)
 \end{itemize}
 
+pic.twitter.com/wrCNDIcdLt
+
+--- Charles T. Gray (\citet{cantabile}) May 26, 2019
+
 \hypertarget{what-is-this}{%
 \chapter{what is this?}\label{what-is-this}}
 
@@ -185,7 +189,7 @@ Captain Marvel GIF from Captainmarvel GIFs
 operation & instantiated & last updated\tabularnewline
 \midrule
 \endhead
-phoenix & Tuesday 2 April 2019 & Sunday 26 May 2019\tabularnewline
+phoenix & Tuesday 2 April 2019 & Thursday 6 June 2019\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -206,6 +210,8 @@ todo: refs
 \hypertarget{wrangling}{%
 \section{wrangling}\label{wrangling}}
 
+\href{}{skip the code}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# packages used in this chapter}
@@ -216,6 +222,7 @@ todo: refs
 \KeywordTok{library}\NormalTok{(dontpanic)}
 \KeywordTok{library}\NormalTok{(lubridate)}
 \KeywordTok{library}\NormalTok{(ggmosaic)}
+\KeywordTok{library}\NormalTok{(latex2exp)}
 
 \CommentTok{# register sheet}
 \NormalTok{measures <-}\StringTok{ }\KeywordTok{gs_key}\NormalTok{(measures_gs_key)}
@@ -306,24 +313,23 @@ todo: refs
     \KeywordTok{all}\NormalTok{(hrs }\OperatorTok{>}\StringTok{ }\NormalTok{light) }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[}\DecValTok{3}\NormalTok{],}
     \KeywordTok{any}\NormalTok{(hrs }\OperatorTok{<}\StringTok{ }\NormalTok{light) }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[}\DecValTok{2}\NormalTok{],}
     \KeywordTok{all}\NormalTok{(hrs }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{) }\OperatorTok{~}\StringTok{ }\NormalTok{intensities[}\DecValTok{1}\NormalTok{]}
-\NormalTok{  ))}
+\NormalTok{  )) }\OperatorTok{%>%}\StringTok{ }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{filter}\NormalTok{(category }\OperatorTok{!=}\StringTok{ "pi"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{count_workload <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(}\DataTypeTok{days =} \DecValTok{10}\NormalTok{, era)\{}
-
-\NormalTok{  intensity }\OperatorTok{%>%}\StringTok{ }
-\StringTok{    }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{filter}\NormalTok{(date }\OperatorTok{>}\StringTok{ }\KeywordTok{today}\NormalTok{() }\OperatorTok{-}\StringTok{ }\NormalTok{days) }\OperatorTok{%>%}\StringTok{ }
-\StringTok{    }\KeywordTok{ungroup}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
-\StringTok{    }\KeywordTok{count}\NormalTok{(category, category_intensity, daily_intensity) }\OperatorTok{%>%}\StringTok{ }
+\NormalTok{count_workload <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(}\DataTypeTok{days =} \DecValTok{10}\NormalTok{, era) \{}
+\NormalTok{  intensity }\OperatorTok{%>%}
+\StringTok{    }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{filter}\NormalTok{(date }\OperatorTok{>}\StringTok{ }\KeywordTok{today}\NormalTok{() }\OperatorTok{-}\StringTok{ }\NormalTok{days) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{ungroup}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{count}\NormalTok{(category, category_intensity, daily_intensity) }\OperatorTok{%>%}
 \StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{era =}\NormalTok{ days)}
 \NormalTok{\}}
 
-\NormalTok{quinque <-}\StringTok{ }\KeywordTok{count_workload}\NormalTok{(}\DataTypeTok{days =} \DecValTok{5}\NormalTok{) }
+\NormalTok{quinque <-}\StringTok{ }\KeywordTok{count_workload}\NormalTok{(}\DataTypeTok{days =} \DecValTok{5}\NormalTok{)}
 
-\NormalTok{decade <-}\StringTok{  }\KeywordTok{count_workload}\NormalTok{(}\DataTypeTok{days =} \DecValTok{10}\NormalTok{) }
+\NormalTok{decade <-}\StringTok{  }\KeywordTok{count_workload}\NormalTok{(}\DataTypeTok{days =} \DecValTok{10}\NormalTok{)}
 
 \NormalTok{century <-}\StringTok{ }\KeywordTok{count_workload}\NormalTok{(}\DataTypeTok{days =} \DecValTok{100}\NormalTok{)}
 
@@ -335,12 +341,17 @@ todo: refs
     \DataTypeTok{category_intensity =} \KeywordTok{fct_relevel}\NormalTok{(category_intensity, intensities),}
     \DataTypeTok{daily_intensity =} \KeywordTok{fct_relevel}\NormalTok{(daily_intensity, intensities),}
     \DataTypeTok{era_plot =} \KeywordTok{case_when}\NormalTok{(}
-\NormalTok{      era }\OperatorTok{==}\StringTok{ }\DecValTok{5} \OperatorTok{~}\StringTok{ "v"}\NormalTok{, }\CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{5\}",}
-\NormalTok{      era }\OperatorTok{==}\StringTok{ }\DecValTok{10} \OperatorTok{~}\StringTok{ "x"}\NormalTok{,  }\CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{10\}",}
-\NormalTok{      era }\OperatorTok{==}\StringTok{ }\DecValTok{100} \OperatorTok{~}\StringTok{ "c"}\NormalTok{, }\CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{100\}",}
-\NormalTok{      era }\OperatorTok{==}\StringTok{ }\DecValTok{1000} \OperatorTok{~}\StringTok{ "m"} \CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{1000\}"}
-\NormalTok{    )}
-\NormalTok{    )}
+\NormalTok{      era }\OperatorTok{==}\StringTok{ }\DecValTok{5} \OperatorTok{~}\StringTok{ "quinque"}\NormalTok{,}
+      \CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{5\}",}
+\NormalTok{      era }\OperatorTok{==}\StringTok{ }\DecValTok{10} \OperatorTok{~}\StringTok{ "decade"}\NormalTok{,}
+      \CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{10\}",}
+\NormalTok{      era }\OperatorTok{==}\StringTok{ }\DecValTok{100} \OperatorTok{~}\StringTok{ "century"}\NormalTok{,}
+      \CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{100\}",}
+\NormalTok{      era }\OperatorTok{==}\StringTok{ }\DecValTok{1000} \OperatorTok{~}\StringTok{ "millenium"} \CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{1000\}"}
+\NormalTok{    ),}
+    \DataTypeTok{era_plot =} \KeywordTok{fct_relevel}\NormalTok{(era_plot, }\StringTok{"quinque"}\NormalTok{, }\StringTok{"decade"}\NormalTok{, }\StringTok{"century"}\NormalTok{, }\StringTok{"millenium"}\NormalTok{),}
+    \DataTypeTok{category =} \KeywordTok{fct_relevel}\NormalTok{(category, }\StringTok{"phi"}\NormalTok{, }\StringTok{"theta"}\NormalTok{, }\StringTok{"psi"}\NormalTok{)}
+\NormalTok{  )}
 \end{Highlighting}
 \end{Shaded}
 
@@ -358,14 +369,14 @@ todo: refs
 \StringTok{      }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{era =} \DecValTok{100}\NormalTok{)}
 \NormalTok{  ) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}
-    \DataTypeTok{era_plot =} \KeywordTok{case_when}\NormalTok{(era }\OperatorTok{==}\StringTok{ }\DecValTok{5} \OperatorTok{~}\StringTok{ "v"}\NormalTok{, }\CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{5\}",}
-\NormalTok{                         era }\OperatorTok{==}\StringTok{ }\DecValTok{10} \OperatorTok{~}\StringTok{ "x"}\NormalTok{,  }\CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{10\}",}
-\NormalTok{                         era }\OperatorTok{==}\StringTok{ }\DecValTok{100} \OperatorTok{~}\StringTok{ "c"}\NormalTok{, }\CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{100\}",}
-\NormalTok{                         era }\OperatorTok{==}\StringTok{ }\DecValTok{1000} \OperatorTok{~}\StringTok{ "m"}\NormalTok{),}
-                         \DataTypeTok{era_plot =} \KeywordTok{fct_relevel}\NormalTok{(era_plot, }\StringTok{"v"}\NormalTok{, }\StringTok{"x"}\NormalTok{, }\StringTok{"c"}\NormalTok{, }\StringTok{"m"}\NormalTok{),}
+    \DataTypeTok{era_plot =} \KeywordTok{case_when}\NormalTok{(era }\OperatorTok{==}\StringTok{ }\DecValTok{5} \OperatorTok{~}\StringTok{ "quinque"}\NormalTok{, }\CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{5\}",}
+\NormalTok{                         era }\OperatorTok{==}\StringTok{ }\DecValTok{10} \OperatorTok{~}\StringTok{ "decade"}\NormalTok{,  }\CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{10\}",}
+\NormalTok{                         era }\OperatorTok{==}\StringTok{ }\DecValTok{100} \OperatorTok{~}\StringTok{ "century"}\NormalTok{, }\CommentTok{# "\textbackslash{}\textbackslash{}romannumeral\{100\}",}
+\NormalTok{                         era }\OperatorTok{==}\StringTok{ }\DecValTok{1000} \OperatorTok{~}\StringTok{ "millenium"}\NormalTok{),}
+    \DataTypeTok{era_plot =}\NormalTok{ era_plot }\OperatorTok{%>%}\StringTok{ }\KeywordTok{as_factor}\NormalTok{(),                         }\DataTypeTok{era_plot =} \KeywordTok{fct_relevel}\NormalTok{(era_plot, }\StringTok{"quinque"}\NormalTok{, }\StringTok{"decade"}\NormalTok{, }\StringTok{"century"}\NormalTok{, }\StringTok{"millenium"}\NormalTok{),}
                          \DataTypeTok{category =} \KeywordTok{fct_relevel}\NormalTok{(category, }\StringTok{"phi"}\NormalTok{, }\StringTok{"theta"}\NormalTok{, }\StringTok{"psi"}\NormalTok{)}
 \NormalTok{    ) }\OperatorTok{%>%}
-\StringTok{      }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ category, }\DataTypeTok{y =}\NormalTok{ hrs)) }\OperatorTok{+}
+\StringTok{      }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ era_plot, }\DataTypeTok{y =}\NormalTok{ hrs)) }\OperatorTok{+}
 \StringTok{      }\KeywordTok{geom_boxplot}\NormalTok{() }\OperatorTok{+}
 \StringTok{      }\KeywordTok{geom_hline}\NormalTok{(}
         \DataTypeTok{yintercept =} \DecValTok{4} \OperatorTok{/}\StringTok{ }\DecValTok{3}\NormalTok{,}
@@ -374,9 +385,8 @@ todo: refs
         \DataTypeTok{colour =} \StringTok{"darkgrey"}\NormalTok{,}
         \DataTypeTok{size =} \FloatTok{1.5}
 \NormalTok{      ) }\OperatorTok{+}
-\StringTok{      }\KeywordTok{facet_grid}\NormalTok{(era_plot }\OperatorTok{~}\StringTok{ }\NormalTok{.,}
-                 \DataTypeTok{scales =} \StringTok{"free"}\NormalTok{,}
-                 \DataTypeTok{labeller =}\NormalTok{ label_parsed) }\OperatorTok{+}
+\StringTok{      }\KeywordTok{facet_grid}\NormalTok{(category }\OperatorTok{~}\StringTok{ }\NormalTok{.,}
+                 \DataTypeTok{scales =} \StringTok{"free"}\NormalTok{, }\DataTypeTok{labeller =}\NormalTok{ label_parsed) }\OperatorTok{+}
 \StringTok{      }\KeywordTok{coord_flip}\NormalTok{() }\OperatorTok{+}
 \StringTok{      }\KeywordTok{labs}\NormalTok{(}
         \DataTypeTok{title =} \KeywordTok{str_wrap}\NormalTok{(}\StringTok{"distribution of work done over different periods of time"}\NormalTok{),}
@@ -387,8 +397,8 @@ todo: refs
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{workload-intensity-goals-achieved}{%
-\section{workload intensity goals achieved}\label{workload-intensity-goals-achieved}}
+\hypertarget{vis}{%
+\section{intensity achieved}\label{vis}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -445,7 +455,7 @@ Ask albert to instantiate.
 
 ♪ top of today's \protect\hyperlink{daily-log}{daily log} and \protect\hyperlink{dayview:day-view}{day view}.
 
-Date with
+Ask R what today is in French. R is your friend.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -454,12 +464,12 @@ Date with
 \end{Shaded}
 
 \begin{verbatim}
-## la date d'aujourd'hui est dimanche, vingt-six mai
+## la date d'aujourd'hui est jeudi, six juin
 \end{verbatim}
 
-pic.twitter.com/wrCNDIcdLt
+Daily log and monthly log pic.twitter.com/Wdtix2rZHJ
 
---- Charles T. Gray (\citet{cantabile}) May 26, 2019
+--- Charles T. Gray (\citet{cantabile}) May 27, 2019
 
 Draw up \protect\hyperlink{dayview:day-view}{day view}.
 
@@ -467,22 +477,20 @@ In ♪ daily log, add priority daily tasks \(*\) ♪ \(+ \psi\), with \(*\) ♪ 
 
 In 𝄐 \protect\hyperlink{dayview:day-view}{waiting}, schedule other \protect\hyperlink{daily-tasks}{daily tasks} ♪ \(\sim \varnothing\).
 
-Add \textgreater{} \(*+\pi\cdot\) \protect\hyperlink{housework}{housework} \(\sharp\) tasks and \(\sharp \pi \cdot\) coffee to ♪ daily log. You deserve it.
+Add \(\sharp \pi \cdot\) coffee to ♪ daily log. You deserve it.
+
+Add \(\star\) priority \protect\hyperlink{daily-tasks}{daily tasks}.
 
 Add \protect\hyperlink{review}{\(\overline o\)} and \(\pi\) to the \protect\hyperlink{dayview:order-of-events}{order of events}.
 
-pic.twitter.com/yEKIgDcBGE
-
---- Charles T. Gray (\citet{cantabile}) May 26, 2019
-
 \hypertarget{dayview:day-view}{%
-\section{day view}\label{dayview:day-view}}
+\section{♪ day view}\label{dayview:day-view}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{day_view }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\CommentTok{# create links}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{tracker =} \KeywordTok{paste0}\NormalTok{(}\StringTok{"["}\NormalTok{, tracker, }\StringTok{"]("}\NormalTok{,ref,}\StringTok{")"}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{tracker =} \KeywordTok{paste0}\NormalTok{(}\StringTok{"["}\NormalTok{, tracker, }\StringTok{"](#"}\NormalTok{,ref,}\StringTok{")"}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{ref) }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{lifeswork_table}\NormalTok{()}
 \end{Highlighting}
@@ -494,57 +502,60 @@ position
 
 description
 
-\href{dayview:goals}{goals}
+\protect\hyperlink{dayview:goals}{goals}
 
 top left
 
 pom goals
 
-\href{dayview:order-of-events}{order of events}
+\protect\hyperlink{dayview:order-of-events}{order of events}
 
 below goals
 
 top row plans alternation of \(\cdot\) and \(pi\); now incorporates events
 
-\href{dayview:pom-tracker}{pom tracker}
+\protect\hyperlink{dayview:pom-tracker}{pom tracker}
 
 between goals and projects
 
 count how many poms have been achieved per category
 
-\href{dayview:projects}{projects}
+\protect\hyperlink{dayview:projects}{projects}
 
 top right
 
 active projects: one per category
 
-\href{dayview:task-cycles}{task cycles}
+\protect\hyperlink{dayview:task-cycles}{task cycles}
 
 below order of events
 
 plan upcoming task cyles
 
-\href{dayview:progressed}{projects progressed}
+\protect\hyperlink{dayview:progressed}{projects progressed}
 
 below pom tracker
 
 monthly log projects progressed today
 
-\href{dayview:waiting}{waiting}
+\protect\hyperlink{dayview:waiting}{waiting}
 
 below projects progressed
 
 for paring down to three active projects
 
-pic.twitter.com/yEKIgDcBGE
+Day view pic.twitter.com/JL1BMvzO5C
 
---- Charles T. Gray (\citet{cantabile}) May 26, 2019
+--- Charles T. Gray (\citet{cantabile}) May 27, 2019
 
 \hypertarget{daily-tasks}{%
-\section{daily tasks}\label{daily-tasks}}
+\section{♪ daily tasks}\label{daily-tasks}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{# wrangling tasks for output}
+\CommentTok{# mighth port wrangle functions over to dontpanic at some point}
+
 \NormalTok{wrangle_tasks <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(tasks)\{}
 \NormalTok{  tasks }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{priority =} \KeywordTok{map_chr}\NormalTok{(priority, knittify_latex),}
@@ -557,6 +568,10 @@ pic.twitter.com/yEKIgDcBGE
 
 \hypertarget{section}{%
 \subsection{\texorpdfstring{\(*\)}{*}}\label{section}}
+
+Priority daily tasks pic.twitter.com/dFfNMEK0Hx
+
+--- Charles T. Gray (\citet{cantabile}) May 27, 2019
 
 priority
 
@@ -1011,7 +1026,7 @@ Check inbox once a day.
 \section{\texorpdfstring{\textbf{\texttt{review}}}{review}}\label{review}}
 
 \hypertarget{dayview:daily-log}{%
-\subsection{daily log}\label{dayview:daily-log}}
+\subsection{♪ daily log}\label{dayview:daily-log}}
 
 This is the hard part.
 
@@ -1040,7 +1055,7 @@ Cross through actions above.
 \end{itemize}
 
 \hypertarget{day-view}{%
-\subsection{day view}\label{day-view}}
+\subsection{♪ day view}\label{day-view}}
 
 This is the sparkjoy bit.
 
@@ -1128,6 +1143,10 @@ where \(t\) denotes the number of hours of travel, and \(c\) the number of hours
 \hypertarget{task-cycle}{%
 \section{task cycle}\label{task-cycle}}
 
+Task cycle pic.twitter.com/HuBwLgXP3x
+
+--- Charles T. Gray (\citet{cantabile}) May 27, 2019
+
 \begin{longtable}[]{@{}ll@{}}
 \toprule
 shorthand & description\tabularnewline
@@ -1142,9 +1161,13 @@ shorthand & description\tabularnewline
 \end{longtable}
 
 \hypertarget{monthly-log}{%
-\section{monthly log}\label{monthly-log}}
+\section{♫ monthly log}\label{monthly-log}}
 
-List of projects that will take longer than a day.
+Projects that will take ♫ longer than a day.
+
+Monthly log pic.twitter.com/4ynoMzcLnI
+
+--- Charles T. Gray (\citet{cantabile}) May 27, 2019
 
 Need to incorporate this into managing papers.
 
@@ -1174,7 +1197,7 @@ pic.twitter.com/MGRLiYviCX
 \section{♫ progressed}\label{dayview:progressed}}
 
 \hypertarget{dayview:waiting}{%
-\section{waiting}\label{dayview:waiting}}
+\section{𝄐 waiting}\label{dayview:waiting}}
 
 \hypertarget{dayview:order-of-events}{%
 \section{order of events}\label{dayview:order-of-events}}
