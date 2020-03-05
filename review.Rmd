@@ -1,0 +1,25 @@
+---
+title: "review"
+description: |
+  end of task cycle
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+```{r}
+library(tidyverse)
+library(kableExtra)
+
+review <- read_rds("data/review.rds")
+
+review %>% 
+  kable() %>% 
+  kable_styling()
+
+```
+

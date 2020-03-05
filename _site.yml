@@ -1,0 +1,16 @@
+name: "lifeswork"
+title: "lifeswork"
+description: |
+  lifeswork
+output_dir: "docs"
+navbar:
+  right:
+    - text: "instantiate"
+      href: instantiate.html
+    - text: "review"
+      href: review.html
+    - text: "tasks"
+      href: tasks.html
+    - text: "about"
+      href: about.html
+output: distill::distill_article

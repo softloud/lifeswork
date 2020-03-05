@@ -1,0 +1,57 @@
+---
+title: "tasks"
+date: "`r Sys.Date()`"
+output: 
+  distill::distill_article:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r get data}
+library(tidyverse) 
+library(kableExtra)
+
+tasks <- read_rds("data/tasks.rds") 
+
+
+```
+
+# categories
+
+
+```{r}
+categories <- tasks %>% pluck("c") %>% table()
+
+tasks %>% 
+  arrange(c,p) %>% 
+  select(-c, -p) %>% 
+  kable() %>% 
+  kable_styling() %>% 
+  group_rows(index = setNames(categories,
+                              paste0("$\\", names(categories), "$"))
+             )
+
+
+```
+
+# priorities
+
+
+```{r}
+priorities <- tasks %>% pluck("p") %>% table()
+
+tasks %>% 
+  arrange(p, c) %>% 
+  select(-c, -p) %>% 
+  kable() %>% 
+  kable_styling() %>% 
+  group_rows(index = setNames(priorities, 
+              paste0("$\\", names(priorities), "$"))
+             )
+
+
+```
+

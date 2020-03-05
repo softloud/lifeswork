@@ -1,0 +1,11 @@
+---
+title: "about"
+description: |
+  what is this
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+This site was made with distill
