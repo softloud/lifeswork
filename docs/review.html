@@ -1308,6 +1308,16 @@
 
 <div class="d-article">
 <div class="layout-chunk" data-layout="l-body">
+
+<pre class="r"><code>
+library(tidyverse)
+library(kableExtra)
+
+review &lt;- read_rds(&quot;data/review.rds&quot;)
+
+review %&gt;% 
+  kable() %&gt;% 
+  kable_styling()</code></pre>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>

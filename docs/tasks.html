@@ -1313,10 +1313,26 @@
 </nav>
 <hr class="d-toc-separator"/>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+library(tidyverse) 
+library(kableExtra)
 
+tasks &lt;- read_rds(&quot;data/tasks.rds&quot;) </code></pre>
 </div>
 <h1 id="categories">categories</h1>
 <div class="layout-chunk" data-layout="l-body">
+
+<pre class="r"><code>
+categories &lt;- tasks %&gt;% pluck(&quot;c&quot;) %&gt;% table()
+
+tasks %&gt;% 
+  arrange(c,p) %&gt;% 
+  select(-c, -p) %&gt;% 
+  kable() %&gt;% 
+  kable_styling() %&gt;% 
+  group_rows(index = setNames(categories,
+                              paste0(&quot;$\\&quot;, names(categories), &quot;$&quot;))
+             )</code></pre>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1348,10 +1364,10 @@ description
 <span class="math inline">\(\theta\)</span>
 </td>
 <td style="text-align:left;">
-export measures
+update lifeswork
 </td>
 <td style="text-align:left;">
-download report into files, then email to myself, then download
+run update data and rebuild site
 </td>
 </tr>
 <tr grouplength="11">
@@ -1607,6 +1623,18 @@ at 3c^2
 </div>
 <h1 id="priorities">priorities</h1>
 <div class="layout-chunk" data-layout="l-body">
+
+<pre class="r"><code>
+priorities &lt;- tasks %&gt;% pluck(&quot;p&quot;) %&gt;% table()
+
+tasks %&gt;% 
+  arrange(p, c) %&gt;% 
+  select(-c, -p) %&gt;% 
+  kable() %&gt;% 
+  kable_styling() %&gt;% 
+  group_rows(index = setNames(priorities, 
+              paste0(&quot;$\\&quot;, names(priorities), &quot;$&quot;))
+             )</code></pre>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1816,10 +1844,10 @@ vacuum or sweep living area
 <span class="math inline">\(\theta\)</span>
 </td>
 <td style="text-align:left;">
-export measures
+update lifeswork
 </td>
 <td style="text-align:left;">
-download report into files, then email to myself, then download
+run update data and rebuild site
 </td>
 </tr>
 <tr>
