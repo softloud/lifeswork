@@ -15,7 +15,7 @@ tasks <- measures %>% gs_read("daily_tasks") %>%
     p = priority,
     p = fct_relevel(p, "star", "sim", "varnothing"),
     c = category,
-    c = fct_relevel(c, "phi", "theta", "psi", "pi"),
+    c = fct_relevel(c, "theta", "psi", "pi"),
     priority = paste0("$\\", priority, "$"),
     category = paste0("$\\", category, "$")) %>% 
   arrange(c,p)
@@ -26,3 +26,5 @@ write_rds(tasks, "data/tasks.rds")
 review <- measures %>% gs_read("review")
 
 write_rds(review, "data/review.rds")
+
+
