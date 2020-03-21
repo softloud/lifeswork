@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r get data}
 library(tidyverse)
 library(kableExtra)
-
+library(dontpanic)
 
 instantiate <- read_rds("data/instantiate.rds")
 
@@ -35,8 +35,8 @@ instantiate %>%
 tasks <- read_rds("data/tasks.rds")
 
 tasks %>% 
-  dplyr::filter(p == "star") %>% 
-  # bind for tex
+  filter(p == "star") %>% 
+  select(-c, -p) %>% 
   kable() %>% 
   kable_styling()
   

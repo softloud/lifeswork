@@ -24,8 +24,8 @@
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2020-03-20"/>
-  <meta property="article:created" itemprop="dateCreated" content="2020-03-20"/>
+  <meta property="article:published" itemprop="datePublished" content="2020-03-21"/>
+  <meta property="article:created" itemprop="dateCreated" content="2020-03-21"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="lifeswork: tasks"/>
@@ -41,7 +41,7 @@
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["tasks"]},{"type":"character","attributes":{},"value":["2020-03-20"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["tasks"]},{"type":"character","attributes":{},"value":["2020-03-21"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -1274,7 +1274,7 @@
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"tasks","authors":[],"publishedDate":"2020-03-20T00:00:00.000+11:00"}
+{"title":"tasks","authors":[],"publishedDate":"2020-03-21T00:00:00.000+11:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1316,6 +1316,7 @@
 <pre class="r"><code>
 library(tidyverse) 
 library(kableExtra)
+library(dontpanic)
 
 tasks &lt;- read_rds(&quot;data/tasks.rds&quot;) </code></pre>
 </div>
@@ -1370,9 +1371,23 @@ update lifeswork
 run update data and rebuild site
 </td>
 </tr>
-<tr grouplength="11">
+<tr grouplength="12">
 <td colspan="4" style="border-bottom: 1px solid;">
 <strong><span class="math inline">\(\psi\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+<span class="math inline">\(\star\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\psi\)</span>
+</td>
+<td style="text-align:left;">
+needs action
+</td>
+<td style="text-align:left;">
+migrate needs action bujo daily to inbox
 </td>
 </tr>
 <tr>
@@ -1414,7 +1429,7 @@ task or project must be due today and someone else will get stuffed around if I 
 email inbox
 </td>
 <td style="text-align:left;">
-label as needs-action, waiting, archive
+archive or assign to <code>r quaver()</code> or <code>r quavers()</code> and move to needs action
 </td>
 </tr>
 <tr>
@@ -1425,10 +1440,10 @@ label as needs-action, waiting, archive
 <span class="math inline">\(\psi\)</span>
 </td>
 <td style="text-align:left;">
-stuff inbox/unpack bags
+stuff
 </td>
 <td style="text-align:left;">
-process papers, notes, etc.
+process papers, notes, unpack bags, etc.
 </td>
 </tr>
 <tr>
@@ -1456,7 +1471,7 @@ schedule needs action in <code>r quaver()</code> or <code>r quavers()</code>
 monthly log
 </td>
 <td style="text-align:left;">
-each project should either have an associated collection, or a git hub repo or issue, location tagged in monthly log
+Add every <span class="math inline">\(star\)</span> project to <code>r quaver()</code> to be processed into a subproject that can be completed today. Each project should either have an associated collection, or a git hub repo or issue, location tagged in monthly log.
 </td>
 </tr>
 <tr>
@@ -1559,7 +1574,7 @@ clean kitchen
 laundry
 </td>
 <td style="text-align:left;">
-put away one basket of laundry
+one load of laundry
 </td>
 </tr>
 <tr>
@@ -1573,7 +1588,7 @@ put away one basket of laundry
 main floors
 </td>
 <td style="text-align:left;">
-vacuum or sweep living area
+vacuum main area
 </td>
 </tr>
 <tr>
@@ -1601,7 +1616,7 @@ wash brushes
 vacuum
 </td>
 <td style="text-align:left;">
-the other areas
+another room
 </td>
 </tr>
 <tr>
@@ -1653,9 +1668,23 @@ description
 </tr>
 </thead>
 <tbody>
-<tr grouplength="5">
+<tr grouplength="6">
 <td colspan="4" style="border-bottom: 1px solid;">
 <strong><span class="math inline">\(\star\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+<span class="math inline">\(\star\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\psi\)</span>
+</td>
+<td style="text-align:left;">
+needs action
+</td>
+<td style="text-align:left;">
+migrate needs action bujo daily to inbox
 </td>
 </tr>
 <tr>
@@ -1697,7 +1726,7 @@ task or project must be due today and someone else will get stuffed around if I 
 email inbox
 </td>
 <td style="text-align:left;">
-label as needs-action, waiting, archive
+archive or assign to <code>r quaver()</code> or <code>r quavers()</code> and move to needs action
 </td>
 </tr>
 <tr>
@@ -1708,10 +1737,10 @@ label as needs-action, waiting, archive
 <span class="math inline">\(\psi\)</span>
 </td>
 <td style="text-align:left;">
-stuff inbox/unpack bags
+stuff
 </td>
 <td style="text-align:left;">
-process papers, notes, etc.
+process papers, notes, unpack bags, etc.
 </td>
 </tr>
 <tr>
@@ -1758,7 +1787,7 @@ schedule needs action in <code>r quaver()</code> or <code>r quavers()</code>
 monthly log
 </td>
 <td style="text-align:left;">
-each project should either have an associated collection, or a git hub repo or issue, location tagged in monthly log
+Add every <span class="math inline">\(star\)</span> project to <code>r quaver()</code> to be processed into a subproject that can be completed today. Each project should either have an associated collection, or a git hub repo or issue, location tagged in monthly log.
 </td>
 </tr>
 <tr>
@@ -1814,7 +1843,7 @@ day view
 laundry
 </td>
 <td style="text-align:left;">
-put away one basket of laundry
+one load of laundry
 </td>
 </tr>
 <tr>
@@ -1828,7 +1857,7 @@ put away one basket of laundry
 main floors
 </td>
 <td style="text-align:left;">
-vacuum or sweep living area
+vacuum main area
 </td>
 </tr>
 <tr grouplength="6">
@@ -1903,7 +1932,7 @@ wash brushes
 vacuum
 </td>
 <td style="text-align:left;">
-the other areas
+another room
 </td>
 </tr>
 <tr>

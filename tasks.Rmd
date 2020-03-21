@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r get data}
 library(tidyverse) 
 library(kableExtra)
+library(dontpanic)
 
 tasks <- read_rds("data/tasks.rds") 
 
@@ -23,6 +24,8 @@ tasks <- read_rds("data/tasks.rds")
 
 
 ```{r}
+
+
 categories <- tasks %>% pluck("c") %>% table()
 
 tasks %>% 
