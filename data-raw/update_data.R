@@ -27,3 +27,12 @@ review <- measures %>% gs_read("review")
 
 write_rds(review, "data/review.rds")
 
+dp <- gs_key("1FBzrWdlRX0IjiQSoamwx6-Ib22FUMEUmxvaSwfIj0Gg")
+
+keybindings <- dp %>% gs_read("keybindings")
+
+write_rds(keybindings, "data/keybindings.rds")
+
+commands <- dp %>% gs_read("commands")
+
+write_rds(commands, "data/commands.rds")

@@ -19,7 +19,7 @@
  <!--/radix_placeholder_import_source-->
 
   <!--radix_placeholder_meta_tags-->
-  <title>lifeswork: tasks</title>
+  <title>lifeswork: dontpanic</title>
 
 
 
@@ -28,20 +28,20 @@
   <meta property="article:created" itemprop="dateCreated" content="2020-03-23"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="lifeswork: tasks"/>
+  <meta property="og:title" content="lifeswork: dontpanic"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="lifeswork"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="lifeswork: tasks"/>
+  <meta property="twitter:title" content="lifeswork: dontpanic"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["tasks"]},{"type":"character","attributes":{},"value":["2020-03-23"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["dontpanic"]},{"type":"character","attributes":{},"value":["2020-03-23"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -1274,7 +1274,7 @@
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"tasks","authors":[],"publishedDate":"2020-03-23T00:00:00.000+11:00"}
+{"title":"dontpanic","authors":[],"publishedDate":"2020-03-23T00:00:00.000+11:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1299,7 +1299,7 @@
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>tasks</h1>
+<h1>dontpanic</h1>
 
 </div>
 
@@ -1308,360 +1308,214 @@
 <h3 class="d-toc-header">Table of Contents</h3>
 <nav class="d-toc" id="TOC">
 <ul>
-<li><a href="#categories">categories</a></li>
-<li><a href="#priorities">priorities</a></li>
+<li><a href="#keybindings">keybindings</a></li>
+<li><a href="#commands">commands</a></li>
 </ul>
 </nav>
 <hr class="d-toc-separator"/>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="r"><code>
-library(tidyverse) 
+library(tidyverse)
 library(kableExtra)
-library(dontpanic)
 
-tasks &lt;- read_rds(&quot;data/tasks.rds&quot;) </code></pre>
+keybindings &lt;- read_rds(&quot;data/keybindings.rds&quot;)
+commands &lt;- read_rds(&quot;data/commands.rds&quot;)</code></pre>
 </div>
-<h1 id="categories">categories</h1>
+<h1 id="keybindings">keybindings</h1>
 <div class="layout-chunk" data-layout="l-body">
 
 <pre class="r"><code>
-categories &lt;- tasks %&gt;% pluck(&quot;c&quot;) %&gt;% table()
+context_kb &lt;- keybindings %&gt;% pluck(&quot;context&quot;) %&gt;% table()
 
-tasks %&gt;% 
-  arrange(c,p) %&gt;% 
-  select(-c, -p) %&gt;% 
+
+keybindings %&gt;%
   kable() %&gt;% 
   kable_styling() %&gt;% 
-  group_rows(index = setNames(categories,
-                              paste0(&quot;$\\&quot;, names(categories), &quot;$&quot;))
-             )</code></pre>
+  group_rows(index = setNames(context_kb,
+                              names(context_kb)))</code></pre>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
-priority
+context
 </th>
 <th style="text-align:left;">
-category
+keybinding
 </th>
 <th style="text-align:left;">
-task
-</th>
-<th style="text-align:left;">
-description
+why is awesome
 </th>
 </tr>
 </thead>
 <tbody>
+<tr grouplength="3">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>atom</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+toggl
+</td>
+<td style="text-align:left;">
+ctl + [
+</td>
+<td style="text-align:left;">
+start/stop timer
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+rstudio
+</td>
+<td style="text-align:left;">
+ctl + alt + enter
+</td>
+<td style="text-align:left;">
+send code to terminal
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+rstudio
+</td>
+<td style="text-align:left;">
+shift + alt + c
+</td>
+<td style="text-align:left;">
+zotero extension
+</td>
+</tr>
 <tr grouplength="1">
-<td colspan="4" style="border-bottom: 1px solid;">
-<strong><span class="math inline">\(\theta\)</span></strong>
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>bash</strong>
 </td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
+gsheet
 </td>
 <td style="text-align:left;">
-<span class="math inline">\(\theta\)</span>
+alt + enter
 </td>
 <td style="text-align:left;">
-update lifeswork
-</td>
-<td style="text-align:left;">
-run update data and rebuild site
+new line in a cell
 </td>
 </tr>
-<tr grouplength="12">
-<td colspan="4" style="border-bottom: 1px solid;">
-<strong><span class="math inline">\(\psi\)</span></strong>
+<tr grouplength="1">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>ff</strong>
 </td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
+ff
 </td>
 <td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
+ctl + k
 </td>
 <td style="text-align:left;">
-needs action
+focus search bar
 </td>
-<td style="text-align:left;">
-migrate needs action bujo daily to inbox: <code>label:email-sanity-needs-action and -label:email-sanity-bujo-monthly</code> &amp; remove daily bujo labels
+</tr>
+<tr grouplength="1">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>gmail</strong>
 </td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
+bash
 </td>
 <td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
+ctl + shift + t
 </td>
 <td style="text-align:left;">
-calendar
+new terminal tab
 </td>
-<td style="text-align:left;">
-check day, week, month; note events of the day; upcoming deadlines; migrate stuff for today to daily log, monthly log
+</tr>
+<tr grouplength="1">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>gsheet</strong>
 </td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
+atom
 </td>
 <td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
+ctl + shift + p
 </td>
 <td style="text-align:left;">
-what is on fire?
+keybindings
 </td>
-<td style="text-align:left;">
-task or project must be due today and someone else will get stuffed around if I don’t do it
+</tr>
+<tr grouplength="2">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>rstudio</strong>
 </td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
+atom
 </td>
 <td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
+ctl + alt + p
 </td>
 <td style="text-align:left;">
-email inbox
-</td>
-<td style="text-align:left;">
-archive or assign to quaver or quavers and move to needs action
+zotero extension
 </td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
+atom
 </td>
 <td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
+ctl + ,
 </td>
 <td style="text-align:left;">
-stuff
+settings
 </td>
-<td style="text-align:left;">
-process papers, notes, unpack bags, etc.
+</tr>
+<tr grouplength="1">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>toggl</strong>
 </td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sim\)</span>
+gmail
 </td>
 <td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
+,
 </td>
 <td style="text-align:left;">
-needs action
-</td>
-<td style="text-align:left;">
-schedule needs action in quaver or quavers
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sim\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-monthly log
-</td>
-<td style="text-align:left;">
-Add every <span class="math inline">\(star\)</span> project to quaver to be processed into a subproject that can be completed today. Each project should either have an associated collection, or a git hub repo or issue, location tagged in monthly log.
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sim\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-ynab
-</td>
-<td style="text-align:left;">
-finish pom
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sim\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-thread log
-</td>
-<td style="text-align:left;">
-daily log
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sim\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-thread view
-</td>
-<td style="text-align:left;">
-day view
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-waiting emails
-</td>
-<td style="text-align:left;">
-make sure noted in bujo daily, monthly, or future log
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-stand up
-</td>
-<td style="text-align:left;">
-report to friend or team
-</td>
-</tr>
-<tr grouplength="6">
-<td colspan="4" style="border-bottom: 1px solid;">
-<strong><span class="math inline">\(\pi\)</span></strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-kitchen
-</td>
-<td style="text-align:left;">
-clean kitchen
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sim\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-laundry
-</td>
-<td style="text-align:left;">
-one load of laundry
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sim\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-main floors
-</td>
-<td style="text-align:left;">
-vacuum main area
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-wash brushes
-</td>
-<td style="text-align:left;">
-wash brushes
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-vacuum
-</td>
-<td style="text-align:left;">
-another room
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-smudge
-</td>
-<td style="text-align:left;">
-at 3c^2
+focus search bar
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-<h1 id="priorities">priorities</h1>
+<h1 id="commands">commands</h1>
 <div class="layout-chunk" data-layout="l-body">
 
 <pre class="r"><code>
-priorities &lt;- tasks %&gt;% pluck(&quot;p&quot;) %&gt;% table()
+context_com &lt;- commands %&gt;% pluck(&quot;context&quot;) %&gt;% table()
 
-tasks %&gt;% 
-  arrange(p, c) %&gt;% 
-  select(-c, -p) %&gt;% 
+
+commands %&gt;%
   kable() %&gt;% 
   kable_styling() %&gt;% 
-  group_rows(index = setNames(priorities, 
-              paste0(&quot;$\\&quot;, names(priorities), &quot;$&quot;))
-             )</code></pre>
+  group_rows(index = setNames(context_com,
+                              names(context_com)))</code></pre>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
-priority
+context
 </th>
 <th style="text-align:left;">
-category
-</th>
-<th style="text-align:left;">
-task
+command
 </th>
 <th style="text-align:left;">
 description
@@ -1669,285 +1523,96 @@ description
 </tr>
 </thead>
 <tbody>
-<tr grouplength="6">
-<td colspan="4" style="border-bottom: 1px solid;">
-<strong><span class="math inline">\(\star\)</span></strong>
+<tr grouplength="4">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>bash</strong>
 </td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
+bash
 </td>
 <td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
+tlmgr install &lt;tex-pkg&gt;
 </td>
 <td style="text-align:left;">
-needs action
-</td>
-<td style="text-align:left;">
-migrate needs action bujo daily to inbox: <code>label:email-sanity-needs-action and -label:email-sanity-bujo-monthly</code> &amp; remove daily bujo labels
+install tex pkg
 </td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
+bash
 </td>
 <td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
+rstudio project.Rproj
 </td>
 <td style="text-align:left;">
-calendar
-</td>
-<td style="text-align:left;">
-check day, week, month; note events of the day; upcoming deadlines; migrate stuff for today to daily log, monthly log
+open rstudio project
 </td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
+bash
 </td>
 <td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
+mimeopen path/to/png.png
 </td>
 <td style="text-align:left;">
-what is on fire?
-</td>
-<td style="text-align:left;">
-task or project must be due today and someone else will get stuffed around if I don’t do it
+open png
 </td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
+bash
 </td>
 <td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
+evince path/to/pdf.pdf
 </td>
 <td style="text-align:left;">
-email inbox
+open pdf
 </td>
-<td style="text-align:left;">
-archive or assign to quaver or quavers and move to needs action
+</tr>
+<tr grouplength="2">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>rstudio</strong>
 </td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
+rstudio
 </td>
 <td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
+vignette(“rd”)
 </td>
 <td style="text-align:left;">
-stuff
-</td>
-<td style="text-align:left;">
-process papers, notes, unpack bags, etc.
+roxygen syntax
 </td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
+rstudio
 </td>
 <td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
+testthat::test_file(“path”)
 </td>
 <td style="text-align:left;">
-kitchen
-</td>
-<td style="text-align:left;">
-clean kitchen
+run tests in explicit file
 </td>
 </tr>
-<tr grouplength="7">
-<td colspan="4" style="border-bottom: 1px solid;">
-<strong><span class="math inline">\(\sim\)</span></strong>
+<tr grouplength="1">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>yaml</strong>
 </td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sim\)</span>
+yaml
 </td>
 <td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
+output: tufte::tufte_html:
 </td>
 <td style="text-align:left;">
-needs action
-</td>
-<td style="text-align:left;">
-schedule needs action in quaver or quavers
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sim\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-monthly log
-</td>
-<td style="text-align:left;">
-Add every <span class="math inline">\(star\)</span> project to quaver to be processed into a subproject that can be completed today. Each project should either have an associated collection, or a git hub repo or issue, location tagged in monthly log.
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sim\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-ynab
-</td>
-<td style="text-align:left;">
-finish pom
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sim\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-thread log
-</td>
-<td style="text-align:left;">
-daily log
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sim\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-thread view
-</td>
-<td style="text-align:left;">
-day view
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sim\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-laundry
-</td>
-<td style="text-align:left;">
-one load of laundry
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sim\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-main floors
-</td>
-<td style="text-align:left;">
-vacuum main area
-</td>
-</tr>
-<tr grouplength="6">
-<td colspan="4" style="border-bottom: 1px solid;">
-<strong><span class="math inline">\(\varnothing\)</span></strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\theta\)</span>
-</td>
-<td style="text-align:left;">
-update lifeswork
-</td>
-<td style="text-align:left;">
-run update data and rebuild site
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-waiting emails
-</td>
-<td style="text-align:left;">
-make sure noted in bujo daily, monthly, or future log
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-stand up
-</td>
-<td style="text-align:left;">
-report to friend or team
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-wash brushes
-</td>
-<td style="text-align:left;">
-wash brushes
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-vacuum
-</td>
-<td style="text-align:left;">
-another room
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-smudge
-</td>
-<td style="text-align:left;">
-at 3c^2
+from tufte::
 </td>
 </tr>
 </tbody>
@@ -1960,15 +1625,6 @@ at 3c^2
 <div class="d-appendix">
 </div>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->

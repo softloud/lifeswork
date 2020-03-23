@@ -9,6 +9,8 @@ navbar:
       href: instantiate.html
     - text: "review"
       href: review.html
+    - text: "dontpanic"
+      href: dontpanic.html
     - text: "tasks"
       href: tasks.html
     - text: "about"

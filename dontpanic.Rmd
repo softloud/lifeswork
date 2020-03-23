@@ -1,0 +1,53 @@
+---
+title: "dontpanic"
+date: "`r Sys.Date()`"
+output: 
+  distill::distill_article:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(kableExtra)
+
+keybindings <- read_rds("data/keybindings.rds")
+commands <- read_rds("data/commands.rds")
+
+```
+
+
+# keybindings
+
+```{r}
+context_kb <- keybindings %>% pluck("context") %>% table()
+
+
+keybindings %>%
+  kable() %>% 
+  kable_styling() %>% 
+  group_rows(index = setNames(context_kb,
+                              names(context_kb)))
+             
+
+```
+
+
+# commands
+
+```{r}
+context_com <- commands %>% pluck("context") %>% table()
+
+
+commands %>%
+  kable() %>% 
+  kable_styling() %>% 
+  group_rows(index = setNames(context_com,
+                              names(context_com)))
+
+
+```
+
