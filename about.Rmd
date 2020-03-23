@@ -8,4 +8,4 @@ description: |
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-This site was made with distill
+This site was made with [`distill`](https://rstudio.github.io/distill/), tables scraped from this [googlesheet](https://docs.google.com/spreadsheets/d/1hv7pkBGu8XQQOIBbBt1_1LvKGBR7zTdQYCzogrv3hz0/edit?usp=sharing) using [`googlesheets::`](https://cran.r-project.org/web/packages/googlesheets/vignettes/basic-usage.html) and cleaned with the [`tidyverse::`](https://www.tidyverse.org/).

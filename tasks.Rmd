@@ -34,8 +34,8 @@ tasks %>%
   kable() %>% 
   kable_styling() %>% 
   group_rows(index = setNames(categories,
-                              paste0("$\\", names(categories), "$"))
-             )
+                              paste0("$\\", names(categories), "$")) 
+             )  
 
 
 ```
@@ -48,9 +48,9 @@ priorities <- tasks %>% pluck("p") %>% table()
 
 tasks %>% 
   arrange(p, c) %>% 
-  select(-c, -p) %>% 
+  select(-c, -p)  %>% 
   kable() %>% 
-  kable_styling() %>% 
+  kable_styling()  %>% 
   group_rows(index = setNames(priorities, 
               paste0("$\\", names(priorities), "$"))
              )

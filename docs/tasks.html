@@ -1333,8 +1333,8 @@ tasks %&gt;%
   kable() %&gt;% 
   kable_styling() %&gt;% 
   group_rows(index = setNames(categories,
-                              paste0(&quot;$\\&quot;, names(categories), &quot;$&quot;))
-             )</code></pre>
+                              paste0(&quot;$\\&quot;, names(categories), &quot;$&quot;)) 
+             )  </code></pre>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1645,9 +1645,9 @@ priorities &lt;- tasks %&gt;% pluck(&quot;p&quot;) %&gt;% table()
 
 tasks %&gt;% 
   arrange(p, c) %&gt;% 
-  select(-c, -p) %&gt;% 
+  select(-c, -p)  %&gt;% 
   kable() %&gt;% 
-  kable_styling() %&gt;% 
+  kable_styling()  %&gt;% 
   group_rows(index = setNames(priorities, 
               paste0(&quot;$\\&quot;, names(priorities), &quot;$&quot;))
              )</code></pre>
