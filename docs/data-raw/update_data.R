@@ -5,12 +5,32 @@ library(tidyverse)
 
 measures <- gs_key("1hv7pkBGu8XQQOIBbBt1_1LvKGBR7zTdQYCzogrv3hz0")
 
-instantiate <- measures %>% 
-  gs_read("instantiate") 
+get_measures <- function(worksheet) {
+  gs_read(measures, worksheet) 
+}
+
+get_quaver <- function(text) {
+  str_replace_all(text, "quaver", "\U1D160")
+}
+
+get_quavers <- function(text) {
+  str_replace_all(text, "quaver", "\1F39D")
+}
+
+lifeswork_text <- function(text) {
+  get_quaver(text) %>% 
+    get_quavers()
+}
+
+instantiate <-  
+  get_measures("instantiate") 
 
 write_rds(instantiate, "data/instantiate.rds")
 
-tasks <- measures %>% gs_read("daily_tasks") %>% 
+tasks <-  
+  get_measures("daily_tasks") %>% 
+  mutate(description = map_chr(description, lifeswork_text),
+         task = map_chr(task, lifeswork_text)) %>% 
   mutate(
     p = priority,
     p = fct_relevel(p, "star", "sim", "varnothing"),
@@ -18,12 +38,12 @@ tasks <- measures %>% gs_read("daily_tasks") %>%
     c = fct_relevel(c, "theta", "psi", "pi"),
     priority = paste0("$\\", priority, "$"),
     category = paste0("$\\", category, "$")) %>% 
-  arrange(c,p)
+  arrange(c,p) 
   
 
 write_rds(tasks, "data/tasks.rds")
 
-review <- measures %>% gs_read("review")
+review <-  get_measures("review")
 
 write_rds(review, "data/review.rds")
 
