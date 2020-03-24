@@ -27,6 +27,7 @@ context_kb <- keybindings %>% pluck("context") %>% table()
 
 
 keybindings %>%
+  arrange(context) %>% 
   kable() %>% 
   kable_styling() %>% 
   group_rows(index = setNames(context_kb,
@@ -43,6 +44,7 @@ context_com <- commands %>% pluck("context") %>% table()
 
 
 commands %>%
+  arrange(context) %>% 
   kable() %>% 
   kable_styling() %>% 
   group_rows(index = setNames(context_com,

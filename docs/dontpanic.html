@@ -24,8 +24,8 @@
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2020-03-23"/>
-  <meta property="article:created" itemprop="dateCreated" content="2020-03-23"/>
+  <meta property="article:published" itemprop="datePublished" content="2020-03-25"/>
+  <meta property="article:created" itemprop="dateCreated" content="2020-03-25"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="lifeswork: dontpanic"/>
@@ -41,7 +41,7 @@
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["dontpanic"]},{"type":"character","attributes":{},"value":["2020-03-23"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["dontpanic"]},{"type":"character","attributes":{},"value":["2020-03-25"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -1274,7 +1274,7 @@
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"dontpanic","authors":[],"publishedDate":"2020-03-23T00:00:00.000+11:00"}
+{"title":"dontpanic","authors":[],"publishedDate":"2020-03-25T00:00:00.000+11:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1329,6 +1329,7 @@ context_kb &lt;- keybindings %&gt;% pluck(&quot;context&quot;) %&gt;% table()
 
 
 keybindings %&gt;%
+  arrange(context) %&gt;% 
   kable() %&gt;% 
   kable_styling() %&gt;% 
   group_rows(index = setNames(context_kb,
@@ -1355,92 +1356,6 @@ why is awesome
 </tr>
 <tr>
 <td style="text-align:left; padding-left: 2em;" indentlevel="1">
-toggl
-</td>
-<td style="text-align:left;">
-ctl + [
-</td>
-<td style="text-align:left;">
-start/stop timer
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-rstudio
-</td>
-<td style="text-align:left;">
-ctl + alt + enter
-</td>
-<td style="text-align:left;">
-send code to terminal
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-rstudio
-</td>
-<td style="text-align:left;">
-shift + alt + c
-</td>
-<td style="text-align:left;">
-zotero extension
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>bash</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-gsheet
-</td>
-<td style="text-align:left;">
-alt + enter
-</td>
-<td style="text-align:left;">
-new line in a cell
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>ff</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-ff
-</td>
-<td style="text-align:left;">
-ctl + k
-</td>
-<td style="text-align:left;">
-focus search bar
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>gmail</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-ctl + shift + t
-</td>
-<td style="text-align:left;">
-new terminal tab
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>gsheet</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
 atom
 </td>
 <td style="text-align:left;">
@@ -1448,11 +1363,6 @@ ctl + shift + p
 </td>
 <td style="text-align:left;">
 keybindings
-</td>
-</tr>
-<tr grouplength="2">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>rstudio</strong>
 </td>
 </tr>
 <tr>
@@ -1479,7 +1389,39 @@ settings
 </tr>
 <tr grouplength="1">
 <td colspan="3" style="border-bottom: 1px solid;">
-<strong>toggl</strong>
+<strong>bash</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+bash
+</td>
+<td style="text-align:left;">
+ctl + shift + t
+</td>
+<td style="text-align:left;">
+new terminal tab
+</td>
+</tr>
+<tr grouplength="1">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>ff</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+ff
+</td>
+<td style="text-align:left;">
+ctl + k
+</td>
+<td style="text-align:left;">
+focus search bar
+</td>
+</tr>
+<tr grouplength="1">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>gmail</strong>
 </td>
 </tr>
 <tr>
@@ -1493,6 +1435,65 @@ gmail
 focus search bar
 </td>
 </tr>
+<tr grouplength="1">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>gsheet</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+gsheet
+</td>
+<td style="text-align:left;">
+alt + enter
+</td>
+<td style="text-align:left;">
+new line in a cell
+</td>
+</tr>
+<tr grouplength="2">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>rstudio</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+rstudio
+</td>
+<td style="text-align:left;">
+ctl + alt + enter
+</td>
+<td style="text-align:left;">
+send code to terminal
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+rstudio
+</td>
+<td style="text-align:left;">
+shift + alt + c
+</td>
+<td style="text-align:left;">
+zotero extension
+</td>
+</tr>
+<tr grouplength="1">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>toggl</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+toggl
+</td>
+<td style="text-align:left;">
+ctl + [
+</td>
+<td style="text-align:left;">
+start/stop timer
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1504,6 +1505,7 @@ context_com &lt;- commands %&gt;% pluck(&quot;context&quot;) %&gt;% table()
 
 
 commands %&gt;%
+  arrange(context) %&gt;% 
   kable() %&gt;% 
   kable_styling() %&gt;% 
   group_rows(index = setNames(context_com,
