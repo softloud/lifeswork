@@ -1,7 +1,7 @@
 ---
 title: "writeflow"
 description: |
-  Working for writing across the manuscript.
+  Workflow for writing across the manuscript.
 author:
   - name: Charles T. Gray 
     url: https://softloud.github.io/onetimetrophybitch/about.html
@@ -30,7 +30,7 @@ map_na <- function(vector_text) {
 
 tracker <- read_rds("data/writing_tracker.rds")
 
-tracker[2:8] <- tracker[2:8] %>% 
+tracker[2:ncol(tracker)] <- tracker[2:ncol(tracker)] %>% 
   as.list() %>% 
   map(map_na) %>% 
   as.data.frame()
@@ -46,7 +46,7 @@ Count completed sections, and estimate how much of the manuscript has been compl
 
 Set **n = 3**.
 
-1. Randomly select **n** sections from those with the least number of dots in their corresponding row in the writing tracker. 
+1. Randomly select three manuscripts. Randomly select **n** sections (for each manuscript) from those with the least number of dots in their corresponding row in the writing tracker. 
 
 ```{r}
 # for example
@@ -65,7 +65,7 @@ tracker %>%
 
 4. Cross action as complete when completed, or if the pomodoro runs out. Consider adding subsections to tracker if action incomplete.
 
-5. If **goal** is not met, set **n = goal - number of poms completed**.  If **goal** is met, stop and switch to next manuscript. If third manuscript, only continue for fun. 
+5. If **goal** is not met for manuscript, set **n = goal - number of poms completed** for this manuscript.  If **goal** is met, stop and switch to next manuscript. If third manuscript, only continue for fun. 
 
 # Instantiate writing tracker table {#instantiate} 
 
