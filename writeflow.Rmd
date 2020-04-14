@@ -1,0 +1,83 @@
+---
+title: "writeflow"
+description: |
+  Working for writing across the manuscript.
+author:
+  - name: Charles T. Gray 
+    url: https://softloud.github.io/onetimetrophybitch/about.html
+date: "updated: `r Sys.Date()`"
+output: 
+  distill::distill_article:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+# packages used 
+library(tidyverse)
+library(kableExtra)
+
+replace_na <- function(text) {
+  if_else(is.na(text), "", text)
+}
+
+map_na <- function(vector_text) {
+  map_chr(as.character(vector_text), replace_na)
+}
+
+tracker <- read_rds("data/writing_tracker.rds")
+
+tracker[2:8] <- tracker[2:8] %>% 
+  as.list() %>% 
+  map(map_na) %>% 
+  as.data.frame()
+
+```
+
+
+# Advance three dots each day, for up to three manuscripts
+
+[Instantiate](#instantiate), at the beginning, thereafter turn to writing tracker. 
+
+Count completed sections, and estimate how much of the manuscript has been completed. Add three to that and set this as the **goal** for the day. 
+
+Set **n = 3**.
+
+1. Randomly select **n** sections from those with the least number of dots in their corresponding row in the writing tracker. 
+
+```{r}
+# for example
+tracker %>% 
+  mutate(heading = rep("x", 3),
+         sentence = c("x", "", "x"),
+         paragraph = c("x", "", "")) %>% 
+  kable() 
+
+```
+
+
+2. Write as separate tasks in bullet journal. 
+
+3. Actioning one of these means attempting to complete one dot: heading, sentence, paragraph, etc. 
+
+4. Cross action as complete when completed, or if the pomodoro runs out. Consider adding subsections to tracker if action incomplete.
+
+5. If **goal** is not met, set **n = goal - number of poms completed**.  If **goal** is met, stop and switch to next manuscript. If third manuscript, only continue for fun. 
+
+# Instantiate writing tracker table {#instantiate} 
+
+Set three sections before beginning, as any piece of scientific writing  will have an introduction, motivating content, content section, doing the science, and conclusion of content's findings. 
+
+```{r}
+
+tracker %>% 
+  kable() 
+
+```
+
+
+
+

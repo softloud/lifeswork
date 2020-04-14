@@ -19,29 +19,33 @@
  <!--/radix_placeholder_import_source-->
 
   <!--radix_placeholder_meta_tags-->
-  <title>lifeswork: dontpanic</title>
+  <title>lifeswork: writeflow</title>
 
+  <meta property="description" itemprop="description" content="Working for writing across the manuscript."/>
 
 
   <!--  https://schema.org/Article -->
   <meta property="article:published" itemprop="datePublished" content="2020-04-14"/>
   <meta property="article:created" itemprop="dateCreated" content="2020-04-14"/>
+  <meta name="article:author" content="Charles T. Gray"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="lifeswork: dontpanic"/>
+  <meta property="og:title" content="lifeswork: writeflow"/>
   <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Working for writing across the manuscript."/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="lifeswork"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="lifeswork: dontpanic"/>
+  <meta property="twitter:title" content="lifeswork: writeflow"/>
+  <meta property="twitter:description" content="Working for writing across the manuscript."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["dontpanic"]},{"type":"character","attributes":{},"value":["2020-04-14"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["writeflow"]},{"type":"character","attributes":{},"value":["Working for writing across the manuscript.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Charles T. Gray"]},{"type":"character","attributes":{},"value":["https://softloud.github.io/onetimetrophybitch/about.html"]}]}]},{"type":"character","attributes":{},"value":["updated: 2020-04-14"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["code_folding"]}},"value":[{"type":"character","attributes":{},"value":["hide"]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -1258,7 +1262,6 @@
 
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.1/header-attrs.js"></script>
-  <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
   <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
   <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
@@ -1274,7 +1277,7 @@
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"dontpanic","authors":[],"publishedDate":"2020-04-14T00:00:00.000+10:00"}
+{"title":"writeflow","description":"Working for writing across the manuscript.","authors":[{"author":"Charles T. Gray","authorURL":"https://softloud.github.io/onetimetrophybitch/about.html","affiliation":"&nbsp;","affiliationURL":"#"}],"publishedDate":"2020-04-14T00:00:00.000+10:00","citationText":"Gray, 2020"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1300,480 +1303,218 @@
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>dontpanic</h1>
-
+<h1>writeflow</h1>
+<p><p>Working for writing across the manuscript.</p></p>
 </div>
 
+<div class="d-byline">
+  Charles T. Gray <a href="https://softloud.github.io/onetimetrophybitch/about.html" class="uri">https://softloud.github.io/onetimetrophybitch/about.html</a> 
+  
+<br/>updated: 2020-04-14
+</div>
 
 <div class="d-article">
-<h3 class="d-toc-header">Table of Contents</h3>
-<nav class="d-toc" id="TOC">
-<ul>
-<li><a href="#keybindings">keybindings</a></li>
-<li><a href="#commands">commands</a></li>
-</ul>
-</nav>
-<hr class="d-toc-separator"/>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-library(tidyverse)
-library(kableExtra)
 
-keybindings &lt;- read_rds(&quot;data/keybindings.rds&quot;)
-commands &lt;- read_rds(&quot;data/commands.rds&quot;)</code></pre>
 </div>
-<h1 id="keybindings">keybindings</h1>
+<h1 id="advance-three-dots-each-day-for-up-to-three-manuscripts">Advance three dots each day, for up to three manuscripts</h1>
+<p><a href="#instantiate">Instantiate</a>, at the beginning, thereafter turn to writing tracker.</p>
+<p>Count completed sections, and estimate how much of the manuscript has been completed. Add three to that and set this as the <strong>goal</strong> for the day.</p>
+<p>Set <strong>n = 3</strong>.</p>
+<ol type="1">
+<li>Randomly select <strong>n</strong> sections from those with the least number of dots in their corresponding row in the writing tracker.</li>
+</ol>
 <div class="layout-chunk" data-layout="l-body">
-
-<pre class="r"><code>
-context_kb &lt;- keybindings %&gt;% pluck(&quot;context&quot;) %&gt;% table()
-
-
-keybindings %&gt;%
-  arrange(context) %&gt;% 
-  kable() %&gt;% 
-  kable_styling() %&gt;% 
-  group_rows(index = setNames(context_kb,
-                              names(context_kb)))</code></pre>
-<table class="table" style="margin-left: auto; margin-right: auto;">
+<table>
 <thead>
 <tr>
-<th style="text-align:left;">
-context
+<th style="text-align:right;">
+section
 </th>
 <th style="text-align:left;">
-keybinding
+heading
 </th>
 <th style="text-align:left;">
-why is awesome
+sentence
+</th>
+<th style="text-align:left;">
+paragraph
+</th>
+<th style="text-align:left;">
+read_aloud
+</th>
+<th style="text-align:left;">
+read_aloud_1
+</th>
+<th style="text-align:left;">
+read_aloud_2
+</th>
+<th style="text-align:left;">
+read_aloud_3
 </th>
 </tr>
 </thead>
 <tbody>
-<tr grouplength="3">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>atom</strong>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+x
+</td>
+<td style="text-align:left;">
+x
+</td>
+<td style="text-align:left;">
+x
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-atom
+<td style="text-align:right;">
+2
 </td>
 <td style="text-align:left;">
-ctl + shift + p
+x
 </td>
 <td style="text-align:left;">
-keybindings
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-atom
+<td style="text-align:right;">
+3
 </td>
 <td style="text-align:left;">
-ctl + alt + p
+x
 </td>
 <td style="text-align:left;">
-zotero extension
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-atom
+x
 </td>
 <td style="text-align:left;">
-ctl + ,
 </td>
 <td style="text-align:left;">
-settings
-</td>
-</tr>
-<tr grouplength="15">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>bash</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
 </td>
 <td style="text-align:left;">
-ctl + shift + t
 </td>
 <td style="text-align:left;">
-new terminal tab
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
 </td>
 <td style="text-align:left;">
-touch file.txt
-</td>
-<td style="text-align:left;">
-creates an empty text file
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-<ul>
-<li>or ?
-</td>
-<td style="text-align:left;">
-<ul>
-<li>for many wildcard; ?? for 2-letter wildcard
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-wc
-</td>
-<td style="text-align:left;">
-counts lines, words, characters in a file
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-cat
-</td>
-<td style="text-align:left;">
-will print a file; or one file after another if given multiple files
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-less
-</td>
-<td style="text-align:left;">
-shows a screenful and stops; go one screen forward with spacebar and back with b, q to exit
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-sort
-</td>
-<td style="text-align:left;">
-sorts alphabetically; -n to sort numerically
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-&gt;
-</td>
-<td style="text-align:left;">
-sends to; i.e., can print to a file. differs from &gt;&gt; in that overwrites
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-head/tail
-</td>
-<td style="text-align:left;">
-prints start/tail of file
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-echo
-</td>
-<td style="text-align:left;">
-the echo command prints text
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-&gt;&gt;
-</td>
-<td style="text-align:left;">
-appends; rather than overwrites as &gt; does
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-|
-</td>
-<td style="text-align:left;">
-pipe sends left of | to command on right
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-cut
-</td>
-<td style="text-align:left;">
-removes sections of each line in a file; cut expects lines to be tab separator. -d option to specify delimiter -f to select a field (column)
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-uniq
-</td>
-<td style="text-align:left;">
-filters adjacent matching lines in a file; use -c for count
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-for thing in list_of_things do operation_using $thing # Indentation within the loop is not required, but aids legibility done
-</td>
-<td style="text-align:left;">
-for loop; can be written line by line in console
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>ff</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-ff
-</td>
-<td style="text-align:left;">
-ctl + k
-</td>
-<td style="text-align:left;">
-focus search bar
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>gmail</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-gmail
-</td>
-<td style="text-align:left;">
-,
-</td>
-<td style="text-align:left;">
-focus search bar
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>gsheet</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-gsheet
-</td>
-<td style="text-align:left;">
-alt + enter
-</td>
-<td style="text-align:left;">
-new line in a cell
-</td>
-</tr>
-<tr grouplength="2">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>rstudio</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-rstudio
-</td>
-<td style="text-align:left;">
-ctl + alt + enter
-</td>
-<td style="text-align:left;">
-send code to terminal
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-rstudio
-</td>
-<td style="text-align:left;">
-shift + alt + c
-</td>
-<td style="text-align:left;">
-zotero extension
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>toggl</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-toggl
-</td>
-<td style="text-align:left;">
-ctl + [
-</td>
-<td style="text-align:left;">
-start/stop timer
 </td>
 </tr>
 </tbody>
-</table></li>
-</ul></li>
-</ul>
+</table>
 </div>
-<h1 id="commands">commands</h1>
+<ol start="2" type="1">
+<li><p>Write as separate tasks in bullet journal.</p></li>
+<li><p>Actioning one of these means attempting to complete one dot: heading, sentence, paragraph, etc.</p></li>
+<li><p>Cross action as complete when completed, or if the pomodoro runs out. Consider adding subsections to tracker if action incomplete.</p></li>
+<li><p>If <strong>goal</strong> is not met, set <strong>n = goal - number of poms completed</strong>. If <strong>goal</strong> is met, stop and switch to next manuscript. If third manuscript, only continue for fun.</p></li>
+</ol>
+<h1 id="instantiate">Instantiate writing tracker table</h1>
+<p>Set three sections before beginning, as any piece of scientific writing will have an introduction, motivating content, content section, doing the science, and conclusion of content’s findings.</p>
 <div class="layout-chunk" data-layout="l-body">
-
-<pre class="r"><code>
-context_com &lt;- commands %&gt;% pluck(&quot;context&quot;) %&gt;% table()
-
-
-commands %&gt;%
-  arrange(context) %&gt;% 
-  kable() %&gt;% 
-  kable_styling() %&gt;% 
-  group_rows(index = setNames(context_com,
-                              names(context_com)))</code></pre>
-<table class="table" style="margin-left: auto; margin-right: auto;">
+<table>
 <thead>
 <tr>
-<th style="text-align:left;">
-context
+<th style="text-align:right;">
+section
 </th>
 <th style="text-align:left;">
-command
+heading
 </th>
 <th style="text-align:left;">
-description
+sentence
+</th>
+<th style="text-align:left;">
+paragraph
+</th>
+<th style="text-align:left;">
+read_aloud
+</th>
+<th style="text-align:left;">
+read_aloud_1
+</th>
+<th style="text-align:left;">
+read_aloud_2
+</th>
+<th style="text-align:left;">
+read_aloud_3
 </th>
 </tr>
 </thead>
 <tbody>
-<tr grouplength="4">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>bash</strong>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
+<td style="text-align:right;">
+2
 </td>
 <td style="text-align:left;">
-tlmgr install &lt;tex-pkg&gt;
 </td>
 <td style="text-align:left;">
-install tex pkg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
+<td style="text-align:right;">
+3
 </td>
 <td style="text-align:left;">
-rstudio project.Rproj
 </td>
 <td style="text-align:left;">
-open rstudio project
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
 </td>
 <td style="text-align:left;">
-mimeopen path/to/png.png
 </td>
 <td style="text-align:left;">
-open png
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
 </td>
 <td style="text-align:left;">
-evince path/to/pdf.pdf
 </td>
 <td style="text-align:left;">
-open pdf
-</td>
-</tr>
-<tr grouplength="2">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>rstudio</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-rstudio
 </td>
 <td style="text-align:left;">
-vignette(“rd”)
-</td>
-<td style="text-align:left;">
-roxygen syntax
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-rstudio
-</td>
-<td style="text-align:left;">
-testthat::test_file(“path”)
-</td>
-<td style="text-align:left;">
-run tests in explicit file
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>yaml</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-yaml
-</td>
-<td style="text-align:left;">
-output: tufte::tufte_html:
-</td>
-<td style="text-align:left;">
-from tufte::
 </td>
 </tr>
 </tbody>

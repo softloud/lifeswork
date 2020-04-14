@@ -11,6 +11,8 @@ navbar:
       href: review.html
     - text: "dontpanic"
       href: dontpanic.html
+    - text: "writeflow"
+      href: writeflow.html
     - text: "tasks"
       href: tasks.html
     - text: "about"
