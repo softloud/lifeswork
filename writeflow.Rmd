@@ -33,12 +33,18 @@ tracker <- read_rds("data/writing_tracker.rds")
 tracker[2:ncol(tracker)] <- tracker[2:ncol(tracker)] %>% 
   as.list() %>% 
   map(map_na) %>% 
-  as.data.frame()
+  as_tibble()
+
+headings <- names(tracker) %>% 
+  as.character()
+
+names(tracker) <- 
+  names(tracker) %>% str_sub(1, 4)
 
 ```
 
 
-# Advance three dots each day, for up to three manuscripts
+# Three dots for three manuscripts
 
 [Instantiate](#instantiate), at the beginning, thereafter turn to writing tracker. 
 
@@ -51,9 +57,9 @@ Set **n = 3**.
 ```{r}
 # for example
 tracker %>% 
-  mutate(heading = rep("x", 3),
-         sentence = c("x", "", "x"),
-         paragraph = c("x", "", "")) %>% 
+  mutate(# head = rep("x", 3),
+         # sent = c("x", "", "x"),
+         para = c("x", "", "")) %>% 
   kable() 
 
 ```
