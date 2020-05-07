@@ -1388,7 +1388,7 @@ ctl + ,
 settings
 </td>
 </tr>
-<tr grouplength="15">
+<tr grouplength="1">
 <td colspan="3" style="border-bottom: 1px solid;">
 <strong>bash</strong>
 </td>
@@ -1402,6 +1402,177 @@ ctl + shift + t
 </td>
 <td style="text-align:left;">
 new terminal tab
+</td>
+</tr>
+<tr grouplength="1">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>ff</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+ff
+</td>
+<td style="text-align:left;">
+ctl + k
+</td>
+<td style="text-align:left;">
+focus search bar
+</td>
+</tr>
+<tr grouplength="1">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>gmail</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+gmail
+</td>
+<td style="text-align:left;">
+,
+</td>
+<td style="text-align:left;">
+focus search bar
+</td>
+</tr>
+<tr grouplength="1">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>gsheet</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+gsheet
+</td>
+<td style="text-align:left;">
+alt + enter
+</td>
+<td style="text-align:left;">
+new line in a cell
+</td>
+</tr>
+<tr grouplength="2">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>rstudio</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+rstudio
+</td>
+<td style="text-align:left;">
+ctl + alt + enter
+</td>
+<td style="text-align:left;">
+send code to terminal
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+rstudio
+</td>
+<td style="text-align:left;">
+shift + alt + c
+</td>
+<td style="text-align:left;">
+zotero extension
+</td>
+</tr>
+<tr grouplength="1">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>toggl</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+toggl
+</td>
+<td style="text-align:left;">
+ctl + [
+</td>
+<td style="text-align:left;">
+start/stop timer
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="commands">commands</h1>
+<div class="layout-chunk" data-layout="l-body">
+
+<pre class="r"><code>
+context_com &lt;- commands %&gt;% pluck(&quot;context&quot;) %&gt;% table()
+
+
+commands %&gt;%
+  arrange(context) %&gt;% 
+  kable() %&gt;% 
+  kable_styling() %&gt;% 
+  group_rows(index = setNames(context_com,
+                              names(context_com)))</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+context
+</th>
+<th style="text-align:left;">
+command
+</th>
+<th style="text-align:left;">
+description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr grouplength="18">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong>bash</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+bash
+</td>
+<td style="text-align:left;">
+tlmgr install &lt;tex-pkg&gt;
+</td>
+<td style="text-align:left;">
+install tex pkg
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+bash
+</td>
+<td style="text-align:left;">
+rstudio project.Rproj
+</td>
+<td style="text-align:left;">
+open rstudio project
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+bash
+</td>
+<td style="text-align:left;">
+mimeopen path/to/png.png
+</td>
+<td style="text-align:left;">
+open png
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+bash
+</td>
+<td style="text-align:left;">
+evince path/to/pdf.pdf
+</td>
+<td style="text-align:left;">
+open pdf
 </td>
 </tr>
 <tr>
@@ -1560,179 +1731,6 @@ for thing in list_of_things do operation_using $thing # Indentation within the l
 for loop; can be written line by line in console
 </td>
 </tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>ff</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-ff
-</td>
-<td style="text-align:left;">
-ctl + k
-</td>
-<td style="text-align:left;">
-focus search bar
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>gmail</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-gmail
-</td>
-<td style="text-align:left;">
-,
-</td>
-<td style="text-align:left;">
-focus search bar
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>gsheet</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-gsheet
-</td>
-<td style="text-align:left;">
-alt + enter
-</td>
-<td style="text-align:left;">
-new line in a cell
-</td>
-</tr>
-<tr grouplength="2">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>rstudio</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-rstudio
-</td>
-<td style="text-align:left;">
-ctl + alt + enter
-</td>
-<td style="text-align:left;">
-send code to terminal
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-rstudio
-</td>
-<td style="text-align:left;">
-shift + alt + c
-</td>
-<td style="text-align:left;">
-zotero extension
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>toggl</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-toggl
-</td>
-<td style="text-align:left;">
-ctl + [
-</td>
-<td style="text-align:left;">
-start/stop timer
-</td>
-</tr>
-</tbody>
-</table></li>
-</ul></li>
-</ul>
-</div>
-<h1 id="commands">commands</h1>
-<div class="layout-chunk" data-layout="l-body">
-
-<pre class="r"><code>
-context_com &lt;- commands %&gt;% pluck(&quot;context&quot;) %&gt;% table()
-
-
-commands %&gt;%
-  arrange(context) %&gt;% 
-  kable() %&gt;% 
-  kable_styling() %&gt;% 
-  group_rows(index = setNames(context_com,
-                              names(context_com)))</code></pre>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-context
-</th>
-<th style="text-align:left;">
-command
-</th>
-<th style="text-align:left;">
-description
-</th>
-</tr>
-</thead>
-<tbody>
-<tr grouplength="4">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>bash</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-tlmgr install &lt;tex-pkg&gt;
-</td>
-<td style="text-align:left;">
-install tex pkg
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-rstudio project.Rproj
-</td>
-<td style="text-align:left;">
-open rstudio project
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-mimeopen path/to/png.png
-</td>
-<td style="text-align:left;">
-open png
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-evince path/to/pdf.pdf
-</td>
-<td style="text-align:left;">
-open pdf
-</td>
-</tr>
 <tr grouplength="2">
 <td colspan="3" style="border-bottom: 1px solid;">
 <strong>rstudio</strong>
@@ -1777,7 +1775,9 @@ from tufte::
 </td>
 </tr>
 </tbody>
-</table>
+</table></li>
+</ul></li>
+</ul>
 </div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
