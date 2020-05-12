@@ -18,12 +18,12 @@ get_quaver <- function(text) {
 }
 
 get_quavers <- function(text) {
-  str_replace_all(text, "quaver", "\1F39D")
+  str_replace_all(text, "quavers", "\U266B")
 }
 
 lifeswork_text <- function(text) {
-  get_quaver(text) %>% 
-    get_quavers()
+  get_quavers(text) %>% 
+    get_quaver()
 }
 
 instantiate <-  
