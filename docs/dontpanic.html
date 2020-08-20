@@ -24,8 +24,8 @@
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2020-07-31"/>
-  <meta property="article:created" itemprop="dateCreated" content="2020-07-31"/>
+  <meta property="article:published" itemprop="datePublished" content="2020-08-20"/>
+  <meta property="article:created" itemprop="dateCreated" content="2020-08-20"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="lifeswork: dontpanic"/>
@@ -41,7 +41,7 @@
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["dontpanic"]},{"type":"character","attributes":{},"value":["2020-07-31"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["dontpanic"]},{"type":"character","attributes":{},"value":["2020-08-20"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -1284,7 +1284,7 @@
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"dontpanic","authors":[],"publishedDate":"2020-07-31T00:00:00.000+10:00"}
+{"title":"dontpanic","authors":[],"publishedDate":"2020-08-20T00:00:00.000+10:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1752,7 +1752,7 @@ replace a string in all files from -i recursively
 <code>find . -type f -exec sed -i 's/oldtext/newtext/g' {} +</code>
 </td>
 </tr>
-<tr grouplength="1">
+<tr grouplength="2">
 <td colspan="3" style="border-bottom: 1px solid;">
 <strong>R</strong>
 </td>
@@ -1766,6 +1766,17 @@ Sys.getenv
 </td>
 <td style="text-align:left;">
 For using environment variabes, usethis::edit_r_environ to modify environment variables
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+R
+</td>
+<td style="text-align:left;">
+sprintf
+</td>
+<td style="text-align:left;">
+thing &lt;- “dog” colour &lt;- “red” other_thing &lt;- “cat” sprintf(“Here is a sentence about a %s %s chasing a %s”, colour, thing, other_thing)
 </td>
 </tr>
 <tr grouplength="2">
