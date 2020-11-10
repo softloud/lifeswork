@@ -1412,6 +1412,7 @@ tasks &lt;- read_rds(&quot;data/tasks.rds&quot;)
 
 tasks %&gt;% 
   filter(p == &quot;star&quot;) %&gt;% 
+  arrange(c, p) %&gt;% 
   select(-c, -p) %&gt;% 
   kable() %&gt;% 
   kable_styling()</code></pre>
@@ -1433,146 +1434,6 @@ description
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-calendar
-</td>
-<td style="text-align:left;">
-check day, week, month; note events of the day; upcoming deadlines; migrate stuff for today to 𝅘𝅥𝅮, ♫. book yoga
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-thread view
-</td>
-<td style="text-align:left;">
-day view
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-thread log
-</td>
-<td style="text-align:left;">
-𝅘𝅥𝅮; split into separate category tasks if more than one page
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-what is on fire?
-</td>
-<td style="text-align:left;">
-task or project must be due today and someone else will get stuffed around if I don’t do it
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-needs action
-</td>
-<td style="text-align:left;">
-migrate needs action bujo daily to inbox: <code>label:email-sanity-needs-action and -label:email-sanity-bujo-monthly</code> &amp; remove daily bujo labels
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-stuff
-</td>
-<td style="text-align:left;">
-process papers, notes, unpack bags, etc.
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-email inbox
-</td>
-<td style="text-align:left;">
-archive or assign to 𝅘𝅥𝅮 or ♫ and move to needs action
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-pom goals
-</td>
-<td style="text-align:left;">
-set pom goals for day: 4 in each category, subtract meetings.
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-clue
-</td>
-<td style="text-align:left;">
-track
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-meals
-</td>
-<td style="text-align:left;">
-update to one week ahead meals and check pantry
-</td>
-</tr>
 <tr>
 <td style="text-align:left;">
 <span class="math inline">\(\star\)</span>
@@ -1739,6 +1600,146 @@ coffee
 </td>
 <td style="text-align:left;">
 make coffee
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\star\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\psi\)</span>
+</td>
+<td style="text-align:left;">
+calendar
+</td>
+<td style="text-align:left;">
+check day, week, month; note events of the day; upcoming deadlines; migrate stuff for today to 𝅘𝅥𝅮, ♫. book yoga
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\star\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\psi\)</span>
+</td>
+<td style="text-align:left;">
+thread view
+</td>
+<td style="text-align:left;">
+day view
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\star\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\psi\)</span>
+</td>
+<td style="text-align:left;">
+thread log
+</td>
+<td style="text-align:left;">
+𝅘𝅥𝅮; split into separate category tasks if more than one page
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\star\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\psi\)</span>
+</td>
+<td style="text-align:left;">
+what is on fire?
+</td>
+<td style="text-align:left;">
+task or project must be due today and someone else will get stuffed around if I don’t do it
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\star\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\psi\)</span>
+</td>
+<td style="text-align:left;">
+needs action
+</td>
+<td style="text-align:left;">
+migrate needs action bujo daily to inbox: <code>label:email-sanity-needs-action and -label:email-sanity-bujo-monthly</code> &amp; remove daily bujo labels
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\star\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\psi\)</span>
+</td>
+<td style="text-align:left;">
+stuff
+</td>
+<td style="text-align:left;">
+process papers, notes, unpack bags, etc.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\star\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\psi\)</span>
+</td>
+<td style="text-align:left;">
+email inbox
+</td>
+<td style="text-align:left;">
+archive or assign to 𝅘𝅥𝅮 or ♫ and move to needs action
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\star\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\psi\)</span>
+</td>
+<td style="text-align:left;">
+pom goals
+</td>
+<td style="text-align:left;">
+set pom goals for day: 4 in each category, subtract meetings.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\star\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\psi\)</span>
+</td>
+<td style="text-align:left;">
+clue
+</td>
+<td style="text-align:left;">
+track
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\star\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\psi\)</span>
+</td>
+<td style="text-align:left;">
+meals
+</td>
+<td style="text-align:left;">
+update to one week ahead meals and check pantry
 </td>
 </tr>
 </tbody>

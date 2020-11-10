@@ -36,6 +36,7 @@ tasks <- read_rds("data/tasks.rds")
 
 tasks %>% 
   filter(p == "star") %>% 
+  arrange(c, p) %>% 
   select(-c, -p) %>% 
   kable() %>% 
   kable_styling()

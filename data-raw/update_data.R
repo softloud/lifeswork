@@ -39,7 +39,7 @@ tasks <-
     p = priority,
     p = fct_relevel(p, "star", "sim", "varnothing"),
     c = category,
-    c = fct_relevel(c, "theta", "psi", "pi"),
+    c = fct_relevel(c, "phi", "pi", "theta", "psi", ),
     priority = paste0("$\\", priority, "$"),
     category = paste0("$\\", category, "$")) %>% 
   arrange(c,p) 
