@@ -21,6 +21,15 @@ instantiate <- read_rds("data/instantiate.rds")
 
 ```
 
+## progress
+
+```{r fig.height=6}
+library(pandan)
+pandan_view()
+```
+
+## instantiate
+
 ```{r}
 
 instantiate %>% 
