@@ -90,8 +90,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-03-08"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-03-08"/>
+  <meta property="article:published" itemprop="datePublished" content="2021-03-10"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-03-10"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="lifeswork: dontpanic"/>
@@ -107,7 +107,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["dontpanic"]},{"type":"character","attributes":{},"value":["2021-03-08"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["dontpanic"]},{"type":"character","attributes":{},"value":["2021-03-10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2054,7 +2054,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"dontpanic","authors":[],"publishedDate":"2021-03-08T00:00:00.000+00:00"}
+{"title":"dontpanic","authors":[],"publishedDate":"2021-03-10T00:00:00.000+00:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2310,11 +2310,14 @@ command
 <th style="text-align:left;">
 description
 </th>
+<th style="text-align:left;">
+source
+</th>
 </tr>
 </thead>
 <tbody>
 <tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
+<td colspan="4" style="border-bottom: 1px solid;">
 <strong>.Rmd</strong>
 </td>
 </tr>
@@ -2328,9 +2331,12 @@ opts_chunk$set(cache.exta = 1)
 <td style="text-align:left;">
 refresh cache
 </td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
-<tr grouplength="22">
-<td colspan="3" style="border-bottom: 1px solid;">
+<tr grouplength="23">
+<td colspan="4" style="border-bottom: 1px solid;">
 <strong>bash</strong>
 </td>
 </tr>
@@ -2344,6 +2350,9 @@ tlmgr install &lt;tex-pkg&gt;
 <td style="text-align:left;">
 install tex pkg
 </td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left:  2em;" indentlevel="1">
@@ -2354,6 +2363,9 @@ rstudio project.Rproj
 </td>
 <td style="text-align:left;">
 open rstudio project
+</td>
+<td style="text-align:left;">
+NA
 </td>
 </tr>
 <tr>
@@ -2366,6 +2378,9 @@ mimeopen path/to/png.png
 <td style="text-align:left;">
 open png
 </td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left:  2em;" indentlevel="1">
@@ -2377,6 +2392,9 @@ evince path/to/pdf.pdf
 <td style="text-align:left;">
 open pdf
 </td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left:  2em;" indentlevel="1">
@@ -2387,6 +2405,9 @@ touch file.txt
 </td>
 <td style="text-align:left;">
 creates an empty text file
+</td>
+<td style="text-align:left;">
+NA
 </td>
 </tr>
 <tr>
@@ -2401,6 +2422,9 @@ bash
 <ul>
 <li>for many wildcard; ?? for 2-letter wildcard
 </td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left:  2em;" indentlevel="1">
@@ -2411,6 +2435,9 @@ wc
 </td>
 <td style="text-align:left;">
 counts lines, words, characters in a file
+</td>
+<td style="text-align:left;">
+NA
 </td>
 </tr>
 <tr>
@@ -2423,6 +2450,9 @@ cat
 <td style="text-align:left;">
 will print a file; or one file after another if given multiple files
 </td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left:  2em;" indentlevel="1">
@@ -2433,6 +2463,9 @@ less
 </td>
 <td style="text-align:left;">
 shows a screenful and stops; go one screen forward with spacebar and back with b, q to exit
+</td>
+<td style="text-align:left;">
+NA
 </td>
 </tr>
 <tr>
@@ -2445,6 +2478,9 @@ sort
 <td style="text-align:left;">
 sorts alphabetically; -n to sort numerically
 </td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left:  2em;" indentlevel="1">
@@ -2455,6 +2491,9 @@ bash
 </td>
 <td style="text-align:left;">
 sends to; i.e., can print to a file. differs from &gt;&gt; in that overwrites
+</td>
+<td style="text-align:left;">
+NA
 </td>
 </tr>
 <tr>
@@ -2467,6 +2506,9 @@ head/tail
 <td style="text-align:left;">
 prints start/tail of file
 </td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left:  2em;" indentlevel="1">
@@ -2477,6 +2519,9 @@ echo
 </td>
 <td style="text-align:left;">
 the echo command prints text
+</td>
+<td style="text-align:left;">
+NA
 </td>
 </tr>
 <tr>
@@ -2489,6 +2534,9 @@ bash
 <td style="text-align:left;">
 appends; rather than overwrites as &gt; does
 </td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left:  2em;" indentlevel="1">
@@ -2499,6 +2547,9 @@ bash
 </td>
 <td style="text-align:left;">
 pipe sends left of | to command on right
+</td>
+<td style="text-align:left;">
+NA
 </td>
 </tr>
 <tr>
@@ -2511,6 +2562,9 @@ cut
 <td style="text-align:left;">
 removes sections of each line in a file; cut expects lines to be tab separator. -d option to specify delimiter -f to select a field (column)
 </td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left:  2em;" indentlevel="1">
@@ -2521,6 +2575,9 @@ uniq
 </td>
 <td style="text-align:left;">
 filters adjacent matching lines in a file; use -c for count
+</td>
+<td style="text-align:left;">
+NA
 </td>
 </tr>
 <tr>
@@ -2533,6 +2590,9 @@ for thing in list_of_things do operation_using $thing # Indentation within the l
 <td style="text-align:left;">
 for loop; can be written line by line in console
 </td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left:  2em;" indentlevel="1">
@@ -2543,6 +2603,9 @@ replace a string in all files from -i recursively
 </td>
 <td style="text-align:left;">
 <code>find . -type f -exec sed -i 's/oldtext/newtext/g' {} +</code>
+</td>
+<td style="text-align:left;">
+NA
 </td>
 </tr>
 <tr>
@@ -2555,6 +2618,9 @@ bash
 <td style="text-align:left;">
 To check whether a package is installed or not
 </td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left:  2em;" indentlevel="1">
@@ -2565,6 +2631,9 @@ cal or ncal
 </td>
 <td style="text-align:left;">
 print month horizontally or vertically
+</td>
+<td style="text-align:left;">
+NA
 </td>
 </tr>
 <tr>
@@ -2577,9 +2646,26 @@ rename
 <td style="text-align:left;">
 rename from to (install rename from apt)
 </td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+bash
+</td>
+<td style="text-align:left;">
+o count the number of lines: -l wc -l myfile.sh. To count the number of words: -w wc -w myfile.sh
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
 <tr grouplength="2">
-<td colspan="3" style="border-bottom: 1px solid;">
+<td colspan="4" style="border-bottom: 1px solid;">
 <strong>R</strong>
 </td>
 </tr>
@@ -2593,6 +2679,9 @@ Sys.getenv
 <td style="text-align:left;">
 For using environment variabes, usethis::edit_r_environ to modify environment variables
 </td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left:  2em;" indentlevel="1">
@@ -2604,9 +2693,12 @@ sprintf
 <td style="text-align:left;">
 thing &lt;- “dog” colour &lt;- “red” other_thing &lt;- “cat” sprintf(“Here is a sentence about a %s %s chasing a %s”, colour, thing, other_thing)
 </td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
 <tr grouplength="2">
-<td colspan="3" style="border-bottom: 1px solid;">
+<td colspan="4" style="border-bottom: 1px solid;">
 <strong>rstudio</strong>
 </td>
 </tr>
@@ -2620,6 +2712,9 @@ vignette(“rd”)
 <td style="text-align:left;">
 roxygen syntax
 </td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
 <tr>
 <td style="text-align:left; padding-left:  2em;" indentlevel="1">
@@ -2631,9 +2726,12 @@ testthat::test_file(“path”)
 <td style="text-align:left;">
 run tests in explicit file
 </td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
 <tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
+<td colspan="4" style="border-bottom: 1px solid;">
 <strong>yaml</strong>
 </td>
 </tr>
@@ -2646,6 +2744,9 @@ output: tufte::tufte_html:
 </td>
 <td style="text-align:left;">
 from tufte::
+</td>
+<td style="text-align:left;">
+NA
 </td>
 </tr>
 </tbody>
