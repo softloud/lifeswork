@@ -91,8 +91,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-03-11"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-03-11"/>
+  <meta property="article:published" itemprop="datePublished" content="2021-03-12"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-03-12"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="lifeswork: instantiate"/>
@@ -110,7 +110,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["instantiate"]},{"type":"character","attributes":{},"value":["start the day\n"]},{"type":"character","attributes":{},"value":["updated 2021-03-11"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["instantiate"]},{"type":"character","attributes":{},"value":["start the day\n"]},{"type":"character","attributes":{},"value":["updated 2021-03-12"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2036,8 +2036,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
-  <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-  <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2057,7 +2055,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"instantiate","description":"start the day","authors":[],"publishedDate":"2021-03-11T00:00:00.000+00:00"}
+{"title":"instantiate","description":"start the day","authors":[],"publishedDate":"2021-03-12T00:00:00.000+00:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2108,78 +2106,392 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span class='fu'><a href='https://rdrr.io/pkg/pandan/man/pandan_view.html'>pandan_view</a></span><span class='op'>(</span>distill<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="instantiate_files/figure-html5/unnamed-chunk-1-1.png" width="624" /></p>
+<img src="instantiate_files/figure-html5/unnamed-chunk-1-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/rstudio/gt'>gt</a></span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <h2 id="instantiate">instantiate</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>instantiate</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></span><span class='op'>(</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-task
-</th>
-<th style="text-align:left;">
-description
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-water
-</td>
-<td style="text-align:left;">
-get a glass of water
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-coffee
-</td>
-<td style="text-align:left;">
-time to be honest about how the day is started
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-draw quaver log
-</td>
-<td style="text-align:left;">
-in bullet journal
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\cdot\)</span>
-</td>
-<td style="text-align:left;">
-add <span class="math inline">\(\star\)</span> tasks to quaver
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-add instantiate
-</td>
-<td style="text-align:left;">
-in task cycles
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-assign task cycles
-</td>
-<td style="text-align:left;">
-for <span class="math inline">\(\star\)</span> tasks
-</td>
-</tr>
-</tbody>
-</table>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#vuomvzhqig .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#vuomvzhqig .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vuomvzhqig .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#vuomvzhqig .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#vuomvzhqig .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vuomvzhqig .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vuomvzhqig .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#vuomvzhqig .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#vuomvzhqig .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#vuomvzhqig .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#vuomvzhqig .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#vuomvzhqig .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#vuomvzhqig .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#vuomvzhqig .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#vuomvzhqig .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#vuomvzhqig .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#vuomvzhqig .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#vuomvzhqig .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vuomvzhqig .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#vuomvzhqig .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vuomvzhqig .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#vuomvzhqig .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#vuomvzhqig .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vuomvzhqig .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vuomvzhqig .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#vuomvzhqig .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vuomvzhqig .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#vuomvzhqig .gt_left {
+  text-align: left;
+}
+
+#vuomvzhqig .gt_center {
+  text-align: center;
+}
+
+#vuomvzhqig .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#vuomvzhqig .gt_font_normal {
+  font-weight: normal;
+}
+
+#vuomvzhqig .gt_font_bold {
+  font-weight: bold;
+}
+
+#vuomvzhqig .gt_font_italic {
+  font-style: italic;
+}
+
+#vuomvzhqig .gt_super {
+  font-size: 65%;
+}
+
+#vuomvzhqig .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="vuomvzhqig" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">task</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">description</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">water</td>
+      <td class="gt_row gt_left">get a glass of water</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">coffee</td>
+      <td class="gt_row gt_left">time to be honest about how the day is started</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">draw quaver log</td>
+      <td class="gt_row gt_left">in bullet journal</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">\(\cdot\)</td>
+      <td class="gt_row gt_left">add \(\star\) tasks to quaver</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">add instantiate</td>
+      <td class="gt_row gt_left">in task cycles</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">assign task cycles</td>
+      <td class="gt_row gt_left">for \(\star\) tasks</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
 </div>
 <h2 id="priority-tasks">priority tasks</h2>
 <div class="layout-chunk" data-layout="l-body">
@@ -2190,240 +2502,450 @@ for <span class="math inline">\(\star\)</span> tasks
   <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>p</span> <span class='op'>==</span> <span class='st'>"star"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
   <span class='fu'>arrange</span><span class='op'>(</span><span class='va'>c</span>, <span class='va'>p</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
   <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>c</span>, <span class='op'>-</span><span class='va'>p</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></span><span class='op'>(</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-priority
-</th>
-<th style="text-align:left;">
-category
-</th>
-<th style="text-align:left;">
-task
-</th>
-<th style="text-align:left;">
-description
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-bed
-</td>
-<td style="text-align:left;">
-roll up
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-dishes
-</td>
-<td style="text-align:left;">
-unload and pile, wipe benches
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-laundry
-</td>
-<td style="text-align:left;">
-put one load of laundry on, put away laundry, tidy chairdrobe, add dryer task
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-water
-</td>
-<td style="text-align:left;">
-water karl
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-workout
-</td>
-<td style="text-align:left;">
-vr
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-weekend
-</td>
-<td style="text-align:left;">
-only check calendar
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-calendar
-</td>
-<td style="text-align:left;">
-check day, week, month; note events of the day; upcoming deadlines; migrate stuff for today to 𝅘𝅥𝅮, ♫. book yoga
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-fire
-</td>
-<td style="text-align:left;">
-What is on fire? task or project must be due today and someone else will get stuffed around if I don’t do it
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-action
-</td>
-<td style="text-align:left;">
-(&gt; 12pm + weekday) migrate needs action bujo daily to inbox: <code>label:email-sanity-needs-action and -label:email-sanity-bujo-monthly</code> &amp; remove daily bujo labels
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-stuff
-</td>
-<td style="text-align:left;">
-process papers, notes, unpack bags, etc.
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-inbox
-</td>
-<td style="text-align:left;">
-(&gt; 12pm + weekday) archive or assign to 𝅘𝅥𝅮 or ♫ and move to needs action
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-goals
-</td>
-<td style="text-align:left;">
-set pom goals for day: 4 in each category, subtract meetings.
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-clue
-</td>
-<td style="text-align:left;">
-track
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-slack
-</td>
-<td style="text-align:left;">
-check for new messages
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-signal
-</td>
-<td style="text-align:left;">
-check messages
-</td>
-</tr>
-</tbody>
-</table>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#pmdsstcokb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pmdsstcokb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pmdsstcokb .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pmdsstcokb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pmdsstcokb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pmdsstcokb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pmdsstcokb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pmdsstcokb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pmdsstcokb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pmdsstcokb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pmdsstcokb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pmdsstcokb .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pmdsstcokb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pmdsstcokb .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#pmdsstcokb .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#pmdsstcokb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pmdsstcokb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#pmdsstcokb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pmdsstcokb .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#pmdsstcokb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pmdsstcokb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pmdsstcokb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pmdsstcokb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pmdsstcokb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pmdsstcokb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#pmdsstcokb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pmdsstcokb .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#pmdsstcokb .gt_left {
+  text-align: left;
+}
+
+#pmdsstcokb .gt_center {
+  text-align: center;
+}
+
+#pmdsstcokb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pmdsstcokb .gt_font_normal {
+  font-weight: normal;
+}
+
+#pmdsstcokb .gt_font_bold {
+  font-weight: bold;
+}
+
+#pmdsstcokb .gt_font_italic {
+  font-style: italic;
+}
+
+#pmdsstcokb .gt_super {
+  font-size: 65%;
+}
+
+#pmdsstcokb .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="pmdsstcokb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">priority</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">category</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">task</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">description</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">$\star$</td>
+      <td class="gt_row gt_left">$\pi$</td>
+      <td class="gt_row gt_left">bed</td>
+      <td class="gt_row gt_left">roll up</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">$\star$</td>
+      <td class="gt_row gt_left">$\pi$</td>
+      <td class="gt_row gt_left">dishes</td>
+      <td class="gt_row gt_left">unload and pile, wipe benches</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">$\star$</td>
+      <td class="gt_row gt_left">$\pi$</td>
+      <td class="gt_row gt_left">laundry</td>
+      <td class="gt_row gt_left">put one load of laundry on, put away laundry, tidy chairdrobe, add dryer task</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">$\star$</td>
+      <td class="gt_row gt_left">$\pi$</td>
+      <td class="gt_row gt_left">water</td>
+      <td class="gt_row gt_left">water karl</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">$\star$</td>
+      <td class="gt_row gt_left">$\pi$</td>
+      <td class="gt_row gt_left">workout</td>
+      <td class="gt_row gt_left">vr</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">$\star$</td>
+      <td class="gt_row gt_left">$\psi$</td>
+      <td class="gt_row gt_left">weekend</td>
+      <td class="gt_row gt_left">only check calendar</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">$\star$</td>
+      <td class="gt_row gt_left">$\psi$</td>
+      <td class="gt_row gt_left">calendar</td>
+      <td class="gt_row gt_left">check day, week, month; note events of the day; upcoming deadlines; migrate stuff for today to 𝅘𝅥𝅮, ♫. book yoga</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">$\star$</td>
+      <td class="gt_row gt_left">$\psi$</td>
+      <td class="gt_row gt_left">fire</td>
+      <td class="gt_row gt_left">What is on fire? task or project must be due today and someone else will get stuffed around if I don't do it</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">$\star$</td>
+      <td class="gt_row gt_left">$\psi$</td>
+      <td class="gt_row gt_left">action</td>
+      <td class="gt_row gt_left">(&gt; 12pm + weekday) migrate needs action bujo daily to inbox: `label:email-sanity-needs-action and -label:email-sanity-bujo-monthly` &amp; remove daily bujo labels</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">$\star$</td>
+      <td class="gt_row gt_left">$\psi$</td>
+      <td class="gt_row gt_left">stuff</td>
+      <td class="gt_row gt_left">process papers, notes, unpack bags, etc.</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">$\star$</td>
+      <td class="gt_row gt_left">$\psi$</td>
+      <td class="gt_row gt_left">inbox</td>
+      <td class="gt_row gt_left">(&gt; 12pm + weekday) archive or assign to 𝅘𝅥𝅮 or ♫ and move to needs action</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">$\star$</td>
+      <td class="gt_row gt_left">$\psi$</td>
+      <td class="gt_row gt_left">goals</td>
+      <td class="gt_row gt_left">set pom goals for day: 4 in each category, subtract meetings.</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">$\star$</td>
+      <td class="gt_row gt_left">$\psi$</td>
+      <td class="gt_row gt_left">clue</td>
+      <td class="gt_row gt_left">track</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">$\star$</td>
+      <td class="gt_row gt_left">$\psi$</td>
+      <td class="gt_row gt_left">slack</td>
+      <td class="gt_row gt_left">check for new messages</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">$\star$</td>
+      <td class="gt_row gt_left">$\psi$</td>
+      <td class="gt_row gt_left">signal</td>
+      <td class="gt_row gt_left">check messages</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
@@ -2433,15 +2955,6 @@ check messages
 <div class="d-appendix">
 </div>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->

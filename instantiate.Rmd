@@ -18,7 +18,6 @@ library(dontpanic)
 
 instantiate <- read_rds("data/instantiate.rds")
 
-
 ```
 
 ## progress
@@ -26,6 +25,8 @@ instantiate <- read_rds("data/instantiate.rds")
 ```{r fig.height=6}
 library(pandan)
 pandan_view(distill=TRUE)
+library(gt)
+
 ```
 
 ## instantiate
@@ -33,8 +34,7 @@ pandan_view(distill=TRUE)
 ```{r}
 
 instantiate %>% 
-  kable() %>% 
-  kable_styling()
+  gt()
 
 ```
 
@@ -47,9 +47,7 @@ tasks %>%
   filter(p == "star") %>% 
   arrange(c, p) %>% 
   select(-c, -p) %>% 
-  kable() %>% 
-  kable_styling()
-  
+  gt()
 
 ```
 
