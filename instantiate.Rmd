@@ -22,7 +22,7 @@ instantiate <- read_rds("data/instantiate.rds")
 
 ## progress
 
-```{r fig.height=6}
+```{r fig.height=10}
 library(pandan)
 pandan_view(distill=TRUE)
 library(gt)
@@ -34,7 +34,10 @@ library(gt)
 ```{r}
 
 instantiate %>% 
-  gt()
+  gt() %>% 
+  fmt_markdown(
+    columns = vars(task, description)
+  )
 
 ```
 
@@ -45,9 +48,15 @@ tasks <- read_rds("data/tasks.rds")
 
 tasks %>% 
   filter(p == "star") %>% 
-  arrange(c, p) %>% 
-  select(-c, -p) %>% 
-  gt()
+  arrange(c) %>%
+  group_by(c) %>% 
+  mutate(n = 1:n()) %>%
+  dplyr::filter(n <= 3 ) %>% 
+  select(-c, -p, -n) %>% 
+  gt() %>% 
+  fmt_markdown(
+    columns = vars("priority", "category")
+  )
 
 ```
 

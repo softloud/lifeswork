@@ -91,8 +91,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-03-12"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-03-12"/>
+  <meta property="article:published" itemprop="datePublished" content="2021-03-19"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-03-19"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="lifeswork: instantiate"/>
@@ -110,7 +110,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["instantiate"]},{"type":"character","attributes":{},"value":["start the day\n"]},{"type":"character","attributes":{},"value":["updated 2021-03-12"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["instantiate"]},{"type":"character","attributes":{},"value":["start the day\n"]},{"type":"character","attributes":{},"value":["updated 2021-03-19"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2055,7 +2055,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"instantiate","description":"start the day","authors":[],"publishedDate":"2021-03-12T00:00:00.000+00:00"}
+{"title":"instantiate","description":"start the day","authors":[],"publishedDate":"2021-03-19T00:00:00.000+00:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2116,14 +2116,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>instantiate</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/fmt_markdown.html'>fmt_markdown</a></span><span class='op'>(</span>
+    columns <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/vars.html'>vars</a></span><span class='op'>(</span><span class='va'>task</span>, <span class='va'>description</span><span class='op'>)</span>
+  <span class='op'>)</span>
 </code></pre>
 </div>
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#vuomvzhqig .gt_table {
+#guxenklngq .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2148,7 +2151,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-left-color: #D3D3D3;
 }
 
-#vuomvzhqig .gt_heading {
+#guxenklngq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2160,7 +2163,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#vuomvzhqig .gt_title {
+#guxenklngq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2170,7 +2173,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-bottom-width: 0;
 }
 
-#vuomvzhqig .gt_subtitle {
+#guxenklngq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2180,13 +2183,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-width: 0;
 }
 
-#vuomvzhqig .gt_bottom_border {
+#guxenklngq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vuomvzhqig .gt_col_headings {
+#guxenklngq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2201,7 +2204,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#vuomvzhqig .gt_col_heading {
+#guxenklngq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2221,7 +2224,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   overflow-x: hidden;
 }
 
-#vuomvzhqig .gt_column_spanner_outer {
+#guxenklngq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2233,15 +2236,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 4px;
 }
 
-#vuomvzhqig .gt_column_spanner_outer:first-child {
+#guxenklngq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vuomvzhqig .gt_column_spanner_outer:last-child {
+#guxenklngq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vuomvzhqig .gt_column_spanner {
+#guxenklngq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2253,7 +2256,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   width: 100%;
 }
 
-#vuomvzhqig .gt_group_heading {
+#guxenklngq .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2275,7 +2278,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   vertical-align: middle;
 }
 
-#vuomvzhqig .gt_empty_group_heading {
+#guxenklngq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2290,15 +2293,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   vertical-align: middle;
 }
 
-#vuomvzhqig .gt_from_md > :first-child {
+#guxenklngq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vuomvzhqig .gt_from_md > :last-child {
+#guxenklngq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vuomvzhqig .gt_row {
+#guxenklngq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2317,7 +2320,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   overflow-x: hidden;
 }
 
-#vuomvzhqig .gt_stub {
+#guxenklngq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2329,7 +2332,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-left: 12px;
 }
 
-#vuomvzhqig .gt_summary_row {
+#guxenklngq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2339,7 +2342,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 5px;
 }
 
-#vuomvzhqig .gt_first_summary_row {
+#guxenklngq .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2349,7 +2352,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-color: #D3D3D3;
 }
 
-#vuomvzhqig .gt_grand_summary_row {
+#guxenklngq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2359,7 +2362,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 5px;
 }
 
-#vuomvzhqig .gt_first_grand_summary_row {
+#guxenklngq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2369,11 +2372,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-color: #D3D3D3;
 }
 
-#vuomvzhqig .gt_striped {
+#guxenklngq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vuomvzhqig .gt_table_body {
+#guxenklngq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2382,7 +2385,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-bottom-color: #D3D3D3;
 }
 
-#vuomvzhqig .gt_footnotes {
+#guxenklngq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2396,13 +2399,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#vuomvzhqig .gt_footnote {
+#guxenklngq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#vuomvzhqig .gt_sourcenotes {
+#guxenklngq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2416,46 +2419,46 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#vuomvzhqig .gt_sourcenote {
+#guxenklngq .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#vuomvzhqig .gt_left {
+#guxenklngq .gt_left {
   text-align: left;
 }
 
-#vuomvzhqig .gt_center {
+#guxenklngq .gt_center {
   text-align: center;
 }
 
-#vuomvzhqig .gt_right {
+#guxenklngq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vuomvzhqig .gt_font_normal {
+#guxenklngq .gt_font_normal {
   font-weight: normal;
 }
 
-#vuomvzhqig .gt_font_bold {
+#guxenklngq .gt_font_bold {
   font-weight: bold;
 }
 
-#vuomvzhqig .gt_font_italic {
+#guxenklngq .gt_font_italic {
   font-style: italic;
 }
 
-#vuomvzhqig .gt_super {
+#guxenklngq .gt_super {
   font-size: 65%;
 }
 
-#vuomvzhqig .gt_footnote_marks {
+#guxenklngq .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="vuomvzhqig" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="guxenklngq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -2465,28 +2468,46 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </thead>
   <tbody class="gt_table_body">
     <tr>
-      <td class="gt_row gt_left">water</td>
-      <td class="gt_row gt_left">get a glass of water</td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>water</p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>get a glass of water</p>
+</div></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left">coffee</td>
-      <td class="gt_row gt_left">time to be honest about how the day is started</td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>coffee</p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>time to be honest about how the day is started</p>
+</div></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left">draw quaver log</td>
-      <td class="gt_row gt_left">in bullet journal</td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>draw quaver log</p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>in bullet journal</p>
+</div></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left">\(\cdot\)</td>
-      <td class="gt_row gt_left">add \(\star\) tasks to quaver</td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>(\cdot)</p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>add (\star) tasks to quaver</p>
+</div></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left">add instantiate</td>
-      <td class="gt_row gt_left">in task cycles</td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>add instantiate</p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>in task cycles</p>
+</div></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left">assign task cycles</td>
-      <td class="gt_row gt_left">for \(\star\) tasks</td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>pandan</p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p><code>pandan_view</code></p>
+</div></td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>assign task cycles</p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>for (\star) tasks</p>
+</div></td>
     </tr>
   </tbody>
   
@@ -2500,16 +2521,22 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <span class='va'>tasks</span> <span class='op'>%&gt;%</span> 
   <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>p</span> <span class='op'>==</span> <span class='st'>"star"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>arrange</span><span class='op'>(</span><span class='va'>c</span>, <span class='va'>p</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>c</span>, <span class='op'>-</span><span class='va'>p</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span>
+  <span class='fu'>arrange</span><span class='op'>(</span><span class='va'>c</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>c</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fu'>n</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>n</span> <span class='op'>&lt;=</span> <span class='fl'>3</span> <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>c</span>, <span class='op'>-</span><span class='va'>p</span>, <span class='op'>-</span><span class='va'>n</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/fmt_markdown.html'>fmt_markdown</a></span><span class='op'>(</span>
+    columns <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/vars.html'>vars</a></span><span class='op'>(</span><span class='st'>"priority"</span>, <span class='st'>"category"</span><span class='op'>)</span>
+  <span class='op'>)</span>
 </code></pre>
 </div>
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#pmdsstcokb .gt_table {
+#ighcddhcmu .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2534,7 +2561,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-left-color: #D3D3D3;
 }
 
-#pmdsstcokb .gt_heading {
+#ighcddhcmu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2546,7 +2573,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#pmdsstcokb .gt_title {
+#ighcddhcmu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2556,7 +2583,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-bottom-width: 0;
 }
 
-#pmdsstcokb .gt_subtitle {
+#ighcddhcmu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2566,13 +2593,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-width: 0;
 }
 
-#pmdsstcokb .gt_bottom_border {
+#ighcddhcmu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pmdsstcokb .gt_col_headings {
+#ighcddhcmu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2587,7 +2614,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#pmdsstcokb .gt_col_heading {
+#ighcddhcmu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2607,7 +2634,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   overflow-x: hidden;
 }
 
-#pmdsstcokb .gt_column_spanner_outer {
+#ighcddhcmu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2619,15 +2646,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 4px;
 }
 
-#pmdsstcokb .gt_column_spanner_outer:first-child {
+#ighcddhcmu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pmdsstcokb .gt_column_spanner_outer:last-child {
+#ighcddhcmu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pmdsstcokb .gt_column_spanner {
+#ighcddhcmu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2639,7 +2666,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   width: 100%;
 }
 
-#pmdsstcokb .gt_group_heading {
+#ighcddhcmu .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2661,7 +2688,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   vertical-align: middle;
 }
 
-#pmdsstcokb .gt_empty_group_heading {
+#ighcddhcmu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2676,15 +2703,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   vertical-align: middle;
 }
 
-#pmdsstcokb .gt_from_md > :first-child {
+#ighcddhcmu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pmdsstcokb .gt_from_md > :last-child {
+#ighcddhcmu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pmdsstcokb .gt_row {
+#ighcddhcmu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2703,7 +2730,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   overflow-x: hidden;
 }
 
-#pmdsstcokb .gt_stub {
+#ighcddhcmu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2715,7 +2742,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-left: 12px;
 }
 
-#pmdsstcokb .gt_summary_row {
+#ighcddhcmu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2725,7 +2752,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 5px;
 }
 
-#pmdsstcokb .gt_first_summary_row {
+#ighcddhcmu .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2735,7 +2762,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-color: #D3D3D3;
 }
 
-#pmdsstcokb .gt_grand_summary_row {
+#ighcddhcmu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2745,7 +2772,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 5px;
 }
 
-#pmdsstcokb .gt_first_grand_summary_row {
+#ighcddhcmu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2755,11 +2782,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-color: #D3D3D3;
 }
 
-#pmdsstcokb .gt_striped {
+#ighcddhcmu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pmdsstcokb .gt_table_body {
+#ighcddhcmu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2768,7 +2795,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-bottom-color: #D3D3D3;
 }
 
-#pmdsstcokb .gt_footnotes {
+#ighcddhcmu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2782,13 +2809,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#pmdsstcokb .gt_footnote {
+#ighcddhcmu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#pmdsstcokb .gt_sourcenotes {
+#ighcddhcmu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2802,46 +2829,46 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#pmdsstcokb .gt_sourcenote {
+#ighcddhcmu .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#pmdsstcokb .gt_left {
+#ighcddhcmu .gt_left {
   text-align: left;
 }
 
-#pmdsstcokb .gt_center {
+#ighcddhcmu .gt_center {
   text-align: center;
 }
 
-#pmdsstcokb .gt_right {
+#ighcddhcmu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pmdsstcokb .gt_font_normal {
+#ighcddhcmu .gt_font_normal {
   font-weight: normal;
 }
 
-#pmdsstcokb .gt_font_bold {
+#ighcddhcmu .gt_font_bold {
   font-weight: bold;
 }
 
-#pmdsstcokb .gt_font_italic {
+#ighcddhcmu .gt_font_italic {
   font-style: italic;
 }
 
-#pmdsstcokb .gt_super {
+#ighcddhcmu .gt_super {
   font-size: 65%;
 }
 
-#pmdsstcokb .gt_footnote_marks {
+#ighcddhcmu .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="pmdsstcokb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="ighcddhcmu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -2852,95 +2879,59 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     </tr>
   </thead>
   <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">pi</td>
+    </tr>
     <tr>
-      <td class="gt_row gt_left">$\star$</td>
-      <td class="gt_row gt_left">$\pi$</td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>$\star$</p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>$\pi$</p>
+</div></td>
       <td class="gt_row gt_left">bed</td>
       <td class="gt_row gt_left">roll up</td>
     </tr>
     <tr>
-      <td class="gt_row gt_left">$\star$</td>
-      <td class="gt_row gt_left">$\pi$</td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>$\star$</p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>$\pi$</p>
+</div></td>
       <td class="gt_row gt_left">dishes</td>
       <td class="gt_row gt_left">unload and pile, wipe benches</td>
     </tr>
     <tr>
-      <td class="gt_row gt_left">$\star$</td>
-      <td class="gt_row gt_left">$\pi$</td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>$\star$</p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>$\pi$</p>
+</div></td>
       <td class="gt_row gt_left">laundry</td>
       <td class="gt_row gt_left">put one load of laundry on, put away laundry, tidy chairdrobe, add dryer task</td>
     </tr>
-    <tr>
-      <td class="gt_row gt_left">$\star$</td>
-      <td class="gt_row gt_left">$\pi$</td>
-      <td class="gt_row gt_left">water</td>
-      <td class="gt_row gt_left">water karl</td>
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">psi</td>
     </tr>
     <tr>
-      <td class="gt_row gt_left">$\star$</td>
-      <td class="gt_row gt_left">$\pi$</td>
-      <td class="gt_row gt_left">workout</td>
-      <td class="gt_row gt_left">vr</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">$\star$</td>
-      <td class="gt_row gt_left">$\psi$</td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>$\star$</p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>$\psi$</p>
+</div></td>
       <td class="gt_row gt_left">weekend</td>
       <td class="gt_row gt_left">only check calendar</td>
     </tr>
     <tr>
-      <td class="gt_row gt_left">$\star$</td>
-      <td class="gt_row gt_left">$\psi$</td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>$\star$</p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>$\psi$</p>
+</div></td>
       <td class="gt_row gt_left">calendar</td>
       <td class="gt_row gt_left">check day, week, month; note events of the day; upcoming deadlines; migrate stuff for today to 𝅘𝅥𝅮, ♫. book yoga</td>
     </tr>
     <tr>
-      <td class="gt_row gt_left">$\star$</td>
-      <td class="gt_row gt_left">$\psi$</td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>$\star$</p>
+</div></td>
+      <td class="gt_row gt_left"><div class='gt_from_md'><p>$\psi$</p>
+</div></td>
       <td class="gt_row gt_left">fire</td>
       <td class="gt_row gt_left">What is on fire? task or project must be due today and someone else will get stuffed around if I don't do it</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">$\star$</td>
-      <td class="gt_row gt_left">$\psi$</td>
-      <td class="gt_row gt_left">action</td>
-      <td class="gt_row gt_left">(&gt; 12pm + weekday) migrate needs action bujo daily to inbox: `label:email-sanity-needs-action and -label:email-sanity-bujo-monthly` &amp; remove daily bujo labels</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">$\star$</td>
-      <td class="gt_row gt_left">$\psi$</td>
-      <td class="gt_row gt_left">stuff</td>
-      <td class="gt_row gt_left">process papers, notes, unpack bags, etc.</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">$\star$</td>
-      <td class="gt_row gt_left">$\psi$</td>
-      <td class="gt_row gt_left">inbox</td>
-      <td class="gt_row gt_left">(&gt; 12pm + weekday) archive or assign to 𝅘𝅥𝅮 or ♫ and move to needs action</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">$\star$</td>
-      <td class="gt_row gt_left">$\psi$</td>
-      <td class="gt_row gt_left">goals</td>
-      <td class="gt_row gt_left">set pom goals for day: 4 in each category, subtract meetings.</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">$\star$</td>
-      <td class="gt_row gt_left">$\psi$</td>
-      <td class="gt_row gt_left">clue</td>
-      <td class="gt_row gt_left">track</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">$\star$</td>
-      <td class="gt_row gt_left">$\psi$</td>
-      <td class="gt_row gt_left">slack</td>
-      <td class="gt_row gt_left">check for new messages</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">$\star$</td>
-      <td class="gt_row gt_left">$\psi$</td>
-      <td class="gt_row gt_left">signal</td>
-      <td class="gt_row gt_left">check messages</td>
     </tr>
   </tbody>
   
