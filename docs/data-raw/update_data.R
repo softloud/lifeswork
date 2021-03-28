@@ -60,8 +60,3 @@ write_rds(keybindings, "data/keybindings.rds")
 commands <- dp %>% gs_read("commands")
 
 write_rds(commands, "data/commands.rds")
-
-writing_tracker <- get_measures("tracker_template") %>% 
-  clean_names()
-
-write_rds(writing_tracker, "data/writing_tracker.rds")

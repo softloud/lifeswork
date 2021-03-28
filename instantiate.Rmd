@@ -51,7 +51,7 @@ tasks %>%
   arrange(c) %>%
   group_by(c) %>% 
   mutate(n = 1:n()) %>%
-  dplyr::filter(n <= 3 ) %>% 
+  dplyr::filter(n <= 4 ) %>% 
   select(-c, -p, -n) %>% 
   gt() %>% 
   fmt_markdown(
