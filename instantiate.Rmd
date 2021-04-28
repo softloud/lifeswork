@@ -22,9 +22,9 @@ instantiate <- read_rds("data/instantiate.rds")
 
 ## new categories
 
-| urgent | not urgent 
+$\overline o$ | urgent | not urgent 
 -|-|- 
-research | $\varphi$ (postdoc work) | $\theta$ (collaborations) 
+research | $\varphi$ (postdoc work, manuscripts w due dates) | $\theta$ (collaborations, reading) 
 not research | $\psi$ (busywork) | $\pi$ (exercise)
 
 ## progress
