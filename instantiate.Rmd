@@ -20,6 +20,13 @@ instantiate <- read_rds("data/instantiate.rds")
 
 ```
 
+## new categories
+
+| urgent | not urgent
+-|-|-
+ikigai | $\varphi$ | $\theta$
+not ikigai | $\psi$ | $\pi$
+
 ## progress
 
 ```{r fig.height=10}
