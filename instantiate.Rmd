@@ -15,6 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(kableExtra)
 library(dontpanic)
+library(gt)
 
 instantiate <- read_rds("data/instantiate.rds")
 
