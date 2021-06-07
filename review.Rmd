@@ -13,13 +13,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 library(tidyverse)
-library(kableExtra)
+library(gt)
 
 review <- read_rds("data/review.rds")
 
 review %>% 
-  kable() %>% 
-  kable_styling()
+  gt()
 
 ```
 

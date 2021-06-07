@@ -1,16 +1,14 @@
 # update data
 
-library(googlesheets)
+library(googlesheets4)
 library(tidyverse)
 library(janitor)
 
 
 # measures ----------------------------------------------------------------
 
-measures <- gs_key("1hv7pkBGu8XQQOIBbBt1_1LvKGBR7zTdQYCzogrv3hz0")
-
 get_measures <- function(worksheet) {
-  gs_read(measures, worksheet) 
+  read_sheet(Sys.getenv("MEASURES"), sheet = worksheet) 
 }
 
 get_quaver <- function(text) {
@@ -51,12 +49,10 @@ review <-  get_measures("review")
 
 write_rds(review, "data/review.rds")
 
-dp <- gs_key("1FBzrWdlRX0IjiQSoamwx6-Ib22FUMEUmxvaSwfIj0Gg")
-
-keybindings <- dp %>% gs_read("keybindings")
+keybindings <- read_sheet(Sys.getenv("DONTPANIC"), "keybindings")
 
 write_rds(keybindings, "data/keybindings.rds")
 
-commands <- dp %>% gs_read("commands")
+commands <- read_sheet(Sys.getenv("DONTPANIC"), "commands")
 
 write_rds(commands, "data/commands.rds")
