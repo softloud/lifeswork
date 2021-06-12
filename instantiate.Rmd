@@ -21,6 +21,20 @@ instantiate <- read_rds("data/instantiate.rds")
 
 ```
 
+
+## instantiate
+
+```{r}
+
+instantiate %>% 
+  gt() %>% 
+  fmt_markdown(
+    columns = vars(task, description)
+  )
+
+```
+
+
 ## new categories
 
 $\overline o$ | urgent | not urgent 
@@ -34,18 +48,6 @@ not research | $\psi$ (busywork) | $\pi$ (exercise, housework)
 library(pandan)
 pandan_view(distill=TRUE)
 library(gt)
-
-```
-
-## instantiate
-
-```{r}
-
-instantiate %>% 
-  gt() %>% 
-  fmt_markdown(
-    columns = vars(task, description)
-  )
 
 ```
 
