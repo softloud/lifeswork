@@ -7,13 +7,19 @@ library(janitor)
 
 # measures ----------------------------------------------------------------
 
+# function to get 
+
 get_measures <- function(worksheet) {
   read_sheet(Sys.getenv("MEASURES"), sheet = worksheet) 
 }
 
+# replace quaver with html symbol
+
 get_quaver <- function(text) {
   str_replace_all(text, "quaver", "\U1D160")
 }
+
+# replace quavers with html symbol
 
 get_quavers <- function(text) {
   str_replace_all(text, "quavers", "\U266B")
@@ -24,30 +30,44 @@ lifeswork_text <- function(text) {
     get_quaver()
 }
 
+# instantiate 
+
 instantiate <-  
   get_measures("instantiate") 
 
 write_rds(instantiate, "data/instantiate.rds")
+
+# tasks
 
 tasks <-  
   get_measures("daily_tasks") %>% 
   mutate(description = map_chr(description, lifeswork_text),
          task = map_chr(task, lifeswork_text)) %>% 
   mutate(
-    p = priority,
+    p = status,
     p = fct_relevel(p, "star", "sim", "varnothing"),
     c = category,
     c = fct_relevel(c, "phi", "pi", "theta", "psi", ),
-    priority = paste0("$\\\\", priority, "$"),
+    status = paste0("$\\\\", status, "$"),
     category = paste0("$\\\\", category, "$")) %>% 
   arrange(c,p) 
   
 
 write_rds(tasks, "data/tasks.rds")
 
+# review
+
 review <-  get_measures("review")
 
 write_rds(review, "data/review.rds")
+
+# signifiers
+
+signfiers <- get_measures("signfiers")
+
+write_rds(signfiers, "data/signfiers.rds")
+
+# dontpanic ---------------------------------------------------------------
 
 keybindings <- read_sheet(Sys.getenv("DONTPANIC"), "keybindings")
 

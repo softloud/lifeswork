@@ -37,21 +37,13 @@ instantiate %>%
 
 ## new categories
 
-$\overline o$ | urgent | not urgent 
+$\overline o$ | time dependent | anytime 
 -|-|- 
 research | $\varphi$ (postdoc work, manuscripts w due dates) | $\theta$ (collaborations, reading) 
 not research | $\psi$ (busywork) | $\pi$ (exercise, housework)
 
-## progress
 
-```{r fig.height=10}
-library(pandan)
-pandan_view(distill=TRUE)
-library(gt)
-
-```
-
-## priority tasks
+## things to do next
 
 ```{r}
 tasks <- read_rds("data/tasks.rds")
@@ -61,11 +53,11 @@ tasks %>%
   arrange(c) %>%
   group_by(c) %>% 
   mutate(n = 1:n()) %>%
-  dplyr::filter(n <= 4 ) %>% 
+  # dplyr::filter(n <= 4 ) %>% 
   select(-c, -p, -n) %>% 
   gt() %>% 
   fmt_markdown(
-    columns = vars("priority", "category")
+    columns = vars("status", "category")
   )
 
 ```
