@@ -23,6 +23,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -55,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { } /* Attribute */
+code span.at { color: #20794d; } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -76,7 +77,7 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.sc { color: #20794d; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
@@ -90,8 +91,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-05-15"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-05-15"/>
+  <meta property="article:published" itemprop="datePublished" content="2021-06-09"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-06-09"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="lifeswork: tasks"/>
@@ -107,7 +108,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["tasks"]},{"type":"character","attributes":{},"value":["2021-05-15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["tasks"]},{"type":"character","attributes":{},"value":["2021-06-09"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -1861,10 +1862,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refs = $(this).attr('data-cites').split(" ");
-        var refHtml = refs.map(function(ref) {
-          return "<p>" + $('#ref-' + ref).html() + "</p>";
-        }).join("\n");
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -2035,7 +2033,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
   <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
@@ -2057,7 +2055,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"tasks","authors":[],"publishedDate":"2021-05-15T00:00:00.000+01:00"}
+{"title":"tasks","authors":[],"publishedDate":"2021-06-09T00:00:00.000+01:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2102,7 +2100,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span> 
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://haozhu233.github.io/kableExtra/'>kableExtra</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>dontpanic</span><span class='op'>)</span>
 
@@ -2143,7 +2141,7 @@ description
 </tr>
 </thead>
 <tbody>
-<tr grouplength="16">
+<tr grouplength="15">
 <td colspan="4" style="border-bottom: 1px solid;">
 <strong><span class="math inline">\(\pi\)</span></strong>
 </td>
@@ -2156,29 +2154,15 @@ description
 <span class="math inline">\(\pi\)</span>
 </td>
 <td style="text-align:left;">
-water
+workout
 </td>
 <td style="text-align:left;">
-water karl
+vr
 </td>
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-kitchen
-</td>
-<td style="text-align:left;">
-empty knockbox, move dishes to thingy, sweep + wipe down
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
+<span class="math inline">\(\sim\)</span>
 </td>
 <td style="text-align:left;">
 <span class="math inline">\(\pi\)</span>
@@ -2188,6 +2172,62 @@ workout
 </td>
 <td style="text-align:left;">
 yoga
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<span class="math inline">\(\varnothing\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\pi\)</span>
+</td>
+<td style="text-align:left;">
+waiting
+</td>
+<td style="text-align:left;">
+make sure noted in bujo daily, monthly, or future log
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<span class="math inline">\(\varnothing\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\pi\)</span>
+</td>
+<td style="text-align:left;">
+update lappy486
+</td>
+<td style="text-align:left;">
+<code>sudo apt update</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<span class="math inline">\(\varnothing\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\pi\)</span>
+</td>
+<td style="text-align:left;">
+update pkgs
+</td>
+<td style="text-align:left;">
+in rstudio
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<span class="math inline">\(\varnothing\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\pi\)</span>
+</td>
+<td style="text-align:left;">
+update lifeswork
+</td>
+<td style="text-align:left;">
+run update data and rebuild site
 </td>
 </tr>
 <tr>
@@ -2212,38 +2252,10 @@ roll up
 <span class="math inline">\(\pi\)</span>
 </td>
 <td style="text-align:left;">
-chairdrobe
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-wash
-</td>
-<td style="text-align:left;">
-shower or face
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
 dishes
 </td>
 <td style="text-align:left;">
-unload and pile, wipe benches
+wash and wipe benches
 </td>
 </tr>
 <tr>
@@ -2268,10 +2280,10 @@ put one load of laundry on, put away laundry, tidy chairdrobe, add dryer task
 <span class="math inline">\(\pi\)</span>
 </td>
 <td style="text-align:left;">
-smudge
+wash
 </td>
 <td style="text-align:left;">
-at <span class="math inline">\(3c^2\)</span>
+shower or face
 </td>
 </tr>
 <tr>
@@ -2296,10 +2308,10 @@ wash brushes
 <span class="math inline">\(\pi\)</span>
 </td>
 <td style="text-align:left;">
-shower
+basin
 </td>
 <td style="text-align:left;">
-scrub out shower &amp; basin &amp; tidy
+wash basin
 </td>
 </tr>
 <tr>
@@ -2313,21 +2325,7 @@ scrub out shower &amp; basin &amp; tidy
 fridge
 </td>
 <td style="text-align:left;">
-clean one shelf
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-handbag
-</td>
-<td style="text-align:left;">
-empty out and restock
+clean my shelf
 </td>
 </tr>
 <tr>
@@ -2358,21 +2356,7 @@ desk
 tidy and sweep
 </td>
 </tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\NA\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-workout
-</td>
-<td style="text-align:left;">
-vr
-</td>
-</tr>
-<tr grouplength="3">
+<tr grouplength="4">
 <td colspan="4" style="border-bottom: 1px solid;">
 <strong><span class="math inline">\(\theta\)</span></strong>
 </td>
@@ -2419,7 +2403,21 @@ rethinking
 one question
 </td>
 </tr>
-<tr grouplength="20">
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<span class="math inline">\(\varnothing\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\theta\)</span>
+</td>
+<td style="text-align:left;">
+TIL
+</td>
+<td style="text-align:left;">
+today I learnt blogpost
+</td>
+</tr>
+<tr grouplength="16">
 <td colspan="4" style="border-bottom: 1px solid;">
 <strong><span class="math inline">\(\psi\)</span></strong>
 </td>
@@ -2600,62 +2598,6 @@ Add every <span class="math inline">\(\star\)</span> project to 𝅘𝅥𝅮 to be proce
 <span class="math inline">\(\psi\)</span>
 </td>
 <td style="text-align:left;">
-waiting
-</td>
-<td style="text-align:left;">
-make sure noted in bujo daily, monthly, or future log
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-update lappy486
-</td>
-<td style="text-align:left;">
-<code>sudo apt update</code>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-update pkgs
-</td>
-<td style="text-align:left;">
-in rstudio
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-update lifeswork
-</td>
-<td style="text-align:left;">
-run update data and rebuild site
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
 ♫ <span class="math inline">\(\sim\)</span> &amp; <span class="math inline">\(\varnothing\)</span>
 </td>
 <td style="text-align:left;">
@@ -2753,10 +2695,10 @@ description
 <span class="math inline">\(\pi\)</span>
 </td>
 <td style="text-align:left;">
-water
+workout
 </td>
 <td style="text-align:left;">
-water karl
+vr
 </td>
 </tr>
 <tr>
@@ -2913,9 +2855,23 @@ signal
 check messages
 </td>
 </tr>
-<tr grouplength="1">
+<tr grouplength="2">
 <td colspan="4" style="border-bottom: 1px solid;">
 <strong><span class="math inline">\(\sim\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<span class="math inline">\(\sim\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\pi\)</span>
+</td>
+<td style="text-align:left;">
+workout
+</td>
+<td style="text-align:left;">
+yoga
 </td>
 </tr>
 <tr>
@@ -2932,9 +2888,65 @@ check messages
 Add every <span class="math inline">\(\star\)</span> project to 𝅘𝅥𝅮 to be processed into a subproject that can be completed today. Each project should either have an associated collection, or a git hub repo or issue, location tagged in ♫.
 </td>
 </tr>
-<tr grouplength="10">
+<tr grouplength="11">
 <td colspan="4" style="border-bottom: 1px solid;">
 <strong><span class="math inline">\(\varnothing\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<span class="math inline">\(\varnothing\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\pi\)</span>
+</td>
+<td style="text-align:left;">
+waiting
+</td>
+<td style="text-align:left;">
+make sure noted in bujo daily, monthly, or future log
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<span class="math inline">\(\varnothing\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\pi\)</span>
+</td>
+<td style="text-align:left;">
+update lappy486
+</td>
+<td style="text-align:left;">
+<code>sudo apt update</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<span class="math inline">\(\varnothing\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\pi\)</span>
+</td>
+<td style="text-align:left;">
+update pkgs
+</td>
+<td style="text-align:left;">
+in rstudio
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<span class="math inline">\(\varnothing\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\pi\)</span>
+</td>
+<td style="text-align:left;">
+update lifeswork
+</td>
+<td style="text-align:left;">
+run update data and rebuild site
 </td>
 </tr>
 <tr>
@@ -2984,55 +2996,13 @@ one question
 <span class="math inline">\(\varnothing\)</span>
 </td>
 <td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
+<span class="math inline">\(\theta\)</span>
 </td>
 <td style="text-align:left;">
-waiting
+TIL
 </td>
 <td style="text-align:left;">
-make sure noted in bujo daily, monthly, or future log
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-update lappy486
-</td>
-<td style="text-align:left;">
-<code>sudo apt update</code>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-update pkgs
-</td>
-<td style="text-align:left;">
-in rstudio
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-update lifeswork
-</td>
-<td style="text-align:left;">
-run update data and rebuild site
+today I learnt blogpost
 </td>
 </tr>
 <tr>
@@ -3077,37 +3047,9 @@ teams
 check for new messages
 </td>
 </tr>
-<tr grouplength="15">
+<tr grouplength="10">
 <td colspan="4" style="border-bottom: 1px solid;">
 <strong><span class="math inline">\(\sharp\)</span></strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-kitchen
-</td>
-<td style="text-align:left;">
-empty knockbox, move dishes to thingy, sweep + wipe down
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-workout
-</td>
-<td style="text-align:left;">
-yoga
 </td>
 </tr>
 <tr>
@@ -3132,38 +3074,10 @@ roll up
 <span class="math inline">\(\pi\)</span>
 </td>
 <td style="text-align:left;">
-chairdrobe
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-wash
-</td>
-<td style="text-align:left;">
-shower or face
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
 dishes
 </td>
 <td style="text-align:left;">
-unload and pile, wipe benches
+wash and wipe benches
 </td>
 </tr>
 <tr>
@@ -3188,10 +3102,10 @@ put one load of laundry on, put away laundry, tidy chairdrobe, add dryer task
 <span class="math inline">\(\pi\)</span>
 </td>
 <td style="text-align:left;">
-smudge
+wash
 </td>
 <td style="text-align:left;">
-at <span class="math inline">\(3c^2\)</span>
+shower or face
 </td>
 </tr>
 <tr>
@@ -3216,10 +3130,10 @@ wash brushes
 <span class="math inline">\(\pi\)</span>
 </td>
 <td style="text-align:left;">
-shower
+basin
 </td>
 <td style="text-align:left;">
-scrub out shower &amp; basin &amp; tidy
+wash basin
 </td>
 </tr>
 <tr>
@@ -3233,21 +3147,7 @@ scrub out shower &amp; basin &amp; tidy
 fridge
 </td>
 <td style="text-align:left;">
-clean one shelf
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-handbag
-</td>
-<td style="text-align:left;">
-empty out and restock
+clean my shelf
 </td>
 </tr>
 <tr>
@@ -3290,20 +3190,6 @@ ynab
 </td>
 <td style="text-align:left;">
 finish pom
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\NA\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-workout
-</td>
-<td style="text-align:left;">
-vr
 </td>
 </tr>
 </tbody>

@@ -15,26 +15,12 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(kableExtra)
 library(dontpanic)
+library(gt)
 
 instantiate <- read_rds("data/instantiate.rds")
 
 ```
 
-## new categories
-
-$\overline o$ | urgent | not urgent 
--|-|- 
-research | $\varphi$ (postdoc work, manuscripts w due dates) | $\theta$ (collaborations, reading) 
-not research | $\psi$ (busywork) | $\pi$ (exercise, housework)
-
-## progress
-
-```{r fig.height=10}
-library(pandan)
-pandan_view(distill=TRUE)
-library(gt)
-
-```
 
 ## instantiate
 
@@ -48,7 +34,16 @@ instantiate %>%
 
 ```
 
-## priority tasks
+
+## new categories
+
+$\overline o$ | time dependent | anytime 
+-|-|- 
+research | $\varphi$ (postdoc work, manuscripts w due dates) | $\theta$ (collaborations, reading) 
+not research | $\psi$ (busywork) | $\pi$ (exercise, housework)
+
+
+## things to do next
 
 ```{r}
 tasks <- read_rds("data/tasks.rds")
@@ -58,11 +53,11 @@ tasks %>%
   arrange(c) %>%
   group_by(c) %>% 
   mutate(n = 1:n()) %>%
-  dplyr::filter(n <= 4 ) %>% 
+  # dplyr::filter(n <= 4 ) %>% 
   select(-c, -p, -n) %>% 
   gt() %>% 
   fmt_markdown(
-    columns = vars("priority", "category")
+    columns = vars("status", "category")
   )
 
 ```
