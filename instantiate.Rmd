@@ -31,7 +31,7 @@ instantiate %>%
 ```
 
 
-## new categories
+## categories
 
 $\overline o$ | time dependent | anytime 
 -|-|- 
