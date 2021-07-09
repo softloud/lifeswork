@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r get data}
 library(tidyverse) 
-library(kableExtra)
+library(gt)
 library(dontpanic)
 
 tasks <- read_rds("data/tasks.rds") 
@@ -23,38 +23,19 @@ tasks <- read_rds("data/tasks.rds")
 # categories
 
 
-```{r}
+```{r }
 
 
-categories <- tasks %>% pluck("c") %>% table()
-
-tasks %>% 
-  arrange(c,p) %>% 
-  select(-c, -p) %>% 
-  kable() %>% 
-  kable_styling() %>% 
-  group_rows(index = setNames(categories,
-                              paste0("$\\", names(categories), "$")) 
-             )  
-
-
-```
-
-# priorities
-
-
-```{r}
-priorities <- tasks %>% pluck("p") %>% table()
+categories <- tasks %>% pluck("c") # %>% table()
 
 tasks %>% 
-  arrange(p, c) %>% 
-  select(-c, -p)  %>% 
-  kable() %>% 
-  kable_styling()  %>% 
-  group_rows(index = setNames(priorities, 
-              paste0("$\\", names(priorities), "$"))
-             )
-
+  gt(
+    groupname_col = "category"
+  ) %>% 
+  opt_row_striping() %>% 
+  tab_options(
+    row_group.background.color = "lightgrey"
+  )
 
 ```
 

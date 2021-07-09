@@ -47,10 +47,13 @@ tasks <-
     p = status,
     p = fct_relevel(p, "star", "sim", "varnothing"),
     c = category,
-    c = fct_relevel(c, "phi", "pi", "theta", "psi", ),
-    status = paste0("$\\\\", status, "$"),
-    category = paste0("$\\\\", category, "$")) %>% 
-  arrange(c,p) 
+    c = fct_relevel(c, "phi", "pi", "theta", "psi", )
+    # gt doesn't currently support TeX
+    # status = paste0("$\\", status, "$"),
+    # category = paste0("$\\", category, "$")
+    ) %>% 
+  arrange(c,p) %>% 
+  select(-c, -p)
   
 
 write_rds(tasks, "data/tasks.rds")
@@ -61,11 +64,6 @@ review <-  get_measures("review")
 
 write_rds(review, "data/review.rds")
 
-# signifiers
-
-signfiers <- get_measures("signfiers")
-
-write_rds(signfiers, "data/signfiers.rds")
 
 # dontpanic ---------------------------------------------------------------
 

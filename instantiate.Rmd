@@ -13,7 +13,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r get data}
 library(tidyverse)
-library(kableExtra)
 library(dontpanic)
 library(gt)
 
@@ -27,10 +26,7 @@ instantiate <- read_rds("data/instantiate.rds")
 ```{r}
 
 instantiate %>% 
-  gt() %>% 
-  fmt_markdown(
-    columns = vars(task, description)
-  )
+  gt() 
 
 ```
 
@@ -49,16 +45,8 @@ not research | $\psi$ (busywork) | $\pi$ (exercise, housework)
 tasks <- read_rds("data/tasks.rds")
 
 tasks %>% 
-  filter(p == "star") %>% 
-  arrange(c) %>%
-  group_by(c) %>% 
-  mutate(n = 1:n()) %>%
-  # dplyr::filter(n <= 4 ) %>% 
-  select(-c, -p, -n) %>% 
-  gt() %>% 
-  fmt_markdown(
-    columns = vars("status", "category")
-  )
+  filter(status == "star") %>% 
+  gt()
 
 ```
 

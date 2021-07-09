@@ -91,8 +91,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-06-09"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-06-09"/>
+  <meta property="article:published" itemprop="datePublished" content="2021-07-09"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-07-09"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="lifeswork: dontpanic"/>
@@ -108,7 +108,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["dontpanic"]},{"type":"character","attributes":{},"value":["2021-06-09"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["dontpanic"]},{"type":"character","attributes":{},"value":["2021-07-09"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2033,9 +2033,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
-  <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-  <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+  <script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2055,7 +2053,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"dontpanic","authors":[],"publishedDate":"2021-06-09T00:00:00.000+01:00"}
+{"title":"dontpanic","authors":[],"publishedDate":"2021-07-09T00:00:00.000+01:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2101,7 +2099,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://haozhu233.github.io/kableExtra/'>kableExtra</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
 
 <span class='va'>keybindings</span> <span class='op'>&lt;-</span> <span class='fu'>read_rds</span><span class='op'>(</span><span class='st'>"data/keybindings.rds"</span><span class='op'>)</span>
 <span class='va'>commands</span> <span class='op'>&lt;-</span> <span class='fu'>read_rds</span><span class='op'>(</span><span class='st'>"data/commands.rds"</span><span class='op'>)</span>
@@ -2111,725 +2109,906 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h1 id="keybindings">keybindings</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>context_kb</span> <span class='op'>&lt;-</span> <span class='va'>keybindings</span> <span class='op'>%&gt;%</span> <span class='fu'>pluck</span><span class='op'>(</span><span class='st'>"context"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='op'>)</span>
-
-
-<span class='va'>keybindings</span> <span class='op'>%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>keybindings</span> <span class='op'>%&gt;%</span>
   <span class='fu'>arrange</span><span class='op'>(</span><span class='va'>context</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/group_rows.html'>group_rows</a></span><span class='op'>(</span>index <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/setNames.html'>setNames</a></span><span class='op'>(</span><span class='va'>context_kb</span>,
-                              <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>context_kb</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span>groupname_col <span class='op'>=</span> <span class='st'>"context"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'><a href='https://gt.rstudio.com/reference/opt_row_striping.html'>opt_row_striping</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://gt.rstudio.com/reference/tab_options.html'>tab_options</a></span><span class='op'>(</span>
+    row_group.background.color <span class='op'>=</span> <span class='st'>"lightgrey"</span>
+  <span class='op'>)</span>
 </code></pre>
 </div>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-context
-</th>
-<th style="text-align:left;">
-keybinding
-</th>
-<th style="text-align:left;">
-why is awesome
-</th>
-</tr>
-</thead>
-<tbody>
-<tr grouplength="3">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>atom</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-atom
-</td>
-<td style="text-align:left;">
-ctl + shift + p
-</td>
-<td style="text-align:left;">
-keybindings
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-atom
-</td>
-<td style="text-align:left;">
-ctl + alt + p
-</td>
-<td style="text-align:left;">
-zotero extension
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-atom
-</td>
-<td style="text-align:left;">
-ctl + ,
-</td>
-<td style="text-align:left;">
-settings
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>bash</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-ctl + shift + t
-</td>
-<td style="text-align:left;">
-new terminal tab
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>discord</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-discord
-</td>
-<td style="text-align:left;">
-ctl + shift + m
-</td>
-<td style="text-align:left;">
-mute
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>evolution</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-evolution
-</td>
-<td style="text-align:left;">
-ctl + alt + a
-</td>
-<td style="text-align:left;">
-archive
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>ff</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-ff
-</td>
-<td style="text-align:left;">
-ctl + k
-</td>
-<td style="text-align:left;">
-focus search bar
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>gsheet</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-gsheet
-</td>
-<td style="text-align:left;">
-alt + enter
-</td>
-<td style="text-align:left;">
-new line in a cell
-</td>
-</tr>
-<tr grouplength="3">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>rstudio</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-rstudio
-</td>
-<td style="text-align:left;">
-ctl + alt + enter
-</td>
-<td style="text-align:left;">
-send code to terminal
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-rstudio
-</td>
-<td style="text-align:left;">
-shift + alt + c
-</td>
-<td style="text-align:left;">
-zotero extension
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-rstudio
-</td>
-<td style="text-align:left;">
-alt + shift + m
-</td>
-<td style="text-align:left;">
-terminal - not r!
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>toggl</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-toggl
-</td>
-<td style="text-align:left;">
-ctl + [
-</td>
-<td style="text-align:left;">
-start/stop timer
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>ubuntu</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-ubuntu
-</td>
-<td style="text-align:left;">
-shift + F10
-</td>
-<td style="text-align:left;">
-right click
-</td>
-</tr>
-</tbody>
+<div id="qenmerolkd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#qenmerolkd .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#qenmerolkd .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qenmerolkd .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#qenmerolkd .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#qenmerolkd .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qenmerolkd .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qenmerolkd .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#qenmerolkd .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#qenmerolkd .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#qenmerolkd .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#qenmerolkd .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#qenmerolkd .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: lightgrey;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#qenmerolkd .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: lightgrey;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#qenmerolkd .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#qenmerolkd .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#qenmerolkd .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#qenmerolkd .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#qenmerolkd .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qenmerolkd .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#qenmerolkd .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qenmerolkd .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#qenmerolkd .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#qenmerolkd .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qenmerolkd .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qenmerolkd .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#qenmerolkd .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qenmerolkd .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#qenmerolkd .gt_left {
+  text-align: left;
+}
+
+#qenmerolkd .gt_center {
+  text-align: center;
+}
+
+#qenmerolkd .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#qenmerolkd .gt_font_normal {
+  font-weight: normal;
+}
+
+#qenmerolkd .gt_font_bold {
+  font-weight: bold;
+}
+
+#qenmerolkd .gt_font_italic {
+  font-style: italic;
+}
+
+#qenmerolkd .gt_super {
+  font-size: 65%;
+}
+
+#qenmerolkd .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">keybinding</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">why is awesome</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">atom</td>
+    </tr>
+    <tr><td class="gt_row gt_left">ctl + shift + p</td>
+<td class="gt_row gt_left">keybindings</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">ctl + alt + p</td>
+<td class="gt_row gt_left gt_striped">zotero extension</td></tr>
+    <tr><td class="gt_row gt_left">ctl + ,</td>
+<td class="gt_row gt_left">settings</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">bash</td>
+    </tr>
+    <tr><td class="gt_row gt_left gt_striped">ctl + shift + t</td>
+<td class="gt_row gt_left gt_striped">new terminal tab</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">discord</td>
+    </tr>
+    <tr><td class="gt_row gt_left">ctl + shift + m</td>
+<td class="gt_row gt_left">mute</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">evolution</td>
+    </tr>
+    <tr><td class="gt_row gt_left gt_striped">ctl + alt + a</td>
+<td class="gt_row gt_left gt_striped">archive</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">ff</td>
+    </tr>
+    <tr><td class="gt_row gt_left">ctl + k</td>
+<td class="gt_row gt_left">focus search bar</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">gsheet</td>
+    </tr>
+    <tr><td class="gt_row gt_left gt_striped">alt + enter</td>
+<td class="gt_row gt_left gt_striped">new line in a cell</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">rstudio</td>
+    </tr>
+    <tr><td class="gt_row gt_left">ctl + alt + enter</td>
+<td class="gt_row gt_left">send code to terminal</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">shift + alt + c</td>
+<td class="gt_row gt_left gt_striped">zotero extension</td></tr>
+    <tr><td class="gt_row gt_left">alt + shift + m</td>
+<td class="gt_row gt_left">terminal - not r!</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">toggl</td>
+    </tr>
+    <tr><td class="gt_row gt_left gt_striped">ctl + [</td>
+<td class="gt_row gt_left gt_striped">start/stop timer</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">ubuntu</td>
+    </tr>
+    <tr><td class="gt_row gt_left">shift + F10</td>
+<td class="gt_row gt_left">right click</td></tr>
+  </tbody>
+  
+  
 </table>
+</div>
 </div>
 <h1 id="commands">commands</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>context_com</span> <span class='op'>&lt;-</span> <span class='va'>commands</span> <span class='op'>%&gt;%</span> <span class='fu'>pluck</span><span class='op'>(</span><span class='st'>"context"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='op'>)</span>
-
-
-<span class='va'>commands</span> <span class='op'>%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>commands</span> <span class='op'>%&gt;%</span>
   <span class='fu'>arrange</span><span class='op'>(</span><span class='va'>context</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/group_rows.html'>group_rows</a></span><span class='op'>(</span>index <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/setNames.html'>setNames</a></span><span class='op'>(</span><span class='va'>context_com</span>,
-                              <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>context_com</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span>groupname_col <span class='op'>=</span> <span class='st'>"context"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'><a href='https://gt.rstudio.com/reference/opt_row_striping.html'>opt_row_striping</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://gt.rstudio.com/reference/tab_options.html'>tab_options</a></span><span class='op'>(</span>
+    row_group.background.color <span class='op'>=</span> <span class='st'>"lightgrey"</span>
+  <span class='op'>)</span>
 </code></pre>
 </div>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-context
-</th>
-<th style="text-align:left;">
-command
-</th>
-<th style="text-align:left;">
-description
-</th>
-<th style="text-align:left;">
-source
-</th>
-</tr>
-</thead>
-<tbody>
-<tr grouplength="1">
-<td colspan="4" style="border-bottom: 1px solid;">
-<strong>.Rmd</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-.Rmd
-</td>
-<td style="text-align:left;">
-opts_chunk$set(cache.exta = 1)
-</td>
-<td style="text-align:left;">
-refresh cache
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr grouplength="24">
-<td colspan="4" style="border-bottom: 1px solid;">
-<strong>bash</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-tlmgr install &lt;tex-pkg&gt;
-</td>
-<td style="text-align:left;">
-install tex pkg
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-rstudio project.Rproj
-</td>
-<td style="text-align:left;">
-open rstudio project
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-mimeopen path/to/png.png
-</td>
-<td style="text-align:left;">
-open png
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-evince path/to/pdf.pdf
-</td>
-<td style="text-align:left;">
-open pdf
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-touch file.txt
-</td>
-<td style="text-align:left;">
-creates an empty text file
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-<ul>
-<li>or ?
-</td>
-<td style="text-align:left;">
-<ul>
-<li>for many wildcard; ?? for 2-letter wildcard
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-wc
-</td>
-<td style="text-align:left;">
-counts lines, words, characters in a file
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-cat
-</td>
-<td style="text-align:left;">
-will print a file; or one file after another if given multiple files
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-less
-</td>
-<td style="text-align:left;">
-shows a screenful and stops; go one screen forward with spacebar and back with b, q to exit
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-sort
-</td>
-<td style="text-align:left;">
-sorts alphabetically; -n to sort numerically
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-&gt;
-</td>
-<td style="text-align:left;">
-sends to; i.e., can print to a file. differs from &gt;&gt; in that overwrites
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-head/tail
-</td>
-<td style="text-align:left;">
-prints start/tail of file
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-echo
-</td>
-<td style="text-align:left;">
-the echo command prints text
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-&gt;&gt;
-</td>
-<td style="text-align:left;">
-appends; rather than overwrites as &gt; does
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-|
-</td>
-<td style="text-align:left;">
-pipe sends left of | to command on right
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-cut
-</td>
-<td style="text-align:left;">
-removes sections of each line in a file; cut expects lines to be tab separator. -d option to specify delimiter -f to select a field (column)
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-uniq
-</td>
-<td style="text-align:left;">
-filters adjacent matching lines in a file; use -c for count
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-for thing in list_of_things do operation_using $thing # Indentation within the loop is not required, but aids legibility done
-</td>
-<td style="text-align:left;">
-for loop; can be written line by line in console
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-replace a string in all files from -i recursively
-</td>
-<td style="text-align:left;">
-<code>find . -type f -exec sed -i 's/oldtext/newtext/g' {} +</code>
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-<code>dpkg -l {package_name}</code>
-</td>
-<td style="text-align:left;">
-To check whether a package is installed or not
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-cal or ncal
-</td>
-<td style="text-align:left;">
-print month horizontally or vertically
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-rename
-</td>
-<td style="text-align:left;">
-rename from to (install rename from apt)
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-o count the number of lines: -l wc -l myfile.sh. To count the number of words: -w wc -w myfile.sh
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-bash
-</td>
-<td style="text-align:left;">
-top
-</td>
-<td style="text-align:left;">
-see which processes are using the most resources
-</td>
-<td style="text-align:left;">
-<a href="https://superuser.com/questions/157783/how-to-check-which-applications-are-using-the-most-resources-on-a-server-via-com/157788" class="uri">https://superuser.com/questions/157783/how-to-check-which-applications-are-using-the-most-resources-on-a-server-via-com/157788</a>
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="4" style="border-bottom: 1px solid;">
-<strong>git</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-git
-</td>
-<td style="text-align:left;">
-git rm -r –cached .
-</td>
-<td style="text-align:left;">
-to ignore all files in .gitignore
-</td>
-<td style="text-align:left;">
-<a href="https://stackoverflow.com/questions/45400361/why-is-gitignore-not-ignoring-my-files" class="uri">https://stackoverflow.com/questions/45400361/why-is-gitignore-not-ignoring-my-files</a>
-</td>
-</tr>
-<tr grouplength="2">
-<td colspan="4" style="border-bottom: 1px solid;">
-<strong>R</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-R
-</td>
-<td style="text-align:left;">
-Sys.getenv
-</td>
-<td style="text-align:left;">
-For using environment variabes, usethis::edit_r_environ to modify environment variables
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-R
-</td>
-<td style="text-align:left;">
-sprintf
-</td>
-<td style="text-align:left;">
-thing &lt;- “dog” colour &lt;- “red” other_thing &lt;- “cat” sprintf(“Here is a sentence about a %s %s chasing a %s”, colour, thing, other_thing)
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr grouplength="2">
-<td colspan="4" style="border-bottom: 1px solid;">
-<strong>rstudio</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-rstudio
-</td>
-<td style="text-align:left;">
-vignette(“rd”)
-</td>
-<td style="text-align:left;">
-roxygen syntax
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-rstudio
-</td>
-<td style="text-align:left;">
-testthat::test_file(“path”)
-</td>
-<td style="text-align:left;">
-run tests in explicit file
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr grouplength="1">
-<td colspan="4" style="border-bottom: 1px solid;">
-<strong>yaml</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-yaml
-</td>
-<td style="text-align:left;">
-output: tufte::tufte_html:
-</td>
-<td style="text-align:left;">
-from tufte::
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-</tbody>
-</table></li>
-</ul></li>
-</ul>
+<div id="tlroyaiyhf" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#tlroyaiyhf .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#tlroyaiyhf .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tlroyaiyhf .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#tlroyaiyhf .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#tlroyaiyhf .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tlroyaiyhf .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tlroyaiyhf .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#tlroyaiyhf .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#tlroyaiyhf .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#tlroyaiyhf .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#tlroyaiyhf .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#tlroyaiyhf .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: lightgrey;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tlroyaiyhf .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: lightgrey;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tlroyaiyhf .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#tlroyaiyhf .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#tlroyaiyhf .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#tlroyaiyhf .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#tlroyaiyhf .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tlroyaiyhf .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#tlroyaiyhf .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tlroyaiyhf .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#tlroyaiyhf .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#tlroyaiyhf .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tlroyaiyhf .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tlroyaiyhf .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#tlroyaiyhf .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tlroyaiyhf .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#tlroyaiyhf .gt_left {
+  text-align: left;
+}
+
+#tlroyaiyhf .gt_center {
+  text-align: center;
+}
+
+#tlroyaiyhf .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#tlroyaiyhf .gt_font_normal {
+  font-weight: normal;
+}
+
+#tlroyaiyhf .gt_font_bold {
+  font-weight: bold;
+}
+
+#tlroyaiyhf .gt_font_italic {
+  font-style: italic;
+}
+
+#tlroyaiyhf .gt_super {
+  font-size: 65%;
+}
+
+#tlroyaiyhf .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">command</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">description</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">source</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">.Rmd</td>
+    </tr>
+    <tr><td class="gt_row gt_left">opts_chunk$set(cache.exta = 1)</td>
+<td class="gt_row gt_left">refresh cache</td>
+<td class="gt_row gt_left">NA</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">bash</td>
+    </tr>
+    <tr><td class="gt_row gt_left gt_striped">tlmgr install &lt;tex-pkg&gt;</td>
+<td class="gt_row gt_left gt_striped">install tex pkg</td>
+<td class="gt_row gt_left gt_striped">NA</td></tr>
+    <tr><td class="gt_row gt_left">rstudio project.Rproj</td>
+<td class="gt_row gt_left">open rstudio project</td>
+<td class="gt_row gt_left">NA</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">mimeopen path/to/png.png</td>
+<td class="gt_row gt_left gt_striped">open png</td>
+<td class="gt_row gt_left gt_striped">NA</td></tr>
+    <tr><td class="gt_row gt_left">evince path/to/pdf.pdf</td>
+<td class="gt_row gt_left">open pdf</td>
+<td class="gt_row gt_left">NA</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">touch file.txt</td>
+<td class="gt_row gt_left gt_striped">creates an empty text file</td>
+<td class="gt_row gt_left gt_striped">NA</td></tr>
+    <tr><td class="gt_row gt_left">* or ?</td>
+<td class="gt_row gt_left">* for many wildcard; ?? for 2-letter wildcard</td>
+<td class="gt_row gt_left">NA</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">wc</td>
+<td class="gt_row gt_left gt_striped">counts lines, words, characters in a file</td>
+<td class="gt_row gt_left gt_striped">NA</td></tr>
+    <tr><td class="gt_row gt_left">cat</td>
+<td class="gt_row gt_left">will print a file; or one file after another if given multiple files</td>
+<td class="gt_row gt_left">NA</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">less</td>
+<td class="gt_row gt_left gt_striped">shows a screenful and stops; go one screen forward with spacebar and back with b, q to exit</td>
+<td class="gt_row gt_left gt_striped">NA</td></tr>
+    <tr><td class="gt_row gt_left">sort</td>
+<td class="gt_row gt_left">sorts alphabetically; -n to sort numerically</td>
+<td class="gt_row gt_left">NA</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">&gt;</td>
+<td class="gt_row gt_left gt_striped">sends to; i.e., can print to a file. differs from &gt;&gt; in that overwrites</td>
+<td class="gt_row gt_left gt_striped">NA</td></tr>
+    <tr><td class="gt_row gt_left">head/tail</td>
+<td class="gt_row gt_left">prints start/tail of file</td>
+<td class="gt_row gt_left">NA</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">echo</td>
+<td class="gt_row gt_left gt_striped">the echo command prints text</td>
+<td class="gt_row gt_left gt_striped">NA</td></tr>
+    <tr><td class="gt_row gt_left">&gt;&gt;</td>
+<td class="gt_row gt_left">appends; rather than overwrites as &gt; does</td>
+<td class="gt_row gt_left">NA</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">|</td>
+<td class="gt_row gt_left gt_striped">pipe sends left of | to command on right</td>
+<td class="gt_row gt_left gt_striped">NA</td></tr>
+    <tr><td class="gt_row gt_left">cut</td>
+<td class="gt_row gt_left">removes sections of each line in a file; cut expects lines to be tab separator. -d option to specify delimiter -f to select a field (column)</td>
+<td class="gt_row gt_left">NA</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">uniq</td>
+<td class="gt_row gt_left gt_striped">filters adjacent matching lines in a file; use -c for count</td>
+<td class="gt_row gt_left gt_striped">NA</td></tr>
+    <tr><td class="gt_row gt_left">for thing in list_of_things
+do
+    operation_using $thing    # Indentation within the loop is not required, but aids legibility
+done</td>
+<td class="gt_row gt_left">for loop; can be written line by line in console</td>
+<td class="gt_row gt_left">NA</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">replace a string in all files from -i recursively</td>
+<td class="gt_row gt_left gt_striped">`find . -type f -exec sed -i 's/oldtext/newtext/g' {} +`</td>
+<td class="gt_row gt_left gt_striped">NA</td></tr>
+    <tr><td class="gt_row gt_left">`dpkg -l {package_name}`</td>
+<td class="gt_row gt_left">To check whether a package is installed or not</td>
+<td class="gt_row gt_left">NA</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">cal or ncal</td>
+<td class="gt_row gt_left gt_striped">print month horizontally or vertically</td>
+<td class="gt_row gt_left gt_striped">NA</td></tr>
+    <tr><td class="gt_row gt_left">rename</td>
+<td class="gt_row gt_left">rename from to (install rename from apt)</td>
+<td class="gt_row gt_left">NA</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">o count the number of lines: -l wc -l myfile.sh. To count the number of words: -w wc -w myfile.sh</td>
+<td class="gt_row gt_left gt_striped">NA</td>
+<td class="gt_row gt_left gt_striped">NA</td></tr>
+    <tr><td class="gt_row gt_left">top</td>
+<td class="gt_row gt_left">see which processes are using the most resources</td>
+<td class="gt_row gt_left">https://superuser.com/questions/157783/how-to-check-which-applications-are-using-the-most-resources-on-a-server-via-com/157788</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">git</td>
+    </tr>
+    <tr><td class="gt_row gt_left gt_striped">git rm -r --cached .</td>
+<td class="gt_row gt_left gt_striped">to ignore all files in .gitignore</td>
+<td class="gt_row gt_left gt_striped">https://stackoverflow.com/questions/45400361/why-is-gitignore-not-ignoring-my-files</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">R</td>
+    </tr>
+    <tr><td class="gt_row gt_left">Sys.getenv</td>
+<td class="gt_row gt_left">For using environment variabes, usethis::edit_r_environ to modify environment variables</td>
+<td class="gt_row gt_left">NA</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">sprintf</td>
+<td class="gt_row gt_left gt_striped">thing &lt;- "dog"
+colour &lt;- "red"
+other_thing &lt;- "cat"
+sprintf("Here is a sentence about a %s %s chasing a %s",
+        colour,
+        thing,
+        other_thing)</td>
+<td class="gt_row gt_left gt_striped">NA</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">rstudio</td>
+    </tr>
+    <tr><td class="gt_row gt_left">vignette("rd")</td>
+<td class="gt_row gt_left">roxygen syntax</td>
+<td class="gt_row gt_left">NA</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">testthat::test_file("path")</td>
+<td class="gt_row gt_left gt_striped">run tests in explicit file</td>
+<td class="gt_row gt_left gt_striped">NA</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">yaml</td>
+    </tr>
+    <tr><td class="gt_row gt_left">output: tufte::tufte_html:</td>
+<td class="gt_row gt_left">from tufte::</td>
+<td class="gt_row gt_left">NA</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 library(tidyverse)
-library(kableExtra)
+library(gt)
 
 keybindings <- read_rds("data/keybindings.rds")
 commands <- read_rds("data/commands.rds")
@@ -23,16 +23,16 @@ commands <- read_rds("data/commands.rds")
 # keybindings
 
 ```{r}
-context_kb <- keybindings %>% pluck("context") %>% table()
-
 
 keybindings %>%
   arrange(context) %>% 
-  kable() %>% 
-  kable_styling() %>% 
-  group_rows(index = setNames(context_kb,
-                              names(context_kb)))
-             
+  gt(groupname_col = "context") %>% 
+    opt_row_striping() %>% 
+  tab_options(
+    row_group.background.color = "lightgrey"
+  )
+
+
 
 ```
 
@@ -40,15 +40,14 @@ keybindings %>%
 # commands
 
 ```{r}
-context_com <- commands %>% pluck("context") %>% table()
-
 
 commands %>%
   arrange(context) %>% 
-  kable() %>% 
-  kable_styling() %>% 
-  group_rows(index = setNames(context_com,
-                              names(context_com)))
+  gt(groupname_col = "context") %>% 
+    opt_row_striping() %>% 
+  tab_options(
+    row_group.background.color = "lightgrey"
+  )
 
 
 ```

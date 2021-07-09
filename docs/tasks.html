@@ -91,8 +91,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-06-09"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-06-09"/>
+  <meta property="article:published" itemprop="datePublished" content="2021-07-09"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-07-09"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="lifeswork: tasks"/>
@@ -108,7 +108,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["tasks"]},{"type":"character","attributes":{},"value":["2021-06-09"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["tasks"]},{"type":"character","attributes":{},"value":["2021-07-09"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2033,9 +2033,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
-  <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-  <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+  <script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2055,7 +2053,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"tasks","authors":[],"publishedDate":"2021-06-09T00:00:00.000+01:00"}
+{"title":"tasks","authors":[],"publishedDate":"2021-07-09T00:00:00.000+01:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2094,14 +2092,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h3>Contents</h3>
 <ul>
 <li><a href="#categories">categories</a></li>
-<li><a href="#priorities">priorities</a></li>
 </ul>
 </nav>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span> 
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://haozhu233.github.io/kableExtra/'>kableExtra</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>dontpanic</span><span class='op'>)</span>
 
 <span class='va'>tasks</span> <span class='op'>&lt;-</span> <span class='fu'>read_rds</span><span class='op'>(</span><span class='st'>"data/tasks.rds"</span><span class='op'>)</span> 
@@ -2111,1089 +2108,488 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h1 id="categories">categories</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>categories</span> <span class='op'>&lt;-</span> <span class='va'>tasks</span> <span class='op'>%&gt;%</span> <span class='fu'>pluck</span><span class='op'>(</span><span class='st'>"c"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>categories</span> <span class='op'>&lt;-</span> <span class='va'>tasks</span> <span class='op'>%&gt;%</span> <span class='fu'>pluck</span><span class='op'>(</span><span class='st'>"c"</span><span class='op'>)</span> <span class='co'># %&gt;% table()</span>
 
 <span class='va'>tasks</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>arrange</span><span class='op'>(</span><span class='va'>c</span>,<span class='va'>p</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>c</span>, <span class='op'>-</span><span class='va'>p</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/group_rows.html'>group_rows</a></span><span class='op'>(</span>index <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/setNames.html'>setNames</a></span><span class='op'>(</span><span class='va'>categories</span>,
-                              <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"$\\"</span>, <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>categories</span><span class='op'>)</span>, <span class='st'>"$"</span><span class='op'>)</span><span class='op'>)</span> 
-             <span class='op'>)</span>  
+  <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span>
+    groupname_col <span class='op'>=</span> <span class='st'>"category"</span>
+  <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://gt.rstudio.com/reference/opt_row_striping.html'>opt_row_striping</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://gt.rstudio.com/reference/tab_options.html'>tab_options</a></span><span class='op'>(</span>
+    row_group.background.color <span class='op'>=</span> <span class='st'>"lightgrey"</span>
+  <span class='op'>)</span>
 </code></pre>
 </div>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-priority
-</th>
-<th style="text-align:left;">
-category
-</th>
-<th style="text-align:left;">
-task
-</th>
-<th style="text-align:left;">
-description
-</th>
-</tr>
-</thead>
-<tbody>
-<tr grouplength="15">
-<td colspan="4" style="border-bottom: 1px solid;">
-<strong><span class="math inline">\(\pi\)</span></strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-workout
-</td>
-<td style="text-align:left;">
-vr
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sim\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-workout
-</td>
-<td style="text-align:left;">
-yoga
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-waiting
-</td>
-<td style="text-align:left;">
-make sure noted in bujo daily, monthly, or future log
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-update lappy486
-</td>
-<td style="text-align:left;">
-<code>sudo apt update</code>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-update pkgs
-</td>
-<td style="text-align:left;">
-in rstudio
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-update lifeswork
-</td>
-<td style="text-align:left;">
-run update data and rebuild site
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-bed
-</td>
-<td style="text-align:left;">
-roll up
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-dishes
-</td>
-<td style="text-align:left;">
-wash and wipe benches
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-laundry
-</td>
-<td style="text-align:left;">
-put one load of laundry on, put away laundry, tidy chairdrobe, add dryer task
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-wash
-</td>
-<td style="text-align:left;">
-shower or face
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-brushes
-</td>
-<td style="text-align:left;">
-wash brushes
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-basin
-</td>
-<td style="text-align:left;">
-wash basin
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-fridge
-</td>
-<td style="text-align:left;">
-clean my shelf
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-water plants
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-desk
-</td>
-<td style="text-align:left;">
-tidy and sweep
-</td>
-</tr>
-<tr grouplength="4">
-<td colspan="4" style="border-bottom: 1px solid;">
-<strong><span class="math inline">\(\theta\)</span></strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\theta\)</span>
-</td>
-<td style="text-align:left;">
-reading
-</td>
-<td style="text-align:left;">
-see pandan
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\theta\)</span>
-</td>
-<td style="text-align:left;">
-tucker
-</td>
-<td style="text-align:left;">
-one exercise
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\theta\)</span>
-</td>
-<td style="text-align:left;">
-rethinking
-</td>
-<td style="text-align:left;">
-one question
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\theta\)</span>
-</td>
-<td style="text-align:left;">
-TIL
-</td>
-<td style="text-align:left;">
-today I learnt blogpost
-</td>
-</tr>
-<tr grouplength="16">
-<td colspan="4" style="border-bottom: 1px solid;">
-<strong><span class="math inline">\(\psi\)</span></strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-weekend
-</td>
-<td style="text-align:left;">
-only calendar and goals, no email, no req to talk to peoples
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-calendar
-</td>
-<td style="text-align:left;">
-check day, week, month; note events of the day; upcoming deadlines; migrate stuff for today to 𝅘𝅥𝅮, ♫. book yoga
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-fire
-</td>
-<td style="text-align:left;">
-What is on fire? task or project must be due today and someone else will get stuffed around if I don’t do it
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-priority
-</td>
-<td style="text-align:left;">
-what is needed to move this email along? is it waiting or action?
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-clue
-</td>
-<td style="text-align:left;">
-track
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-inbox
-</td>
-<td style="text-align:left;">
-(&gt; 12pm + weekday) archive or assign to 𝅘𝅥𝅮 or ♫ and move to needs action
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-action
-</td>
-<td style="text-align:left;">
-what is the next thing to move each of these emails along? is it waiting not action?
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-stuff
-</td>
-<td style="text-align:left;">
-process papers, notes, unpack bags, etc.
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-goals
-</td>
-<td style="text-align:left;">
-set pom goals for day: 4 in each category, subtract meetings.
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-slack
-</td>
-<td style="text-align:left;">
-check for new messages
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-signal
-</td>
-<td style="text-align:left;">
-check messages
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sim\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-♫
-</td>
-<td style="text-align:left;">
-Add every <span class="math inline">\(\star\)</span> project to 𝅘𝅥𝅮 to be processed into a subproject that can be completed today. Each project should either have an associated collection, or a git hub repo or issue, location tagged in ♫.
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-♫ <span class="math inline">\(\sim\)</span> &amp; <span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-add <span class="math inline">\(\forall \sim\ \cdot) and \(\geqslant 1\)</span> <span class="math inline">\(\varnothing\)</span> from ♫
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-future log
-</td>
-<td style="text-align:left;">
-check future log
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-teams
-</td>
-<td style="text-align:left;">
-check for new messages
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-ynab
-</td>
-<td style="text-align:left;">
-finish pom
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h1 id="priorities">priorities</h1>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>priorities</span> <span class='op'>&lt;-</span> <span class='va'>tasks</span> <span class='op'>%&gt;%</span> <span class='fu'>pluck</span><span class='op'>(</span><span class='st'>"p"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='op'>)</span>
+<div id="gidoslhyxx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
 
-<span class='va'>tasks</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>arrange</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>c</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>c</span>, <span class='op'>-</span><span class='va'>p</span><span class='op'>)</span>  <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></span><span class='op'>(</span><span class='op'>)</span>  <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/group_rows.html'>group_rows</a></span><span class='op'>(</span>index <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/setNames.html'>setNames</a></span><span class='op'>(</span><span class='va'>priorities</span>, 
-              <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"$\\"</span>, <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>priorities</span><span class='op'>)</span>, <span class='st'>"$"</span><span class='op'>)</span><span class='op'>)</span>
-             <span class='op'>)</span>
-</code></pre>
-</div>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-priority
-</th>
-<th style="text-align:left;">
-category
-</th>
-<th style="text-align:left;">
-task
-</th>
-<th style="text-align:left;">
-description
-</th>
-</tr>
-</thead>
-<tbody>
-<tr grouplength="12">
-<td colspan="4" style="border-bottom: 1px solid;">
-<strong><span class="math inline">\(\star\)</span></strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-workout
-</td>
-<td style="text-align:left;">
-vr
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-weekend
-</td>
-<td style="text-align:left;">
-only calendar and goals, no email, no req to talk to peoples
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-calendar
-</td>
-<td style="text-align:left;">
-check day, week, month; note events of the day; upcoming deadlines; migrate stuff for today to 𝅘𝅥𝅮, ♫. book yoga
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-fire
-</td>
-<td style="text-align:left;">
-What is on fire? task or project must be due today and someone else will get stuffed around if I don’t do it
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-priority
-</td>
-<td style="text-align:left;">
-what is needed to move this email along? is it waiting or action?
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-clue
-</td>
-<td style="text-align:left;">
-track
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-inbox
-</td>
-<td style="text-align:left;">
-(&gt; 12pm + weekday) archive or assign to 𝅘𝅥𝅮 or ♫ and move to needs action
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-action
-</td>
-<td style="text-align:left;">
-what is the next thing to move each of these emails along? is it waiting not action?
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-stuff
-</td>
-<td style="text-align:left;">
-process papers, notes, unpack bags, etc.
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-goals
-</td>
-<td style="text-align:left;">
-set pom goals for day: 4 in each category, subtract meetings.
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-slack
-</td>
-<td style="text-align:left;">
-check for new messages
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\star\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-signal
-</td>
-<td style="text-align:left;">
-check messages
-</td>
-</tr>
-<tr grouplength="2">
-<td colspan="4" style="border-bottom: 1px solid;">
-<strong><span class="math inline">\(\sim\)</span></strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sim\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-workout
-</td>
-<td style="text-align:left;">
-yoga
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sim\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-♫
-</td>
-<td style="text-align:left;">
-Add every <span class="math inline">\(\star\)</span> project to 𝅘𝅥𝅮 to be processed into a subproject that can be completed today. Each project should either have an associated collection, or a git hub repo or issue, location tagged in ♫.
-</td>
-</tr>
-<tr grouplength="11">
-<td colspan="4" style="border-bottom: 1px solid;">
-<strong><span class="math inline">\(\varnothing\)</span></strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-waiting
-</td>
-<td style="text-align:left;">
-make sure noted in bujo daily, monthly, or future log
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-update lappy486
-</td>
-<td style="text-align:left;">
-<code>sudo apt update</code>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-update pkgs
-</td>
-<td style="text-align:left;">
-in rstudio
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-update lifeswork
-</td>
-<td style="text-align:left;">
-run update data and rebuild site
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\theta\)</span>
-</td>
-<td style="text-align:left;">
-reading
-</td>
-<td style="text-align:left;">
-see pandan
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\theta\)</span>
-</td>
-<td style="text-align:left;">
-tucker
-</td>
-<td style="text-align:left;">
-one exercise
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\theta\)</span>
-</td>
-<td style="text-align:left;">
-rethinking
-</td>
-<td style="text-align:left;">
-one question
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\theta\)</span>
-</td>
-<td style="text-align:left;">
-TIL
-</td>
-<td style="text-align:left;">
-today I learnt blogpost
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-♫ <span class="math inline">\(\sim\)</span> &amp; <span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-add <span class="math inline">\(\forall \sim\ \cdot) and \(\geqslant 1\)</span> <span class="math inline">\(\varnothing\)</span> from ♫
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-future log
-</td>
-<td style="text-align:left;">
-check future log
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\varnothing\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-teams
-</td>
-<td style="text-align:left;">
-check for new messages
-</td>
-</tr>
-<tr grouplength="10">
-<td colspan="4" style="border-bottom: 1px solid;">
-<strong><span class="math inline">\(\sharp\)</span></strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-bed
-</td>
-<td style="text-align:left;">
-roll up
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-dishes
-</td>
-<td style="text-align:left;">
-wash and wipe benches
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-laundry
-</td>
-<td style="text-align:left;">
-put one load of laundry on, put away laundry, tidy chairdrobe, add dryer task
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-wash
-</td>
-<td style="text-align:left;">
-shower or face
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-brushes
-</td>
-<td style="text-align:left;">
-wash brushes
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-basin
-</td>
-<td style="text-align:left;">
-wash basin
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-fridge
-</td>
-<td style="text-align:left;">
-clean my shelf
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-water plants
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\pi\)</span>
-</td>
-<td style="text-align:left;">
-desk
-</td>
-<td style="text-align:left;">
-tidy and sweep
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<span class="math inline">\(\sharp\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\psi\)</span>
-</td>
-<td style="text-align:left;">
-ynab
-</td>
-<td style="text-align:left;">
-finish pom
-</td>
-</tr>
-</tbody>
+#gidoslhyxx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#gidoslhyxx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gidoslhyxx .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#gidoslhyxx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#gidoslhyxx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gidoslhyxx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gidoslhyxx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#gidoslhyxx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#gidoslhyxx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#gidoslhyxx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#gidoslhyxx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#gidoslhyxx .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: lightgrey;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#gidoslhyxx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: lightgrey;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#gidoslhyxx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#gidoslhyxx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#gidoslhyxx .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#gidoslhyxx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#gidoslhyxx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gidoslhyxx .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#gidoslhyxx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gidoslhyxx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#gidoslhyxx .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#gidoslhyxx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gidoslhyxx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gidoslhyxx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#gidoslhyxx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gidoslhyxx .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#gidoslhyxx .gt_left {
+  text-align: left;
+}
+
+#gidoslhyxx .gt_center {
+  text-align: center;
+}
+
+#gidoslhyxx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#gidoslhyxx .gt_font_normal {
+  font-weight: normal;
+}
+
+#gidoslhyxx .gt_font_bold {
+  font-weight: bold;
+}
+
+#gidoslhyxx .gt_font_italic {
+  font-style: italic;
+}
+
+#gidoslhyxx .gt_super {
+  font-size: 65%;
+}
+
+#gidoslhyxx .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">status</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">task</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">description</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">phi</td>
+    </tr>
+    <tr><td class="gt_row gt_left">sim</td>
+<td class="gt_row gt_left">3 dots</td>
+<td class="gt_row gt_left">complete three dots on writing</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">pi</td>
+    </tr>
+    <tr><td class="gt_row gt_left gt_striped">star</td>
+<td class="gt_row gt_left gt_striped">workout</td>
+<td class="gt_row gt_left gt_striped">vr</td></tr>
+    <tr><td class="gt_row gt_left">star</td>
+<td class="gt_row gt_left">dishes</td>
+<td class="gt_row gt_left">wash and wipe benches</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">star</td>
+<td class="gt_row gt_left gt_striped">wash</td>
+<td class="gt_row gt_left gt_striped">shower or face</td></tr>
+    <tr><td class="gt_row gt_left">star</td>
+<td class="gt_row gt_left">water plants</td>
+<td class="gt_row gt_left">NA</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">sim</td>
+<td class="gt_row gt_left gt_striped">workout</td>
+<td class="gt_row gt_left gt_striped">yoga</td></tr>
+    <tr><td class="gt_row gt_left">varnothing</td>
+<td class="gt_row gt_left">laundry</td>
+<td class="gt_row gt_left">check if laundry needs doing, put away clothes, chairdrobe</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">varnothing</td>
+<td class="gt_row gt_left gt_striped">brushes</td>
+<td class="gt_row gt_left gt_striped">wash brushes</td></tr>
+    <tr><td class="gt_row gt_left">varnothing</td>
+<td class="gt_row gt_left">basin</td>
+<td class="gt_row gt_left">wash basin</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">varnothing</td>
+<td class="gt_row gt_left gt_striped">fridge</td>
+<td class="gt_row gt_left gt_striped">clean my shelf</td></tr>
+    <tr><td class="gt_row gt_left">varnothing</td>
+<td class="gt_row gt_left">desk</td>
+<td class="gt_row gt_left">tidy and sweep</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">varnothing</td>
+<td class="gt_row gt_left gt_striped">waiting</td>
+<td class="gt_row gt_left gt_striped">make sure noted in bujo daily, monthly, or future log</td></tr>
+    <tr><td class="gt_row gt_left">varnothing</td>
+<td class="gt_row gt_left">update lappy486</td>
+<td class="gt_row gt_left">`sudo apt update`</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">varnothing</td>
+<td class="gt_row gt_left gt_striped">update pkgs</td>
+<td class="gt_row gt_left gt_striped">in rstudio</td></tr>
+    <tr><td class="gt_row gt_left">varnothing</td>
+<td class="gt_row gt_left">update lifeswork</td>
+<td class="gt_row gt_left">run update data and rebuild site</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">theta</td>
+    </tr>
+    <tr><td class="gt_row gt_left gt_striped">varnothing</td>
+<td class="gt_row gt_left gt_striped">reading</td>
+<td class="gt_row gt_left gt_striped">see pandan</td></tr>
+    <tr><td class="gt_row gt_left">varnothing</td>
+<td class="gt_row gt_left">tucker</td>
+<td class="gt_row gt_left">one exercise</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">varnothing</td>
+<td class="gt_row gt_left gt_striped">rethinking</td>
+<td class="gt_row gt_left gt_striped">one question</td></tr>
+    <tr><td class="gt_row gt_left">varnothing</td>
+<td class="gt_row gt_left">TIL</td>
+<td class="gt_row gt_left">today I learnt blogpost</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">psi</td>
+    </tr>
+    <tr><td class="gt_row gt_left gt_striped">star</td>
+<td class="gt_row gt_left gt_striped">weekend</td>
+<td class="gt_row gt_left gt_striped">only calendar and goals, no email, no req to talk to peoples</td></tr>
+    <tr><td class="gt_row gt_left">star</td>
+<td class="gt_row gt_left">calendar</td>
+<td class="gt_row gt_left">check day, week, month; note events of the day; upcoming deadlines; migrate stuff for today to 𝅘𝅥𝅮, ♫. book yoga</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">star</td>
+<td class="gt_row gt_left gt_striped">fire</td>
+<td class="gt_row gt_left gt_striped">What is on fire? task or project must be due today and someone else will get stuffed around if I don't do it</td></tr>
+    <tr><td class="gt_row gt_left">star</td>
+<td class="gt_row gt_left">starred action</td>
+<td class="gt_row gt_left">what is needed to move this email along? is it waiting or action?</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">star</td>
+<td class="gt_row gt_left gt_striped">clue</td>
+<td class="gt_row gt_left gt_striped">track</td></tr>
+    <tr><td class="gt_row gt_left">star</td>
+<td class="gt_row gt_left">inbox</td>
+<td class="gt_row gt_left">(&gt; 12pm + weekday) archive or assign to 𝅘𝅥𝅮 or ♫ and move to needs action</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">star</td>
+<td class="gt_row gt_left gt_striped">stuff</td>
+<td class="gt_row gt_left gt_striped">process papers, notes, unpack bags, etc.</td></tr>
+    <tr><td class="gt_row gt_left">star</td>
+<td class="gt_row gt_left">goals</td>
+<td class="gt_row gt_left">set pom goals for day: 4 in each category, subtract meetings.</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">star</td>
+<td class="gt_row gt_left gt_striped">slack</td>
+<td class="gt_row gt_left gt_striped">check for new messages</td></tr>
+    <tr><td class="gt_row gt_left">star</td>
+<td class="gt_row gt_left">signal</td>
+<td class="gt_row gt_left">check messages</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">star</td>
+<td class="gt_row gt_left gt_striped">outlook</td>
+<td class="gt_row gt_left gt_striped">check newcastle email</td></tr>
+    <tr><td class="gt_row gt_left">sim</td>
+<td class="gt_row gt_left">♫</td>
+<td class="gt_row gt_left">Add every \(\star\) project to 𝅘𝅥𝅮 to be processed into a subproject that can be completed today. Each project should either have an associated collection, or a git hub repo or issue, location tagged in ♫.</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">varnothing</td>
+<td class="gt_row gt_left gt_striped">♫ \(\sim\) &amp; \(\varnothing\)</td>
+<td class="gt_row gt_left gt_striped">add \(\forall \sim\ \cdot) and \(\geqslant 1 \) \(\varnothing\) from ♫</td></tr>
+    <tr><td class="gt_row gt_left">varnothing</td>
+<td class="gt_row gt_left">future log</td>
+<td class="gt_row gt_left">check future log</td></tr>
+    <tr><td class="gt_row gt_left gt_striped">varnothing</td>
+<td class="gt_row gt_left gt_striped">teams</td>
+<td class="gt_row gt_left gt_striped">check for new messages</td></tr>
+    <tr><td class="gt_row gt_left">sharp</td>
+<td class="gt_row gt_left">ynab</td>
+<td class="gt_row gt_left">finish pom</td></tr>
+  </tbody>
+  
+  
 </table>
+</div>
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
@@ -3203,15 +2599,6 @@ finish pom
 <div class="d-appendix">
 </div>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
