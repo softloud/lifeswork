@@ -3,7 +3,9 @@ title: "instantiate"
 description: |
   start the day
 date: "updated `r Sys.Date()`"
-output: distill::distill_article
+output: 
+  distill::distill_article:
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
@@ -41,11 +43,31 @@ not research | $\psi$ (busywork) | $\pi$ (exercise, housework)
 
 ## things to do next
 
+[Weekend tasks](#weekend)
+
 ```{r}
 tasks <- read_rds("data/tasks.rds")
 
 tasks %>% 
+  filter(status == "star") %>%
+  select(-weekend) %>% 
+  gt(
+    groupname_col = "category"
+  ) %>% 
+  opt_row_striping() %>% 
+  tab_options(
+    row_group.background.color = "lightgrey"
+  ) 
+
+```
+
+## weekend
+
+```{r}
+tasks %>% 
   filter(status == "star") %>% 
+  filter(weekend) %>% 
+  select(-weekend) %>% 
   gt(
     groupname_col = "category"
   ) %>% 
@@ -54,5 +76,7 @@ tasks %>%
     row_group.background.color = "lightgrey"
   )
 
+
 ```
+
 
