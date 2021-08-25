@@ -91,8 +91,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-08-04"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-08-04"/>
+  <meta property="article:published" itemprop="datePublished" content="2021-08-25"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-08-25"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="lifeswork: tasks"/>
@@ -108,7 +108,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["tasks"]},{"type":"character","attributes":{},"value":["2021-08-04"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["tasks"]},{"type":"character","attributes":{},"value":["2021-08-25"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2053,7 +2053,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"tasks","authors":[],"publishedDate":"2021-08-04T00:00:00.000+01:00"}
+{"title":"tasks","authors":[],"publishedDate":"2021-08-25T00:00:00.000+01:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2090,7 +2090,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#categories">categories</a></li>
+<li><a href="#tasks">tasks</a></li>
+<li><a href="#weekend">weekend</a></li>
 </ul>
 </nav>
 </div>
@@ -2104,12 +2105,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </code></pre>
 </div>
 </div>
-<h1 id="categories">categories</h1>
+<h1 id="tasks">tasks</h1>
+<p><a href="#weekend">Go to Weekend tasks</a></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tasks</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>weekend</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
   <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span>
-    groupname_col <span class='op'>=</span> <span class='st'>"category"</span>
+    groupname_col <span class='op'>=</span> <span class='st'>"category"</span>,
+    rowname_col <span class='op'>=</span> <span class='st'>"status"</span>
   <span class='op'>)</span> <span class='op'>%&gt;%</span> 
   <span class='fu'><a href='https://gt.rstudio.com/reference/opt_row_striping.html'>opt_row_striping</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
   <span class='fu'><a href='https://gt.rstudio.com/reference/tab_options.html'>tab_options</a></span><span class='op'>(</span>
@@ -2117,12 +2121,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <span class='op'>)</span>
 </code></pre>
 </div>
-<div id="fsntunwgao" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="mvpgnazqti" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#fsntunwgao .gt_table {
+#mvpgnazqti .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2147,7 +2151,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-left-color: #D3D3D3;
 }
 
-#fsntunwgao .gt_heading {
+#mvpgnazqti .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2159,7 +2163,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#fsntunwgao .gt_title {
+#mvpgnazqti .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2169,7 +2173,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-bottom-width: 0;
 }
 
-#fsntunwgao .gt_subtitle {
+#mvpgnazqti .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2179,13 +2183,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-width: 0;
 }
 
-#fsntunwgao .gt_bottom_border {
+#mvpgnazqti .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fsntunwgao .gt_col_headings {
+#mvpgnazqti .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2200,7 +2204,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#fsntunwgao .gt_col_heading {
+#mvpgnazqti .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2220,7 +2224,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   overflow-x: hidden;
 }
 
-#fsntunwgao .gt_column_spanner_outer {
+#mvpgnazqti .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2232,15 +2236,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 4px;
 }
 
-#fsntunwgao .gt_column_spanner_outer:first-child {
+#mvpgnazqti .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fsntunwgao .gt_column_spanner_outer:last-child {
+#mvpgnazqti .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fsntunwgao .gt_column_spanner {
+#mvpgnazqti .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2252,7 +2256,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   width: 100%;
 }
 
-#fsntunwgao .gt_group_heading {
+#mvpgnazqti .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: lightgrey;
@@ -2274,7 +2278,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   vertical-align: middle;
 }
 
-#fsntunwgao .gt_empty_group_heading {
+#mvpgnazqti .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: lightgrey;
@@ -2289,15 +2293,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   vertical-align: middle;
 }
 
-#fsntunwgao .gt_from_md > :first-child {
+#mvpgnazqti .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fsntunwgao .gt_from_md > :last-child {
+#mvpgnazqti .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fsntunwgao .gt_row {
+#mvpgnazqti .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2316,7 +2320,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   overflow-x: hidden;
 }
 
-#fsntunwgao .gt_stub {
+#mvpgnazqti .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2328,7 +2332,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-left: 12px;
 }
 
-#fsntunwgao .gt_summary_row {
+#mvpgnazqti .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2338,7 +2342,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 5px;
 }
 
-#fsntunwgao .gt_first_summary_row {
+#mvpgnazqti .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2348,7 +2352,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-color: #D3D3D3;
 }
 
-#fsntunwgao .gt_grand_summary_row {
+#mvpgnazqti .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2358,7 +2362,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 5px;
 }
 
-#fsntunwgao .gt_first_grand_summary_row {
+#mvpgnazqti .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2368,11 +2372,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-color: #D3D3D3;
 }
 
-#fsntunwgao .gt_striped {
+#mvpgnazqti .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fsntunwgao .gt_table_body {
+#mvpgnazqti .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2381,7 +2385,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-bottom-color: #D3D3D3;
 }
 
-#fsntunwgao .gt_footnotes {
+#mvpgnazqti .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2395,13 +2399,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#fsntunwgao .gt_footnote {
+#mvpgnazqti .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#fsntunwgao .gt_sourcenotes {
+#mvpgnazqti .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2415,41 +2419,41 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#fsntunwgao .gt_sourcenote {
+#mvpgnazqti .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#fsntunwgao .gt_left {
+#mvpgnazqti .gt_left {
   text-align: left;
 }
 
-#fsntunwgao .gt_center {
+#mvpgnazqti .gt_center {
   text-align: center;
 }
 
-#fsntunwgao .gt_right {
+#mvpgnazqti .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fsntunwgao .gt_font_normal {
+#mvpgnazqti .gt_font_normal {
   font-weight: normal;
 }
 
-#fsntunwgao .gt_font_bold {
+#mvpgnazqti .gt_font_bold {
   font-weight: bold;
 }
 
-#fsntunwgao .gt_font_italic {
+#mvpgnazqti .gt_font_italic {
   font-style: italic;
 }
 
-#fsntunwgao .gt_super {
+#mvpgnazqti .gt_super {
   font-size: 65%;
 }
 
-#fsntunwgao .gt_footnote_marks {
+#mvpgnazqti .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -2459,165 +2463,511 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">status</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">task</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">description</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">weekend</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
     <tr class="gt_group_heading_row">
-      <td colspan="4" class="gt_group_heading">phi</td>
+      <td colspan="3" class="gt_group_heading">phi</td>
     </tr>
-    <tr><td class="gt_row gt_left">sim</td>
+    <tr><td class="gt_row gt_left gt_stub">sim</td>
 <td class="gt_row gt_left">3 dots</td>
-<td class="gt_row gt_left">complete three dots on writing</td>
-<td class="gt_row gt_center">NA</td></tr>
+<td class="gt_row gt_left">complete three dots on writing</td></tr>
     <tr class="gt_group_heading_row">
-      <td colspan="4" class="gt_group_heading">pi</td>
+      <td colspan="3" class="gt_group_heading">pi</td>
     </tr>
-    <tr><td class="gt_row gt_left gt_striped">star</td>
+    <tr><td class="gt_row gt_left gt_stub">star</td>
 <td class="gt_row gt_left gt_striped">workout</td>
-<td class="gt_row gt_left gt_striped">vr</td>
-<td class="gt_row gt_center gt_striped">NA</td></tr>
-    <tr><td class="gt_row gt_left">star</td>
+<td class="gt_row gt_left gt_striped">vr</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">star</td>
 <td class="gt_row gt_left">dishes</td>
-<td class="gt_row gt_left">wash and wipe benches</td>
-<td class="gt_row gt_center">NA</td></tr>
-    <tr><td class="gt_row gt_left gt_striped">star</td>
+<td class="gt_row gt_left">wash and wipe benches</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">star</td>
 <td class="gt_row gt_left gt_striped">wash</td>
-<td class="gt_row gt_left gt_striped">shower or face</td>
-<td class="gt_row gt_center gt_striped">NA</td></tr>
-    <tr><td class="gt_row gt_left">star</td>
+<td class="gt_row gt_left gt_striped">shower or face</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">star</td>
 <td class="gt_row gt_left">plants</td>
-<td class="gt_row gt_left">feel if soil is moist</td>
-<td class="gt_row gt_center">NA</td></tr>
-    <tr><td class="gt_row gt_left gt_striped">sim</td>
+<td class="gt_row gt_left">feel if soil is moist</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">sim</td>
 <td class="gt_row gt_left gt_striped">workout</td>
-<td class="gt_row gt_left gt_striped">yoga</td>
-<td class="gt_row gt_center gt_striped">NA</td></tr>
-    <tr><td class="gt_row gt_left">varnothing</td>
+<td class="gt_row gt_left gt_striped">yoga</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">varnothing</td>
 <td class="gt_row gt_left">laundry</td>
-<td class="gt_row gt_left">check if laundry needs doing, put away clothes, chairdrobe</td>
-<td class="gt_row gt_center">NA</td></tr>
-    <tr><td class="gt_row gt_left gt_striped">varnothing</td>
+<td class="gt_row gt_left">check if laundry needs doing, put away clothes, chairdrobe</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">varnothing</td>
 <td class="gt_row gt_left gt_striped">brushes</td>
-<td class="gt_row gt_left gt_striped">wash brushes</td>
-<td class="gt_row gt_center gt_striped">NA</td></tr>
-    <tr><td class="gt_row gt_left">varnothing</td>
+<td class="gt_row gt_left gt_striped">wash brushes</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">varnothing</td>
 <td class="gt_row gt_left">basin</td>
-<td class="gt_row gt_left">wash basin</td>
-<td class="gt_row gt_center">NA</td></tr>
-    <tr><td class="gt_row gt_left gt_striped">varnothing</td>
+<td class="gt_row gt_left">wash basin</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">varnothing</td>
 <td class="gt_row gt_left gt_striped">fridge</td>
-<td class="gt_row gt_left gt_striped">clean my shelf</td>
-<td class="gt_row gt_center gt_striped">NA</td></tr>
-    <tr><td class="gt_row gt_left">varnothing</td>
+<td class="gt_row gt_left gt_striped">clean my shelf</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">varnothing</td>
 <td class="gt_row gt_left">water plants</td>
-<td class="gt_row gt_left">NA</td>
-<td class="gt_row gt_center">NA</td></tr>
-    <tr><td class="gt_row gt_left gt_striped">varnothing</td>
+<td class="gt_row gt_left">NA</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">varnothing</td>
 <td class="gt_row gt_left gt_striped">desk</td>
-<td class="gt_row gt_left gt_striped">tidy and sweep</td>
-<td class="gt_row gt_center gt_striped">NA</td></tr>
-    <tr><td class="gt_row gt_left">varnothing</td>
+<td class="gt_row gt_left gt_striped">tidy and sweep</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">varnothing</td>
 <td class="gt_row gt_left">waiting</td>
-<td class="gt_row gt_left">make sure noted in bujo daily, monthly, or future log</td>
-<td class="gt_row gt_center">NA</td></tr>
-    <tr><td class="gt_row gt_left gt_striped">varnothing</td>
+<td class="gt_row gt_left">make sure noted in bujo daily, monthly, or future log</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">varnothing</td>
 <td class="gt_row gt_left gt_striped">update lappy486</td>
-<td class="gt_row gt_left gt_striped">`sudo apt update`</td>
-<td class="gt_row gt_center gt_striped">NA</td></tr>
-    <tr><td class="gt_row gt_left">varnothing</td>
+<td class="gt_row gt_left gt_striped">`sudo apt update`</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">varnothing</td>
 <td class="gt_row gt_left">update pkgs</td>
-<td class="gt_row gt_left">in rstudio</td>
-<td class="gt_row gt_center">NA</td></tr>
-    <tr><td class="gt_row gt_left gt_striped">varnothing</td>
+<td class="gt_row gt_left">in rstudio</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">varnothing</td>
 <td class="gt_row gt_left gt_striped">update lifeswork</td>
-<td class="gt_row gt_left gt_striped">run update data and rebuild site</td>
-<td class="gt_row gt_center gt_striped">NA</td></tr>
+<td class="gt_row gt_left gt_striped">run update data and rebuild site</td></tr>
     <tr class="gt_group_heading_row">
-      <td colspan="4" class="gt_group_heading">theta</td>
+      <td colspan="3" class="gt_group_heading">theta</td>
     </tr>
-    <tr><td class="gt_row gt_left">varnothing</td>
+    <tr><td class="gt_row gt_left gt_stub">varnothing</td>
 <td class="gt_row gt_left">reading</td>
-<td class="gt_row gt_left">see pandan</td>
-<td class="gt_row gt_center">NA</td></tr>
-    <tr><td class="gt_row gt_left gt_striped">varnothing</td>
+<td class="gt_row gt_left">see pandan</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">varnothing</td>
 <td class="gt_row gt_left gt_striped">tucker</td>
-<td class="gt_row gt_left gt_striped">one exercise</td>
-<td class="gt_row gt_center gt_striped">NA</td></tr>
-    <tr><td class="gt_row gt_left">varnothing</td>
+<td class="gt_row gt_left gt_striped">one exercise</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">varnothing</td>
 <td class="gt_row gt_left">rethinking</td>
-<td class="gt_row gt_left">one question</td>
-<td class="gt_row gt_center">NA</td></tr>
-    <tr><td class="gt_row gt_left gt_striped">varnothing</td>
+<td class="gt_row gt_left">one question</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">varnothing</td>
 <td class="gt_row gt_left gt_striped">TIL</td>
-<td class="gt_row gt_left gt_striped">today I learnt blogpost</td>
-<td class="gt_row gt_center gt_striped">NA</td></tr>
+<td class="gt_row gt_left gt_striped">today I learnt blogpost</td></tr>
     <tr class="gt_group_heading_row">
-      <td colspan="4" class="gt_group_heading">psi</td>
+      <td colspan="3" class="gt_group_heading">psi</td>
     </tr>
-    <tr><td class="gt_row gt_left">star</td>
+    <tr><td class="gt_row gt_left gt_stub">star</td>
 <td class="gt_row gt_left">weekend</td>
-<td class="gt_row gt_left">only calendar and goals, no email, no req to talk to peoples</td>
-<td class="gt_row gt_center">NA</td></tr>
-    <tr><td class="gt_row gt_left gt_striped">star</td>
+<td class="gt_row gt_left">only calendar and goals, no email, no req to talk to peoples</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">star</td>
 <td class="gt_row gt_left gt_striped">calendar</td>
-<td class="gt_row gt_left gt_striped">check day, week, month; note events of the day; upcoming deadlines; migrate stuff for today to 𝅘𝅥𝅮, ♫. book yoga</td>
-<td class="gt_row gt_center gt_striped">TRUE</td></tr>
-    <tr><td class="gt_row gt_left">star</td>
+<td class="gt_row gt_left gt_striped">check day, week, month; note events of the day; upcoming deadlines; migrate stuff for today to 𝅘𝅥𝅮, ♫. book yoga</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">star</td>
 <td class="gt_row gt_left">fire</td>
-<td class="gt_row gt_left">What is on fire? task or project must be due today and someone else will get stuffed around if I don't do it</td>
-<td class="gt_row gt_center">NA</td></tr>
-    <tr><td class="gt_row gt_left gt_striped">star</td>
+<td class="gt_row gt_left">What is on fire? task or project must be due today and someone else will get stuffed around if I don't do it</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">star</td>
 <td class="gt_row gt_left gt_striped">starred email</td>
-<td class="gt_row gt_left gt_striped">snooze or add task to daily log to move along</td>
-<td class="gt_row gt_center gt_striped">NA</td></tr>
-    <tr><td class="gt_row gt_left">star</td>
+<td class="gt_row gt_left gt_striped">snooze or add task to daily log to move along</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">star</td>
 <td class="gt_row gt_left">clue</td>
-<td class="gt_row gt_left">track</td>
-<td class="gt_row gt_center">TRUE</td></tr>
-    <tr><td class="gt_row gt_left gt_striped">star</td>
+<td class="gt_row gt_left">track</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">star</td>
 <td class="gt_row gt_left gt_striped">stuff</td>
-<td class="gt_row gt_left gt_striped">process papers, notes, unpack bags, etc.</td>
-<td class="gt_row gt_center gt_striped">NA</td></tr>
-    <tr><td class="gt_row gt_left">star</td>
+<td class="gt_row gt_left gt_striped">process papers, notes, unpack bags, etc.</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">star</td>
 <td class="gt_row gt_left">goals</td>
-<td class="gt_row gt_left">set pom goals for day: 4 in each category, subtract meetings.</td>
-<td class="gt_row gt_center">TRUE</td></tr>
-    <tr><td class="gt_row gt_left gt_striped">sim</td>
+<td class="gt_row gt_left">set pom goals for day: 4 in each category, subtract meetings.</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">sim</td>
 <td class="gt_row gt_left gt_striped">♫</td>
-<td class="gt_row gt_left gt_striped">Add every \(\star\) project to 𝅘𝅥𝅮 to be processed into a subproject that can be completed today. Each project should either have an associated collection, or a git hub repo or issue, location tagged in ♫.</td>
-<td class="gt_row gt_center gt_striped">NA</td></tr>
-    <tr><td class="gt_row gt_left">sim</td>
+<td class="gt_row gt_left gt_striped">Add every \(\star\) project to 𝅘𝅥𝅮 to be processed into a subproject that can be completed today. Each project should either have an associated collection, or a git hub repo or issue, location tagged in ♫.</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">sim</td>
 <td class="gt_row gt_left">ynab</td>
-<td class="gt_row gt_left">finish pom</td>
-<td class="gt_row gt_center">NA</td></tr>
-    <tr><td class="gt_row gt_left gt_striped">sim</td>
+<td class="gt_row gt_left">finish pom</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">sim</td>
 <td class="gt_row gt_left gt_striped">slack</td>
-<td class="gt_row gt_left gt_striped">check for new messages</td>
-<td class="gt_row gt_center gt_striped">NA</td></tr>
-    <tr><td class="gt_row gt_left">sim</td>
+<td class="gt_row gt_left gt_striped">check for new messages</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">sim</td>
 <td class="gt_row gt_left">signal</td>
-<td class="gt_row gt_left">check messages</td>
-<td class="gt_row gt_center">NA</td></tr>
-    <tr><td class="gt_row gt_left gt_striped">sim</td>
+<td class="gt_row gt_left">check messages</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">sim</td>
 <td class="gt_row gt_left gt_striped">inbox</td>
-<td class="gt_row gt_left gt_striped">(&gt; 12pm + weekday) archive or assign to 𝅘𝅥𝅮 or ♫ and move to needs action</td>
-<td class="gt_row gt_center gt_striped">NA</td></tr>
-    <tr><td class="gt_row gt_left">varnothing</td>
+<td class="gt_row gt_left gt_striped">(&gt; 12pm + weekday) archive or assign to 𝅘𝅥𝅮 or ♫ and move to needs action</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">varnothing</td>
 <td class="gt_row gt_left">♫ \(\sim\) &amp; \(\varnothing\)</td>
-<td class="gt_row gt_left">add \(\forall \sim\ \cdot) and \(\geqslant 1 \) \(\varnothing\) from ♫</td>
-<td class="gt_row gt_center">NA</td></tr>
-    <tr><td class="gt_row gt_left gt_striped">varnothing</td>
+<td class="gt_row gt_left">add \(\forall \sim\ \cdot) and \(\geqslant 1 \) \(\varnothing\) from ♫</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">varnothing</td>
 <td class="gt_row gt_left gt_striped">future log</td>
-<td class="gt_row gt_left gt_striped">check future log</td>
-<td class="gt_row gt_center gt_striped">NA</td></tr>
-    <tr><td class="gt_row gt_left">varnothing</td>
+<td class="gt_row gt_left gt_striped">check future log</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">varnothing</td>
 <td class="gt_row gt_left">teams</td>
-<td class="gt_row gt_left">check for new messages</td>
-<td class="gt_row gt_center">NA</td></tr>
+<td class="gt_row gt_left">check for new messages</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+<h1 id="weekend">weekend</h1>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tasks</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>weekend</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>weekend</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span>
+    groupname_col <span class='op'>=</span> <span class='st'>"category"</span>,
+    rowname_col <span class='op'>=</span> <span class='st'>"status"</span>
+  <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://gt.rstudio.com/reference/opt_row_striping.html'>opt_row_striping</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://gt.rstudio.com/reference/tab_options.html'>tab_options</a></span><span class='op'>(</span>
+    row_group.background.color <span class='op'>=</span> <span class='st'>"lightgrey"</span>
+  <span class='op'>)</span>
+</code></pre>
+</div>
+<div id="hodopsauaq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#hodopsauaq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#hodopsauaq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hodopsauaq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#hodopsauaq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#hodopsauaq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hodopsauaq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hodopsauaq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#hodopsauaq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#hodopsauaq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#hodopsauaq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#hodopsauaq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#hodopsauaq .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: lightgrey;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#hodopsauaq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: lightgrey;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#hodopsauaq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#hodopsauaq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#hodopsauaq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#hodopsauaq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#hodopsauaq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hodopsauaq .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#hodopsauaq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hodopsauaq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#hodopsauaq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#hodopsauaq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hodopsauaq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hodopsauaq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#hodopsauaq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hodopsauaq .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#hodopsauaq .gt_left {
+  text-align: left;
+}
+
+#hodopsauaq .gt_center {
+  text-align: center;
+}
+
+#hodopsauaq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#hodopsauaq .gt_font_normal {
+  font-weight: normal;
+}
+
+#hodopsauaq .gt_font_bold {
+  font-weight: bold;
+}
+
+#hodopsauaq .gt_font_italic {
+  font-style: italic;
+}
+
+#hodopsauaq .gt_super {
+  font-size: 65%;
+}
+
+#hodopsauaq .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">task</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">description</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="3" class="gt_group_heading">psi</td>
+    </tr>
+    <tr><td class="gt_row gt_left gt_stub">star</td>
+<td class="gt_row gt_left">calendar</td>
+<td class="gt_row gt_left">check day, week, month; note events of the day; upcoming deadlines; migrate stuff for today to 𝅘𝅥𝅮, ♫. book yoga</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">star</td>
+<td class="gt_row gt_left gt_striped">clue</td>
+<td class="gt_row gt_left gt_striped">track</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">star</td>
+<td class="gt_row gt_left">goals</td>
+<td class="gt_row gt_left">set pom goals for day: 4 in each category, subtract meetings.</td></tr>
   </tbody>
   
   

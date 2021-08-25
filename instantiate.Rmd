@@ -43,7 +43,7 @@ not research | $\psi$ (busywork) | $\pi$ (exercise, housework)
 
 ## things to do next
 
-[Weekend tasks](#weekend)
+[Go to Weekend tasks](#weekend)
 
 ```{r}
 tasks <- read_rds("data/tasks.rds")
@@ -70,6 +70,7 @@ tasks %>%
   select(-weekend) %>% 
   gt(
     groupname_col = "category"
+    
   ) %>% 
   opt_row_striping() %>% 
   tab_options(

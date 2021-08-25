@@ -20,14 +20,34 @@ tasks <- read_rds("data/tasks.rds")
 
 ```
 
-# categories
+# tasks
 
+[Go to Weekend tasks](#weekend)
 
 ```{r }
 
 tasks %>% 
+  select(-weekend) %>% 
   gt(
-    groupname_col = "category"
+    groupname_col = "category",
+    rowname_col = "status"
+  ) %>% 
+  opt_row_striping() %>% 
+  tab_options(
+    row_group.background.color = "lightgrey"
+  )
+
+```
+
+# weekend
+
+```{r}
+tasks %>% 
+  filter(weekend) %>% 
+  select(-weekend) %>% 
+  gt(
+    groupname_col = "category",
+    rowname_col = "status"
   ) %>% 
   opt_row_striping() %>% 
   tab_options(
