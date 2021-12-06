@@ -56,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -77,7 +77,7 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
@@ -85,14 +85,15 @@ code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
+
   <!--radix_placeholder_meta_tags-->
   <title>lifeswork: tasks</title>
 
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-11-14"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-11-14"/>
+  <meta property="article:published" itemprop="datePublished" content="2021-12-06"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-12-06"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="lifeswork: tasks"/>
@@ -108,7 +109,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["tasks"]},{"type":"character","attributes":{},"value":["2021-11-14"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output"]}},"value":[{"type":"character","attributes":{},"value":["tasks"]},{"type":"character","attributes":{},"value":["2021-12-06"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -1862,7 +1863,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -2053,7 +2057,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"tasks","authors":[],"publishedDate":"2021-11-14T00:00:00.000+00:00"}
+{"title":"tasks","authors":[],"publishedDate":"2021-12-06T00:00:00.000+00:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2101,7 +2105,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>dontpanic</span><span class='op'>)</span>
 
-<span class='va'>tasks</span> <span class='op'>&lt;-</span> <span class='fu'>read_rds</span><span class='op'>(</span><span class='st'>"data/tasks.rds"</span><span class='op'>)</span> 
+<span class='va'>tasks</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_rds.html'>read_rds</a></span><span class='op'>(</span><span class='st'>"data/tasks.rds"</span><span class='op'>)</span> 
 </code></pre>
 </div>
 </div>
@@ -2109,24 +2113,24 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p><a href="#weekend">Go to Weekend tasks</a></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tasks</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>weekend</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tasks</span> <span class='op'><a href='https://gt.rstudio.com/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>weekend</span><span class='op'>)</span> <span class='op'><a href='https://gt.rstudio.com/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span>
     groupname_col <span class='op'>=</span> <span class='st'>"category"</span>,
     rowname_col <span class='op'>=</span> <span class='st'>"status"</span>
-  <span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://gt.rstudio.com/reference/opt_row_striping.html'>opt_row_striping</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='op'>)</span> <span class='op'><a href='https://gt.rstudio.com/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://gt.rstudio.com/reference/opt_row_striping.html'>opt_row_striping</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://gt.rstudio.com/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://gt.rstudio.com/reference/tab_options.html'>tab_options</a></span><span class='op'>(</span>
     row_group.background.color <span class='op'>=</span> <span class='st'>"lightgrey"</span>
   <span class='op'>)</span>
 </code></pre>
 </div>
-<div id="oeyvjzvsev" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="wawpuojirs" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#oeyvjzvsev .gt_table {
+#wawpuojirs .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2151,7 +2155,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-left-color: #D3D3D3;
 }
 
-#oeyvjzvsev .gt_heading {
+#wawpuojirs .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2163,7 +2167,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#oeyvjzvsev .gt_title {
+#wawpuojirs .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2173,7 +2177,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-bottom-width: 0;
 }
 
-#oeyvjzvsev .gt_subtitle {
+#wawpuojirs .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2183,13 +2187,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-width: 0;
 }
 
-#oeyvjzvsev .gt_bottom_border {
+#wawpuojirs .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#oeyvjzvsev .gt_col_headings {
+#wawpuojirs .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2204,7 +2208,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#oeyvjzvsev .gt_col_heading {
+#wawpuojirs .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2224,7 +2228,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   overflow-x: hidden;
 }
 
-#oeyvjzvsev .gt_column_spanner_outer {
+#wawpuojirs .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2236,15 +2240,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 4px;
 }
 
-#oeyvjzvsev .gt_column_spanner_outer:first-child {
+#wawpuojirs .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#oeyvjzvsev .gt_column_spanner_outer:last-child {
+#wawpuojirs .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#oeyvjzvsev .gt_column_spanner {
+#wawpuojirs .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2256,7 +2260,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   width: 100%;
 }
 
-#oeyvjzvsev .gt_group_heading {
+#wawpuojirs .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #D3D3D3;
@@ -2278,7 +2282,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   vertical-align: middle;
 }
 
-#oeyvjzvsev .gt_empty_group_heading {
+#wawpuojirs .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #D3D3D3;
@@ -2293,15 +2297,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   vertical-align: middle;
 }
 
-#oeyvjzvsev .gt_from_md > :first-child {
+#wawpuojirs .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#oeyvjzvsev .gt_from_md > :last-child {
+#wawpuojirs .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#oeyvjzvsev .gt_row {
+#wawpuojirs .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2320,7 +2324,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   overflow-x: hidden;
 }
 
-#oeyvjzvsev .gt_stub {
+#wawpuojirs .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2332,7 +2336,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-left: 12px;
 }
 
-#oeyvjzvsev .gt_summary_row {
+#wawpuojirs .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2342,7 +2346,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 5px;
 }
 
-#oeyvjzvsev .gt_first_summary_row {
+#wawpuojirs .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2352,7 +2356,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-color: #D3D3D3;
 }
 
-#oeyvjzvsev .gt_grand_summary_row {
+#wawpuojirs .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2362,7 +2366,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 5px;
 }
 
-#oeyvjzvsev .gt_first_grand_summary_row {
+#wawpuojirs .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2372,11 +2376,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-color: #D3D3D3;
 }
 
-#oeyvjzvsev .gt_striped {
+#wawpuojirs .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#oeyvjzvsev .gt_table_body {
+#wawpuojirs .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2385,7 +2389,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-bottom-color: #D3D3D3;
 }
 
-#oeyvjzvsev .gt_footnotes {
+#wawpuojirs .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2399,13 +2403,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#oeyvjzvsev .gt_footnote {
+#wawpuojirs .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#oeyvjzvsev .gt_sourcenotes {
+#wawpuojirs .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2419,41 +2423,41 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#oeyvjzvsev .gt_sourcenote {
+#wawpuojirs .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#oeyvjzvsev .gt_left {
+#wawpuojirs .gt_left {
   text-align: left;
 }
 
-#oeyvjzvsev .gt_center {
+#wawpuojirs .gt_center {
   text-align: center;
 }
 
-#oeyvjzvsev .gt_right {
+#wawpuojirs .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#oeyvjzvsev .gt_font_normal {
+#wawpuojirs .gt_font_normal {
   font-weight: normal;
 }
 
-#oeyvjzvsev .gt_font_bold {
+#wawpuojirs .gt_font_bold {
   font-weight: bold;
 }
 
-#oeyvjzvsev .gt_font_italic {
+#wawpuojirs .gt_font_italic {
   font-style: italic;
 }
 
-#oeyvjzvsev .gt_super {
+#wawpuojirs .gt_super {
   font-size: 65%;
 }
 
-#oeyvjzvsev .gt_footnote_marks {
+#wawpuojirs .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -2480,7 +2484,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     </tr>
     <tr><td class="gt_row gt_left gt_stub">star</td>
 <td class="gt_row gt_left gt_striped">workout</td>
-<td class="gt_row gt_left gt_striped">vr</td></tr>
+<td class="gt_row gt_left gt_striped">beat saber &gt; 10 minutes</td></tr>
     <tr><td class="gt_row gt_left gt_stub">star</td>
 <td class="gt_row gt_left">dishes</td>
 <td class="gt_row gt_left">wash and wipe benches</td></tr>
@@ -2489,79 +2493,91 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td class="gt_row gt_left gt_striped">shower or face</td></tr>
     <tr><td class="gt_row gt_left gt_stub">sim</td>
 <td class="gt_row gt_left">workout</td>
-<td class="gt_row gt_left">yoga</td></tr>
+<td class="gt_row gt_left">yoga &gt; 10 mins</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">sim</td>
+<td class="gt_row gt_left gt_striped">workout</td>
+<td class="gt_row gt_left gt_striped">beat saber &gt; 20 minutes</td></tr>
     <tr><td class="gt_row gt_left gt_stub">varnothing</td>
-<td class="gt_row gt_left gt_striped">laundry</td>
-<td class="gt_row gt_left gt_striped">check if laundry needs doing, put away clothes, chairdrobe</td></tr>
+<td class="gt_row gt_left">laundry</td>
+<td class="gt_row gt_left">check if laundry needs doing, put away clothes, chairdrobe</td></tr>
     <tr><td class="gt_row gt_left gt_stub">varnothing</td>
-<td class="gt_row gt_left">brushes</td>
-<td class="gt_row gt_left">wash brushes</td></tr>
+<td class="gt_row gt_left gt_striped">brushes</td>
+<td class="gt_row gt_left gt_striped">wash brushes</td></tr>
     <tr><td class="gt_row gt_left gt_stub">varnothing</td>
-<td class="gt_row gt_left gt_striped">basin</td>
-<td class="gt_row gt_left gt_striped">wash basin</td></tr>
+<td class="gt_row gt_left">basin</td>
+<td class="gt_row gt_left">wash basin</td></tr>
     <tr><td class="gt_row gt_left gt_stub">varnothing</td>
-<td class="gt_row gt_left">fridge</td>
-<td class="gt_row gt_left">clean my shelf</td></tr>
+<td class="gt_row gt_left gt_striped">fridge</td>
+<td class="gt_row gt_left gt_striped">clean my shelf</td></tr>
     <tr><td class="gt_row gt_left gt_stub">varnothing</td>
-<td class="gt_row gt_left gt_striped">water plants</td>
-<td class="gt_row gt_left gt_striped">only on weekend</td></tr>
+<td class="gt_row gt_left">water plants</td>
+<td class="gt_row gt_left">only on weekend</td></tr>
     <tr><td class="gt_row gt_left gt_stub">varnothing</td>
-<td class="gt_row gt_left">desk</td>
-<td class="gt_row gt_left">tidy and sweep</td></tr>
+<td class="gt_row gt_left gt_striped">desk</td>
+<td class="gt_row gt_left gt_striped">tidy and sweep</td></tr>
     <tr><td class="gt_row gt_left gt_stub">varnothing</td>
-<td class="gt_row gt_left gt_striped">laundry</td>
-<td class="gt_row gt_left gt_striped">either put a load on or put a load away</td></tr>
+<td class="gt_row gt_left">laundry</td>
+<td class="gt_row gt_left">either put a load on or put a load away</td></tr>
     <tr><td class="gt_row gt_left gt_stub">varnothing</td>
-<td class="gt_row gt_left">waiting</td>
-<td class="gt_row gt_left">make sure noted in bujo daily, monthly, or future log</td></tr>
+<td class="gt_row gt_left gt_striped">waiting</td>
+<td class="gt_row gt_left gt_striped">make sure noted in bujo daily, monthly, or future log</td></tr>
     <tr><td class="gt_row gt_left gt_stub">varnothing</td>
-<td class="gt_row gt_left gt_striped">update lappy486</td>
-<td class="gt_row gt_left gt_striped">`sudo apt update`</td></tr>
+<td class="gt_row gt_left">update lappy486</td>
+<td class="gt_row gt_left">`sudo apt update`</td></tr>
     <tr><td class="gt_row gt_left gt_stub">varnothing</td>
-<td class="gt_row gt_left">update pkgs</td>
-<td class="gt_row gt_left">in rstudio</td></tr>
+<td class="gt_row gt_left gt_striped">update pkgs</td>
+<td class="gt_row gt_left gt_striped">in rstudio</td></tr>
     <tr><td class="gt_row gt_left gt_stub">varnothing</td>
-<td class="gt_row gt_left gt_striped">update lifeswork</td>
-<td class="gt_row gt_left gt_striped">run update data and rebuild site</td></tr>
+<td class="gt_row gt_left">update lifeswork</td>
+<td class="gt_row gt_left">run update data and rebuild site</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">varnothing</td>
+<td class="gt_row gt_left gt_striped">workout</td>
+<td class="gt_row gt_left gt_striped">beat saber &gt; 45 mins</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">varnothing</td>
+<td class="gt_row gt_left">workout</td>
+<td class="gt_row gt_left">yoga &gt; 20 minutes</td></tr>
     <tr class="gt_group_heading_row">
       <td colspan="3" class="gt_group_heading">theta</td>
     </tr>
     <tr><td class="gt_row gt_left gt_stub">varnothing</td>
-<td class="gt_row gt_left">reading</td>
-<td class="gt_row gt_left">see pandan</td></tr>
+<td class="gt_row gt_left gt_striped">reading</td>
+<td class="gt_row gt_left gt_striped">see pandan</td></tr>
     <tr><td class="gt_row gt_left gt_stub">varnothing</td>
-<td class="gt_row gt_left gt_striped">tucker</td>
-<td class="gt_row gt_left gt_striped">one exercise</td></tr>
+<td class="gt_row gt_left">tucker</td>
+<td class="gt_row gt_left">one exercise</td></tr>
     <tr><td class="gt_row gt_left gt_stub">varnothing</td>
-<td class="gt_row gt_left">rethinking</td>
-<td class="gt_row gt_left">one question</td></tr>
+<td class="gt_row gt_left gt_striped">rethinking</td>
+<td class="gt_row gt_left gt_striped">one question</td></tr>
     <tr><td class="gt_row gt_left gt_stub">varnothing</td>
-<td class="gt_row gt_left gt_striped">TIL</td>
-<td class="gt_row gt_left gt_striped">today I learnt blogpost</td></tr>
+<td class="gt_row gt_left">TIL</td>
+<td class="gt_row gt_left">today I learnt blogpost</td></tr>
     <tr class="gt_group_heading_row">
       <td colspan="3" class="gt_group_heading">psi</td>
     </tr>
     <tr><td class="gt_row gt_left gt_stub">star</td>
-<td class="gt_row gt_left">weekend</td>
-<td class="gt_row gt_left">only calendar, clue, and goals, no email, no req to talk to peoples</td></tr>
+<td class="gt_row gt_left gt_striped">weekend</td>
+<td class="gt_row gt_left gt_striped">only calendar, clue, and goals, no email, no req to talk to peoples</td></tr>
     <tr><td class="gt_row gt_left gt_stub">star</td>
-<td class="gt_row gt_left gt_striped">calendar</td>
-<td class="gt_row gt_left gt_striped">check day, week, month; note events of the day; upcoming deadlines; migrate stuff for today to 𝅘𝅥𝅮, ♫. book yoga</td></tr>
+<td class="gt_row gt_left">calendar</td>
+<td class="gt_row gt_left">check day, week, month; note events of the day; upcoming deadlines; migrate stuff for today to 𝅘𝅥𝅮, ♫. book yoga</td></tr>
     <tr><td class="gt_row gt_left gt_stub">star</td>
-<td class="gt_row gt_left">fire</td>
-<td class="gt_row gt_left">What is on fire? task or project must be due today and someone else will get stuffed around if I don't do it</td></tr>
+<td class="gt_row gt_left gt_striped">fire</td>
+<td class="gt_row gt_left gt_striped">What is on fire? task or project must be due today and someone else will get stuffed around if I don't do it</td></tr>
     <tr><td class="gt_row gt_left gt_stub">star</td>
-<td class="gt_row gt_left gt_striped">starred email</td>
-<td class="gt_row gt_left gt_striped">snooze or add task to daily log to move along</td></tr>
+<td class="gt_row gt_left">starred email</td>
+<td class="gt_row gt_left">snooze or add task to daily log to move along</td></tr>
     <tr><td class="gt_row gt_left gt_stub">star</td>
-<td class="gt_row gt_left">clue</td>
-<td class="gt_row gt_left">track</td></tr>
+<td class="gt_row gt_left gt_striped">clue</td>
+<td class="gt_row gt_left gt_striped">track</td></tr>
     <tr><td class="gt_row gt_left gt_stub">star</td>
-<td class="gt_row gt_left gt_striped">stuff</td>
-<td class="gt_row gt_left gt_striped">process papers, notes, unpack bags, etc.</td></tr>
+<td class="gt_row gt_left">stuff</td>
+<td class="gt_row gt_left">process papers, notes, unpack bags, etc.</td></tr>
     <tr><td class="gt_row gt_left gt_stub">star</td>
-<td class="gt_row gt_left">goals</td>
-<td class="gt_row gt_left">set pom goals for day: 4 in each category, subtract meetings.</td></tr>
+<td class="gt_row gt_left gt_striped">goals</td>
+<td class="gt_row gt_left gt_striped">set pom goals for day: 4 in each category, subtract meetings.</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">star</td>
+<td class="gt_row gt_left">papers</td>
+<td class="gt_row gt_left">check inbox</td></tr>
     <tr><td class="gt_row gt_left gt_stub">sim</td>
 <td class="gt_row gt_left gt_striped">ynab</td>
 <td class="gt_row gt_left gt_striped">finish pom</td></tr>
@@ -2592,25 +2608,25 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h1 id="weekend">weekend</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tasks</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>weekend</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>weekend</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tasks</span> <span class='op'><a href='https://gt.rstudio.com/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>weekend</span><span class='op'>)</span> <span class='op'><a href='https://gt.rstudio.com/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>weekend</span><span class='op'>)</span> <span class='op'><a href='https://gt.rstudio.com/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span>
     groupname_col <span class='op'>=</span> <span class='st'>"category"</span>,
     rowname_col <span class='op'>=</span> <span class='st'>"status"</span>
-  <span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://gt.rstudio.com/reference/opt_row_striping.html'>opt_row_striping</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='op'>)</span> <span class='op'><a href='https://gt.rstudio.com/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://gt.rstudio.com/reference/opt_row_striping.html'>opt_row_striping</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://gt.rstudio.com/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://gt.rstudio.com/reference/tab_options.html'>tab_options</a></span><span class='op'>(</span>
     row_group.background.color <span class='op'>=</span> <span class='st'>"lightgrey"</span>
   <span class='op'>)</span>
 </code></pre>
 </div>
-<div id="upxuhcrowx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="hbaqxudijx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#upxuhcrowx .gt_table {
+#hbaqxudijx .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2635,7 +2651,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-left-color: #D3D3D3;
 }
 
-#upxuhcrowx .gt_heading {
+#hbaqxudijx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2647,7 +2663,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#upxuhcrowx .gt_title {
+#hbaqxudijx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2657,7 +2673,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-bottom-width: 0;
 }
 
-#upxuhcrowx .gt_subtitle {
+#hbaqxudijx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2667,13 +2683,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-width: 0;
 }
 
-#upxuhcrowx .gt_bottom_border {
+#hbaqxudijx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#upxuhcrowx .gt_col_headings {
+#hbaqxudijx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2688,7 +2704,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#upxuhcrowx .gt_col_heading {
+#hbaqxudijx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2708,7 +2724,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   overflow-x: hidden;
 }
 
-#upxuhcrowx .gt_column_spanner_outer {
+#hbaqxudijx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2720,15 +2736,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 4px;
 }
 
-#upxuhcrowx .gt_column_spanner_outer:first-child {
+#hbaqxudijx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#upxuhcrowx .gt_column_spanner_outer:last-child {
+#hbaqxudijx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#upxuhcrowx .gt_column_spanner {
+#hbaqxudijx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2740,7 +2756,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   width: 100%;
 }
 
-#upxuhcrowx .gt_group_heading {
+#hbaqxudijx .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #D3D3D3;
@@ -2762,7 +2778,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   vertical-align: middle;
 }
 
-#upxuhcrowx .gt_empty_group_heading {
+#hbaqxudijx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #D3D3D3;
@@ -2777,15 +2793,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   vertical-align: middle;
 }
 
-#upxuhcrowx .gt_from_md > :first-child {
+#hbaqxudijx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#upxuhcrowx .gt_from_md > :last-child {
+#hbaqxudijx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#upxuhcrowx .gt_row {
+#hbaqxudijx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2804,7 +2820,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   overflow-x: hidden;
 }
 
-#upxuhcrowx .gt_stub {
+#hbaqxudijx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2816,7 +2832,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-left: 12px;
 }
 
-#upxuhcrowx .gt_summary_row {
+#hbaqxudijx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2826,7 +2842,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 5px;
 }
 
-#upxuhcrowx .gt_first_summary_row {
+#hbaqxudijx .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2836,7 +2852,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-color: #D3D3D3;
 }
 
-#upxuhcrowx .gt_grand_summary_row {
+#hbaqxudijx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2846,7 +2862,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 5px;
 }
 
-#upxuhcrowx .gt_first_grand_summary_row {
+#hbaqxudijx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2856,11 +2872,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-color: #D3D3D3;
 }
 
-#upxuhcrowx .gt_striped {
+#hbaqxudijx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#upxuhcrowx .gt_table_body {
+#hbaqxudijx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2869,7 +2885,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-bottom-color: #D3D3D3;
 }
 
-#upxuhcrowx .gt_footnotes {
+#hbaqxudijx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2883,13 +2899,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#upxuhcrowx .gt_footnote {
+#hbaqxudijx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#upxuhcrowx .gt_sourcenotes {
+#hbaqxudijx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2903,41 +2919,41 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#upxuhcrowx .gt_sourcenote {
+#hbaqxudijx .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#upxuhcrowx .gt_left {
+#hbaqxudijx .gt_left {
   text-align: left;
 }
 
-#upxuhcrowx .gt_center {
+#hbaqxudijx .gt_center {
   text-align: center;
 }
 
-#upxuhcrowx .gt_right {
+#hbaqxudijx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#upxuhcrowx .gt_font_normal {
+#hbaqxudijx .gt_font_normal {
   font-weight: normal;
 }
 
-#upxuhcrowx .gt_font_bold {
+#hbaqxudijx .gt_font_bold {
   font-weight: bold;
 }
 
-#upxuhcrowx .gt_font_italic {
+#hbaqxudijx .gt_font_italic {
   font-style: italic;
 }
 
-#upxuhcrowx .gt_super {
+#hbaqxudijx .gt_super {
   font-size: 65%;
 }
 
-#upxuhcrowx .gt_footnote_marks {
+#hbaqxudijx .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -2958,7 +2974,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     </tr>
     <tr><td class="gt_row gt_left gt_stub">star</td>
 <td class="gt_row gt_left">workout</td>
-<td class="gt_row gt_left">vr</td></tr>
+<td class="gt_row gt_left">beat saber &gt; 10 minutes</td></tr>
     <tr><td class="gt_row gt_left gt_stub">star</td>
 <td class="gt_row gt_left gt_striped">dishes</td>
 <td class="gt_row gt_left gt_striped">wash and wipe benches</td></tr>
